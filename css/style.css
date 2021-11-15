@@ -2,6 +2,8 @@
 @font-face {
     font-family: "Gotham Book";
     src: url("/font/Gotham-Book.otf");
+    font-family: "Gotham Bold";
+    src: url("/font/Gotham-Bold.otf");
   }
 
 /* BASE */
@@ -86,7 +88,7 @@ body{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -60%);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -101,13 +103,7 @@ body{
 }
 
 
-
 /* SLIDE 2 */
-.slide2 .inside-slide{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
 .contain-top{
     position: absolute;
     top: 0;
@@ -126,4 +122,13 @@ body{
     width: 100%;
     text-align: center;
     font-size: 1rem;
+}
+
+/* SLIDE 5 */
+.slide5 .main-elt p{
+    font-size: 4rem;
+}
+.big-number{
+    font-family: "Gotham Bold", sans-serif;
+    font-size: 8rem;
 }
