@@ -1,0 +1,111 @@
+/* FONT */
+@font-face {
+    font-family: "Gotham Book";
+    src: url("/font/Gotham-Book.otf");
+  }
+
+/* BASE */
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+}
+
+:root{
+    --color-text-black: #111;
+    --color-bg-white: #F1F1F1;
+    --color-text-white: #FFF;
+    --color-bg: #393939;
+    --color-red: #e32119;
+    scroll-behavior: smooth; 
+    font-size: 62.5%;
+}
+
+body{
+    margin: 0;
+    font-size: 1.6rem;
+    font-family: "Gotham Book", sans-serif;
+    color: var(--color-text-white);
+    background: var(--color-bg);
+}
+
+.container{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+.contain-slide{
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+.contain-slide.active{
+    display: block;
+    animation: inframe 1s;
+}
+/* animation d'apparition des slides */
+@keyframes inframe {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+.slide{
+    width: 100%;
+    height: 100%;
+}
+.btn-nav{
+    cursor: pointer;
+}
+.btn-nav:hover{
+    color: var(--color-red);
+}
+
+/* SLIDE 1 */
+.slide1{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.logo-top{
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+}
+.main-elt{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+}
+.main-elt p{
+    margin: 0 0 3rem 0;
+    text-align: center;
+    font-size: 2.2rem;
+}
+.contain-btn{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 3rem;
+}
+
+/* SLIDE 2 */
+.slide2{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.line-top{
+    width: 100%;
+    height: 0.5rem;
+}
