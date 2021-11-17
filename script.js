@@ -1,3 +1,6 @@
+/*
+SLIDER
+*/
 // variables pages
 const pages = document.querySelectorAll('.slide');
 const nbPages = pages.length;
@@ -32,20 +35,25 @@ precedent.forEach(element => {
     element.addEventListener('click', pagePrecedente);
 });
 
-
-
+/*
+MEASURE
+*/
+// Variable regle
 const measureElt1 = document.querySelector('.measure1');
 const measureElt2 = document.querySelector('.measure2');
 const lineElt = document.querySelectorAll('.contain-line');
 const slide2Elt = document.querySelector('.slide2');
 const slide4Elt = document.querySelector('.slide4');
 
+// Ecouteur de click sur les lignes (slide 2 et 4)
 lineElt.forEach(element => {
     element.addEventListener('mousedown', mousedown);
 });
 
+// Fonction déclenchée au click
 function mousedown(e) {
-    let prevY = e.clientY;
+    let prevY1 = e.clientY;
+    let prevY2 = e.clientY;
     slide2Elt.addEventListener('mousemove', mousemove);
     slide2Elt.addEventListener('mouseup', mouseup);
     slide4Elt.addEventListener('mousemove', mousemove);
@@ -53,10 +61,13 @@ function mousedown(e) {
 
     function mousemove(e) {
         const rect1 = measureElt1.getBoundingClientRect();
-        measureElt1.style.height = rect1.height - (prevY - e.clientY) + "px";
+        measureElt1.style.height = rect1.height - (prevY1 - e.clientY) + "px";
         const rect2 = measureElt2.getBoundingClientRect();
-        measureElt2.style.height = rect2.height - (prevY - e.clientY) + "px";
-        prevY = e.clientY;
+        measureElt2.style.height = rect2.height - (prevY2 - e.clientY) + "px";
+        prevY1 = e.clientY;
+        prevY2 = e.clientY;
+        
+        console.log(measureElt1.offsetHeight);
     }
 
     function mouseup() {
@@ -65,6 +76,9 @@ function mousedown(e) {
         slide4Elt.removeEventListener('mousemove', mousemove);
         slide4Elt.removeEventListener('mouseup', mouseup);
     }
-
+    
 }
+
+
+
 
