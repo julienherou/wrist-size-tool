@@ -26,13 +26,23 @@ function measureElt(source, destination) {
     wristSizePx = source.offsetHeight
     wristSizeCm = (wristSizePx * 0.0264583333).toFixed(2);
     destination.innerHTML = wristSizeCm;
-    // console.log(wristSizePx);
 }
 // Formule (rentrer les mesures en px)
 function formule(mesure1, mesure2) {
-    calcul = (((mesure1 + mesure2) * 1.79) * 0.0264583333).toFixed(2);
+    calcul = (((mesure1 + mesure2) * 1.79) * 0.0264583333).toFixed(1);
     return calcul;
 }
+
+
+function measureEltTest(source, destination, ligne) {
+    wristSizePx = source.offsetHeight - (ligne.offsetHeight / 2)
+    console.log('wristSizePx :' + wristSizePx);
+    wristSizeCm = (wristSizePx * 0.0264583333).toFixed(2);
+    destination.innerHTML = wristSizeCm;
+}
+
+
+// FONCTIONS
 
 // fonction page/slide suivante
 function pageSuivante(){
@@ -71,6 +81,8 @@ function pageSuivante(){
     // ---------------------------------------------------------------
 
 }
+
+
 // On écoute le click sur "Confirm"
 suivant.forEach(element => {
     element.addEventListener('click', pageSuivante);
@@ -107,6 +119,7 @@ function mousedown1(e) {
     let prevY1 = e.clientY;
     slide2Elt.addEventListener('mousemove', mousemove1);
     slide2Elt.addEventListener('mouseup', mouseup1);
+    // slide2Elt.addEventListener('mouseleave', mouseleave1);
 
     function mousemove1(e) {
         const rect1 = measureElt1.getBoundingClientRect();
@@ -118,15 +131,22 @@ function mousedown1(e) {
         // resulats[0] = wristSize1Cm;
         // numberElt1.innerHTML = wristSize1Cm;
         measureElt(measureElt1, numberElt1);
+        measureEltTest(measureElt1, numberElt1, lineElt1);
     }
+
     function mouseup1() {
-        // let wristSize1Px = measureElt1.offsetHeight
-        // let wristSize1Cm = (wristSize1Px * 0.0264583333).toFixed(2);
-        // console.log(wristSize1Cm);
         slide2Elt.removeEventListener('mousemove', mousemove1);
         slide2Elt.removeEventListener('mouseup', mouseup1);
     }
+    
+    // function mouseleave1() {
+    //     slide2Elt.removeEventListener('mousemove', mousemove1);
+    //     slide2Elt.removeEventListener('mouseup', mouseup1);
+    // }
+
 }
+
+
 
 
 // SLIDE 4
@@ -149,10 +169,10 @@ function mousedown2(e) {
     function mouseup2() {
         // let wristSize2Px = measureElt2.offsetHeight
         // var wristSize2Cm = (wristSize2Px * 0.0264583333).toFixed(2);
-        // console.log(wristSize2Cm);
         slide4Elt.removeEventListener('mousemove', mousemove2);
         slide4Elt.removeEventListener('mouseup', mouseup2);
     }
+
     
 }
 
