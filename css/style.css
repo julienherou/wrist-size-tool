@@ -1,4 +1,5 @@
 /* FONT */
+/* font-family: 'Heebo', sans-serif; */
 @font-face {
     font-family: "Gotham Book";
     src: url("../font/Gotham-Book.otf");
@@ -11,6 +12,7 @@
     font-family: "Gotham Light";
     src: url("../font/Gotham-Light.otf");
 }
+
 
 /* BASE */
 *,
@@ -30,7 +32,8 @@
 body{
     margin: 0;
     font-size: 1.6rem;
-    font-family: "Gotham Book", sans-serif;
+    /* font-family: "Gotham Book", sans-serif; */
+    font-family: 'Heebo', sans-serif;
     color: var(--color-white);
     background: var(--color-bg);
 }
@@ -194,7 +197,9 @@ a{
     margin: 0;
 }
 .number{
-    font-family: "Gotham Bold", sans-serif;
+    /* font-family: "Gotham Bold", sans-serif; */
+    font-family: 'Heebo', sans-serif;
+    font-weight: 900;
     font-size: 4rem;
     line-height: 3.5rem;
 }
@@ -245,7 +250,9 @@ a{
     font-size: 4rem;
 }
 .result{
-    font-family: "Gotham Bold", sans-serif;
+    /* font-family: "Gotham Bold", sans-serif; */
+    font-family: 'Heebo', sans-serif;
+    font-weight: 900;
     font-size: 8rem;
     line-height: 7.5rem;
 }
