@@ -1,3 +1,16 @@
+// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+let vh = window.innerHeight * 0.01;
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+// We listen to the resize event
+window.addEventListener('resize', () => {
+    // We execute the same script as before
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
+
+
+
 // Variables Slider
 const pages = document.querySelectorAll('.slide');
 const nbPages = pages.length;
@@ -24,12 +37,11 @@ let wristSizeCm;
 
 // Fonction avec element à mesurer (source) et zone de texte à remplacer (destination)
 function measureElt(source, destination, ligne) {
-    wristSizePx = source.offsetHeight - (ligne.offsetHeight / 2)
-    // wristSizeCm = (wristSizePx * 0.0264583333).toFixed(2);
+    wristSizePx = source.offsetHeight - (ligne.offsetHeight / 2);
     wristSizeCm = (wristSizePx * 0.0264583333).toFixed(2).replace(/\./g, '\,');
     destination.innerHTML = wristSizeCm;
-    // var res = str.replace(/\./g, ' ');
 }
+
 
 // Formule (rentrer les mesures en px) >> calcul final
 function formule(mesure1, mesure2) {
@@ -41,16 +53,16 @@ function formule(mesure1, mesure2) {
 // fonction page/slide suivante
 function pageSuivante(){
 
-    console.log(count);
+    // console.log(count);
     // Pour déclencher le calcul final
     if(count == 1) {
         resulats[0] = measureElt1.offsetHeight;
     }
     if(count == 3) {
         resulats[1] = measureElt2.offsetHeight;
-        console.log(resulats);
+        // console.log(resulats);
         formule(resulats[0], resulats[1]);
-        console.log(calcul);
+        // console.log(calcul);
         resultElt.innerHTML = calcul;
     }
 
@@ -108,7 +120,6 @@ lineElt2.addEventListener('mousedown', mousedown2);
 
 
 
-
 // SLIDE 2
 // Fonction déclenchée au click
 function mousedown1(e) {
@@ -120,12 +131,16 @@ function mousedown1(e) {
     function mousemove1(e) {
         const rect1 = measureElt1.getBoundingClientRect();
         measureElt1.style.height = rect1.height - (prevY1 - e.clientY) + "px";
+
         prevY1 = e.clientY;
         // let wristSize1Px = measureElt1.offsetHeight
         // let wristSize1Cm = (wristSize1Px * 0.0264583333).toFixed(2);
         // resulats[0] = wristSize1Cm;
         // numberElt1.innerHTML = wristSize1Cm;
+
         measureElt(measureElt1, numberElt1, lineElt1);
+
+
     }
 
     function mouseup1() {
