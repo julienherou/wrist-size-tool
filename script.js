@@ -1,3 +1,18 @@
+// document.write(window.devicePixelRatio);
+
+// Pour empécher le reload sur la page mobile au scroll
+document.documentElement.style.overflow = 'hidden';
+
+
+// Pour connaitre la taille d'ecran
+function getResolution() {
+    alert("Your screen resolution is: " + window.screen.width * window.devicePixelRatio + "x" + window.screen.height * window.devicePixelRatio);
+}
+// getResolution();
+
+
+
+// Permet d'ajuster la hauteur sur mobile
 // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
 let vh = window.innerHeight * 0.01;
 // Then we set the value in the --vh custom property to the root of the document
@@ -8,7 +23,6 @@ window.addEventListener('resize', () => {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 });
-
 
 
 // Variables Slider
@@ -33,12 +47,21 @@ let calcul;
 // Conversion pixel >> cm et affichage au chargement de la page
 let wristSizePx;
 let wristSizeCm;
-
+let convert;
 
 // Fonction avec element à mesurer (source) et zone de texte à remplacer (destination)
 function measureElt(source, destination, ligne) {
     wristSizePx = source.offsetHeight - (ligne.offsetHeight / 2);
-    wristSizeCm = (wristSizePx * 0.0264583333).toFixed(2).replace(/\./g, '\,');
+
+    // mesure pour 96dpi :
+    convert = 0.0264583333;
+    // mesure pour 144dpi :
+    // convert = 0.017638889;
+    wristSizeCm = (wristSizePx * convert).toFixed(2).replace(/\./g, '\,');
+    
+    console.log('taille : ' + wristSizePx + ' px')
+    console.log('taille : ' + wristSizeCm + ' cm')
+    // on affiche la valeur en cm
     destination.innerHTML = wristSizeCm;
 }
 
