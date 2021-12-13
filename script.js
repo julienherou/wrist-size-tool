@@ -1,3 +1,7 @@
+/*
+Slider / Outil de mesure
+*/
+
 // document.write(window.devicePixelRatio);
 
 // Pour empécher le reload sur la page mobile au scroll
@@ -12,7 +16,7 @@ function getResolution() {
 
 
 
-// Permet d'ajuster la hauteur sur mobile
+// Permet d'ajuster la hauteur sur mobile en 100vh
 // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
 let vh = window.innerHeight * 0.01;
 // Then we set the value in the --vh custom property to the root of the document
@@ -43,34 +47,72 @@ const numberElt2 = document.querySelector('.number2');
 const resultElt = document.querySelector('.result');
 let resulats = [];
 let calcul;
+const unitElt = document.querySelectorAll('.unit');
 
 // Conversion pixel >> cm et affichage au chargement de la page
 let wristSizePx;
 let wristSizeCm;
 let convert;
 
+// Conversion 96dpi en cm :
+convert = 0.0264583333;
+// Conversion 144dpi en cm :
+// convert = 0.017638889;
+
 // Fonction avec element à mesurer (source) et zone de texte à remplacer (destination)
 function measureElt(source, destination, ligne) {
     wristSizePx = source.offsetHeight - (ligne.offsetHeight / 2);
-
-    // mesure pour 96dpi :
-    convert = 0.0264583333;
-    // mesure pour 144dpi :
-    // convert = 0.017638889;
     wristSizeCm = (wristSizePx * convert).toFixed(2).replace(/\./g, '\,');
-    
-    console.log('taille : ' + wristSizePx + ' px')
-    console.log('taille : ' + wristSizeCm + ' cm')
+    // console.log('taille : ' + wristSizePx + ' px')
+    // console.log('taille : ' + wristSizeCm + ' cm')
     // on affiche la valeur en cm
     destination.innerHTML = wristSizeCm;
 }
 
 
+// Fonctions de calcul
+// let wristSizePxOne;
+function validMeasureOne(){
+    let wristSizePxOne = measureElt1.offsetHeight - (lineElt1.offsetHeight / 2);
+    resulats[0] = wristSizePxOne;
+    console.log('mesure 1 : ' + resulats[0] + 'px');
+}
+// let wristSizePxTwo;
+function validMeasureTwo(){
+    let wristSizePxTwo = measureElt2.offsetHeight - (lineElt2.offsetHeight / 2);
+    resulats[1] = wristSizePxTwo;
+    console.log('mesure 2 : ' + resulats[1] + 'px');
+}
+
 // Formule (rentrer les mesures en px) >> calcul final
 function formule(mesure1, mesure2) {
-    calcul = (((mesure1 + mesure2) * 1.79) * 0.0264583333).toFixed(1).replace(/\./g, '\,');
+    calcul = (((mesure1 + mesure2) * 1.79) * convert).toFixed(1).replace(/\./g, '\,');
     return calcul;
 }
+
+
+
+
+// On écoute le click sur les boutons unit
+unitElt.forEach(element => {
+    element.addEventListener('click', changeUnit);
+});
+// On selectionne l'unite
+function changeUnit(){
+    unitElt.forEach(element => {
+        element.classList.remove('select');
+    });
+    this.classList.add('select');
+    if (this.classList.contains('unit-cm')){
+        console.log('jesuisencm');
+    }
+
+
+};
+
+
+
+
 
 
 // fonction page/slide suivante
@@ -79,13 +121,13 @@ function pageSuivante(){
     // console.log(count);
     // Pour déclencher le calcul final
     if(count == 1) {
-        resulats[0] = measureElt1.offsetHeight;
+        // resulats[0] = measureElt1.offsetHeight;
+        validMeasureOne();
     }
     if(count == 3) {
-        resulats[1] = measureElt2.offsetHeight;
-        // console.log(resulats);
+        // resulats[1] = measureElt2.offsetHeight;
+        validMeasureTwo();
         formule(resulats[0], resulats[1]);
-        // console.log(calcul);
         resultElt.innerHTML = calcul;
     }
 
@@ -97,17 +139,8 @@ function pageSuivante(){
     }
     pages[count].classList.add('active');
 
-
     measureElt(measureElt1, numberElt1, lineElt1);
     measureElt(measureElt2, numberElt2, lineElt2);
-    // Affichage de la mesure au chargement de la page
-    // let wristSize1Px = measureElt1.offsetHeight
-    // let wristSize1Cm = (wristSize1Px * 0.0264583333).toFixed(2);
-    // numberElt1.innerHTML = wristSize1Cm;
-    // let wristSize2Px = measureElt2.offsetHeight
-    // let wristSize2Cm = (wristSize2Px * 0.0264583333).toFixed(2);
-    // numberElt2.innerHTML = wristSize2Cm;
-    // ---------------------------------------------------------------
 
 }
 
@@ -149,20 +182,14 @@ function mousedown1(e) {
     let prevY1 = e.clientY;
     slide2Elt.addEventListener('mousemove', mousemove1);
     slide2Elt.addEventListener('mouseup', mouseup1);
-    // slide2Elt.addEventListener('mouseleave', mouseleave1);
 
     function mousemove1(e) {
         const rect1 = measureElt1.getBoundingClientRect();
         measureElt1.style.height = rect1.height - (prevY1 - e.clientY) + "px";
 
         prevY1 = e.clientY;
-        // let wristSize1Px = measureElt1.offsetHeight
-        // let wristSize1Cm = (wristSize1Px * 0.0264583333).toFixed(2);
-        // resulats[0] = wristSize1Cm;
-        // numberElt1.innerHTML = wristSize1Cm;
 
         measureElt(measureElt1, numberElt1, lineElt1);
-
 
     }
 
@@ -171,10 +198,6 @@ function mousedown1(e) {
         slide2Elt.removeEventListener('mouseup', mouseup1);
     }
     
-    // function mouseleave1() {
-    //     slide2Elt.removeEventListener('mousemove', mousemove1);
-    //     slide2Elt.removeEventListener('mouseup', mouseup1);
-    // }
 
 }
 
@@ -191,15 +214,10 @@ function mousedown2(e) {
         const rect2 = measureElt2.getBoundingClientRect();
         measureElt2.style.height = rect2.height - (prevY2 - e.clientY) + "px";
         prevY2 = e.clientY;
-        // let wristSize2Px = measureElt2.offsetHeight
-        // let wristSize2Cm = (wristSize2Px * 0.0264583333).toFixed(2);
-        // numberElt2.innerHTML = wristSize2Cm;
         measureElt(measureElt2, numberElt2, lineElt2);
     }
 
     function mouseup2() {
-        // let wristSize2Px = measureElt2.offsetHeight
-        // var wristSize2Cm = (wristSize2Px * 0.0264583333).toFixed(2);
         slide4Elt.removeEventListener('mousemove', mousemove2);
         slide4Elt.removeEventListener('mouseup', mouseup2);
     }
