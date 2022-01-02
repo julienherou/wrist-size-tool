@@ -48,57 +48,33 @@ const numberElt2 = document.querySelector('.number2');
 const symbElt2 = document.querySelector('.symb-unit2');
 const resultElt = document.querySelector('.result');
 const symbElt3 = document.querySelector('.symb-unit3');
+const unitElt = document.querySelectorAll('.unit');
 let resultats = [];
 let calcul;
-const unitElt = document.querySelectorAll('.unit');
-
-
 
 // Conversion pixel >> cm et affichage au chargement de la page
 let wristSizePx;
 let wristSizeCm;
-let convert;
-
-// Conversion 96dpi px en cm :
-convert = 0.0264583333;
-// en test
-let convertCm = 0.0264583333;
-// Conversion 144dpi px en cm :
-// convert = 0.017638889;
+// Conversion 96dpi px en cm : 0.0264583333
+let convertUnit = 0.0264583333;
+let unitInHtml = ' cm';
+// Conversion 144dpi px en cm : 0.017638889
 
 
 // Fonction avec element à mesurer (source) et zone de texte à remplacer (destination)
-function measureElt(source, destination, ligne) {
-    wristSizePx = source.offsetHeight - (ligne.offsetHeight / 2);
-    wristSizeCm = (wristSizePx * convert).toFixed(2).replace(/\./g, '\,');
-    // console.log('taille : ' + wristSizePx + ' px')
-    // console.log('taille : ' + wristSizeCm + ' cm')
-    // on affiche la valeur en cm
-    destination.innerHTML = wristSizeCm;
-}
-
-
-// en test, semble marcher
 function showMeasureInCm(source, destination, ligne, unite) {
     wristSizePx = source.offsetHeight - (ligne.offsetHeight / 2);
-    wristSizeCm = (wristSizePx * convertCm).toFixed(2).replace(/\./g, '\,');
+    wristSizeCm = (wristSizePx * convertUnit).toFixed(2).replace(/\./g, '\,');
     destination.innerHTML = wristSizeCm;
-    unite.innerHTML = ' cm';
+    unite.innerHTML = unitInHtml;
 }
-
 // Formule (rentrer les mesures en px) >> calcul final
-function formule(mesure1, mesure2) {
-    calcul = (((mesure1 + mesure2) * 1.79) * convert).toFixed(1).replace(/\./g, '\,');
-    return calcul;
-}
-
 function showResultInCm(mesure1, mesure2, destination, unite){
-    calcul = (((mesure1 + mesure2) * 1.79) * convert).toFixed(1).replace(/\./g, '\,');
+    calcul = (((mesure1 + mesure2) * 1.79) * convertUnit).toFixed(1).replace(/\./g, '\,');
     destination.innerHTML = calcul;
-    unite.innerHTML = ' cm';
+    unite.innerHTML = unitInHtml;
     console.log('resulat : ' + calcul + 'cm');
 }
-
 
 
 // On écoute le click sur les boutons unit
@@ -112,7 +88,17 @@ function changeUnit(){
     });
     this.classList.add('select');
     if (this.classList.contains('unit-cm')){
-        console.log('jesuisencm');
+        convertUnit = 0.0264583333;
+        unitInHtml = ' cm';
+        showResultInCm(resultats[0], resultats[1], resultElt, symbElt3)
+    } else if (this.classList.contains('unit-mm')){
+        convertUnit = 0.2645833333;
+        unitInHtml = ' mm';
+        showResultInCm(resultats[0], resultats[1], resultElt, symbElt3)
+    } else if (this.classList.contains('unit-in')){
+        convertUnit = 0.0104166667;
+        unitInHtml = ' in';
+        showResultInCm(resultats[0], resultats[1], resultElt, symbElt3)
     }
 };
 
@@ -136,8 +122,6 @@ function pageSuivante(){
     if(count == 3) {
         resultats[1] = measureElt2.offsetHeight - (lineElt2.offsetHeight / 2);
         console.log('mesure 2 : ' + resultats[1] + 'px');
-        // formule(resultats[0], resultats[1]);
-        // resultElt.innerHTML = calcul;
         showResultInCm(resultats[0], resultats[1], resultElt, symbElt3)
     }
     pages[count].classList.remove('active');
@@ -147,10 +131,8 @@ function pageSuivante(){
         count = 0;
     }
     pages[count].classList.add('active');
-    // measureElt(measureElt1, numberElt1, lineElt1);
     showMeasureInCm(measureElt1, numberElt1, lineElt1, symbElt1);
     showMeasureInCm(measureElt2, numberElt2, lineElt2, symbElt2);
-    // measureElt(measureElt2, numberElt2, lineElt2);
 } // Fin de fonction pageSuivante
 
 
@@ -168,10 +150,8 @@ function pagePrecedente(){
         count = nbPages - 1;
     }
     pages[count].classList.add('active');
-    // measureElt(measureElt1, numberElt1, lineElt1);
     showMeasureInCm(measureElt1, numberElt1, lineElt1, symbElt1);
     showMeasureInCm(measureElt2, numberElt2, lineElt2, symbElt2);
-    // measureElt(measureElt2, numberElt2, lineElt2);
 }
 
 
@@ -192,7 +172,6 @@ function mousedown1(e) {
         const rect1 = measureElt1.getBoundingClientRect();
         measureElt1.style.height = rect1.height - (prevY1 - e.clientY) + "px";
         prevY1 = e.clientY;
-        // measureElt(measureElt1, numberElt1, lineElt1);
         showMeasureInCm(measureElt1, numberElt1, lineElt1, symbElt1);
     }
     function mouseup1() {
@@ -210,7 +189,6 @@ function mousedown2(e) {
         const rect2 = measureElt2.getBoundingClientRect();
         measureElt2.style.height = rect2.height - (prevY2 - e.clientY) + "px";
         prevY2 = e.clientY;
-        // measureElt(measureElt2, numberElt2, lineElt2);
         showMeasureInCm(measureElt2, numberElt2, lineElt2, symbElt2);
     }
     function mouseup2() {
@@ -234,7 +212,6 @@ function touchstart1(e) {
         const rect3 = measureElt1.getBoundingClientRect();
         measureElt1.style.height = rect3.height - (prevY3 - e.targetTouches[0].clientY) + "px";
         prevY3 = e.targetTouches[0].clientY;
-        // measureElt(measureElt1, numberElt1, lineElt1);
         showMeasureInCm(measureElt1, numberElt1, lineElt1, symbElt1);
     }
     function touchend1() {
@@ -251,7 +228,6 @@ function touchstart2(e) {
         const rect4 = measureElt2.getBoundingClientRect();
         measureElt2.style.height = rect4.height - (prevY4 - e.targetTouches[0].clientY) + "px";
         prevY4 = e.targetTouches[0].clientY;
-        // measureElt(measureElt2, numberElt2, lineElt2);
         showMeasureInCm(measureElt2, numberElt2, lineElt2, symbElt2);
     }
     function touchend2() {
