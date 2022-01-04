@@ -73,7 +73,7 @@ function showResultInCm(mesure1, mesure2, destination, unite){
     calcul = (((mesure1 + mesure2) * 1.79) * convertUnit).toFixed(1).replace(/\./g, '\,');
     destination.innerHTML = calcul;
     unite.innerHTML = unitInHtml;
-    console.log('resulat : ' + calcul + 'cm');
+    console.log('resulat : ' + calcul + unitInHtml);
 }
 
 
@@ -101,7 +101,6 @@ function changeUnit(){
         showResultInCm(resultats[0], resultats[1], resultElt, symbElt3)
     }
 };
-
 
 
 
