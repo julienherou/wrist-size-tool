@@ -96,6 +96,9 @@ a{
 .contain-btn img{
     padding-bottom: 1.5rem;
 }
+.red{
+    color: var(--color-red);
+}
 
 /* ------------------------------------- */
 
@@ -315,4 +318,57 @@ a{
 .close{
     border: .1rem solid var(--color-red-cta);
     color: var(--color-red-cta);
+}
+
+
+
+/* INTRO 0 */
+.intro0 .main-elt{
+    transform: translate(-50%, -50%);
+}
+.contain-country{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.country{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1.3rem;
+    margin-bottom: 1.3rem;
+    /* width: 25rem; */
+    width: 45%;
+}
+.country:nth-child(2n+1){
+    margin-right: 1.3rem;
+}
+.country:last-child{
+    margin: 0;
+}
+
+.country-flag{
+    width: 3rem;
+}
+.country-text{
+    padding-left: 1rem;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+.intro0 .contain-btn{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 3rem;
+}
+.intro0 .btn-nav{
+    text-transform: uppercase;
+    background: linear-gradient(60deg, rgba(155,36,27,1) 0%, rgba(223,30,24,1) 40%);
+    padding: 15px 25px;
+}
+.intro0 .btn-nav:hover{
+    color: inherit;
 }

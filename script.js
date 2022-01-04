@@ -34,7 +34,7 @@ const nbPages = pages.length;
 const suivant = document.querySelectorAll('.next');
 const precedent = document.querySelectorAll('.back');
 let count = 0;
-// Variables Measure
+// Variables de Mesure
 const measureElt1 = document.querySelector('.measure1');
 const measureElt2 = document.querySelector('.measure2');
 const lineElt1 = document.querySelector('.line1');
@@ -110,15 +110,15 @@ suivant.forEach(element => {
 });
 // fonction page/slide suivante
 function pageSuivante(){
-    // console.log(count);
+    console.log(count);
     // Pour déclencher le calcul final
     // Si on valide la 1ere mesure
-    if(count == 1) {
+    if(count == 2) {
         resultats[0] = measureElt1.offsetHeight - (lineElt1.offsetHeight / 2);
         console.log('mesure 1 : ' + resultats[0] + 'px');
     }
     // Si on valide la 2eme mesure
-    if(count == 3) {
+    if(count == 4) {
         resultats[1] = measureElt2.offsetHeight - (lineElt2.offsetHeight / 2);
         console.log('mesure 2 : ' + resultats[1] + 'px');
         showResultInCm(resultats[0], resultats[1], resultElt, symbElt3)
@@ -133,7 +133,6 @@ function pageSuivante(){
     showMeasureInCm(measureElt1, numberElt1, lineElt1, symbElt1);
     showMeasureInCm(measureElt2, numberElt2, lineElt2, symbElt2);
 } // Fin de fonction pageSuivante
-
 
 
 // On écoute sur chaque slide le click sur "Retour"
@@ -152,6 +151,7 @@ function pagePrecedente(){
     showMeasureInCm(measureElt1, numberElt1, lineElt1, symbElt1);
     showMeasureInCm(measureElt2, numberElt2, lineElt2, symbElt2);
 }
+
 
 
 
@@ -195,7 +195,6 @@ function mousedown2(e) {
         slide4Elt.removeEventListener('mouseup', mouseup2);
     }
 }
-
 
 // POUR MOBILE
 // Ecouteur de touch sur les lignes (slide 2 et 4)
