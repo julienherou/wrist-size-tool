@@ -113,12 +113,12 @@ function pageSuivante(){
     console.log(count);
     // Pour déclencher le calcul final
     // Si on valide la 1ere mesure
-    if(count == 3) {
+    if(count == 6) {
         resultats[0] = measureElt1.offsetHeight - (lineElt1.offsetHeight / 2);
         console.log('mesure 1 : ' + resultats[0] + 'px');
     }
     // Si on valide la 2eme mesure
-    if(count == 5) {
+    if(count == 8) {
         resultats[1] = measureElt2.offsetHeight - (lineElt2.offsetHeight / 2);
         console.log('mesure 2 : ' + resultats[1] + 'px');
         showResultInCm(resultats[0], resultats[1], resultElt, symbElt3)
