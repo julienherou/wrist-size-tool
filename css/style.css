@@ -59,7 +59,7 @@ a{
 }
 .slide.active{
     display: block;
-    animation: inframe 2s;
+    animation: inframe 1s;
 }
 /* animation d'apparition des slides */
 @keyframes inframe {
@@ -70,6 +70,7 @@ a{
         opacity: 1;
     }
 }
+
 .inside-slide{
     position: relative;
     width: 100%;
@@ -274,13 +275,6 @@ a{
     padding-bottom: 13rem;
 }
 
-/* test */
-.slide3 .inside-slide{
-    /* position: relative; */
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-}
 .slide3 .main-elt{
     width: 100%;
     height: 100%;
@@ -347,12 +341,6 @@ a{
     padding: 0;
 }
 
-.intro .picto-meas{
-    /* background-color: green; */
-    /* position: absolute; */
-    /* width: 100%;
-    height: 100%; */
-}
 
 /* INTRO 0 (Langue) */
 .intro0 .main-elt{
@@ -446,6 +434,9 @@ a{
 }
 .picto-meas-mini{
     position: relative;
+}
+.picto-meas-mini.hidden{
+    opacity: 0;
 }
 .picto-meas-mini span{
     position: absolute;

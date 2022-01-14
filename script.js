@@ -130,6 +130,38 @@ function changeUnit(){
 
 
 
+// Timelines GSAP sur les Pictos
+const TL1 = gsap.timeline({repeat: -1, repeatDelay: 2, paused: true});
+TL1.from('.intro2-picto1', {duration: 1, opacity: 0}, 1)
+   .to('.intro2-picto1', {duration: 1, opacity: 0}, 3)
+   .from('.intro2-picto2', {duration: 0.4, opacity: 0}, 3)
+   .to('.intro2-picto2', {duration: 1, opacity: 0}, 5)
+   .from('.intro2-picto3', {duration: 0.4, opacity: 0}, 5);
+
+const TL2 = gsap.timeline({repeat: -1, repeatDelay: 2, paused: true});
+TL2.from('.intro3-picto1', {duration: 1, opacity: 0}, 1)
+   .to('.intro3-picto1', {duration: 1, opacity: 0}, 3)
+   .from('.intro3-picto2', {duration: 0.4, opacity: 0}, 3);
+
+const TL3 = gsap.timeline({repeat: -1, repeatDelay: 2, paused: true});
+TL3.from('.intro4-picto1', {duration: 1, opacity: 0}, 1)
+   .to('.intro4-picto1', {duration: 1, opacity: 0}, 3)
+   .from('.intro4-picto2', {duration: 0.4, opacity: 0}, 3)
+   .to('.intro4-picto2', {duration: 1, opacity: 0}, 6)
+   .from('.intro4-picto3', {duration: 0.4, opacity: 0}, 6);
+
+const TL4 = gsap.timeline({repeat: -1, repeatDelay: 2, paused: true});
+TL4.from('.slide3-picto1', {duration: 1, opacity: 0}, 1)
+   .to('.slide3-picto1', {duration: 0.5, opacity: 0}, 2.5)
+   .from('.slide3-picto2', {duration: 0.5, opacity: 0}, 2.5)
+   .from('.slide3-picto3', {duration: 0.5, opacity: 0}, 2.5)
+   .to('.slide3-picto2', {duration: 0.2, opacity: 0}, 3.5);
+
+const TL5 = gsap.timeline({repeat: 0, repeatDelay: 2, paused: true});
+TL5.from('.slide5-title', {duration: 1, opacity: 0, x: 50}, 0.1)
+   .from('.contain-unit2', {duration: 1, opacity: 0}, 1)
+   .from('.contain-cta', {duration: 1, opacity: 0}, 1.5);
+
 // On écoute sur chaque slide le click sur "Confirmer"
 suivant.forEach(element => {
     element.addEventListener('click', pageSuivante);
@@ -159,6 +191,37 @@ function pageSuivante(){
     pages[count].classList.add('active');
     showMeasure(measureElt1, numberElt1, lineElt1, symbElt1);
     showMeasure(measureElt2, numberElt2, lineElt2, symbElt2);
+
+    // Animation GSAP sur les Pictos
+    if(count == 2) {
+        TL1.restart();
+        gsap.from(".intro2-title", {x: 50, duration: 1});
+    } else {
+        TL1.pause();
+    }
+    if(count == 3) {
+        TL2.restart();
+        gsap.from(".intro3-title", {x: 50, duration: 1});
+    } else {
+        TL2.pause();
+    }
+    if(count == 4) {
+        TL3.restart();
+        gsap.from(".intro4-title", {x: 50, duration: 1});
+    } else {
+        TL3.pause();
+    }
+    if(count == 8) {
+        TL4.restart();
+        gsap.from(".slide3-title", {x: 50, duration: 1});
+    } else {
+        TL4.pause();
+    }
+    if(count == 10) {
+        TL5.restart();
+    } else {
+        TL5.pause();
+    }
 } // Fin de fonction pageSuivante
 
 
@@ -172,13 +235,33 @@ function pagePrecedente(){
     if(count > 0 && count != 5){
         count--;
     } else if(count > 0 && count == 5){
-        count = 2;
+        count = 1;
     } else {
         count = nbPages - 1;
     }
     pages[count].classList.add('active');
     showMeasure(measureElt1, numberElt1, lineElt1, symbElt1);
     showMeasure(measureElt2, numberElt2, lineElt2, symbElt2);
+    if(count == 2) {
+        TL1.restart();
+    } else {
+        TL1.pause();
+    }
+    if(count == 3) {
+        TL2.restart();
+    } else {
+        TL2.pause();
+    }
+    if(count == 4) {
+        TL3.restart();
+    } else {
+        TL3.pause();
+    }
+    if(count == 8) {
+        TL4.restart();
+    } else {
+        TL4.pause();
+    }
 }
 
 
