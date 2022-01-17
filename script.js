@@ -10,11 +10,11 @@ document.documentElement.style.overflow = 'hidden';
 function getResolution() {
     alert("Your screen resolution is: " + window.screen.width * window.devicePixelRatio + "x" + window.screen.height * window.devicePixelRatio);
 }
-getResolution();
+// getResolution();
 
 // Affiche le pixel ratio de l'écran (valeur de zoom)
 // alert(window.devicePixelRatio);
-alert(window.screen.availWidth + ' x ' + window.screen.availHeight + ' / ' + window.screen.width + ' x ' + window.screen.height);
+// alert(window.screen.availWidth + ' x ' + window.screen.availHeight + ' / ' + window.screen.width + ' x ' + window.screen.height);
 
 // Permet d'ajuster la hauteur sur mobile en 100vh
 // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
@@ -139,6 +139,7 @@ function changeUnit(){
 
 // Animation GSAP sur les Slides
 
+// Test anim BTN
 // const BTN1 = gsap.timeline({repeat: 0, repeatDelay: 1, paused: true});
 // BTN1.to('.next', {duration: 0.5, scale: 1.1})
 //     .from('.next', {duration: 0.5, scale: 1.1});
@@ -150,26 +151,28 @@ FX1.from('.intro0 .logo-top', {duration: 1, y: -100})
    .from('.intro0 .contain-bot', {duration: 1, opacity: 0}, 1);
 
 const TL1 = gsap.timeline({repeat: -1, repeatDelay: 1, paused: true});
-TL1.from('.intro2-picto1', {duration: 1, opacity: 0}, 0.6)
+TL1.from('.intro2-picto1', {duration: 0.6, opacity: 0, x: -50, y: 20, ease: "power2.out"}, 0.6)
+// TL1.from('.intro2-picto1', {duration: 0.6, opacity: 0}, 0.6)
    .to('.intro2-picto1', {duration: 1, opacity: 0}, 1.5)
    .from('.intro2-picto2', {duration: 0.4, opacity: 0}, 1.5)
    .to('.intro2-picto2', {duration: 1, opacity: 0}, 2.5)
    .from('.intro2-picto3', {duration: 0.4, opacity: 0}, 2.5);
 
 const TL2 = gsap.timeline({repeat: -1, repeatDelay: 1, paused: true});
-TL2.from('.intro3-picto1', {duration: 0.6, opacity: 0}, 1)
+TL2.from('.intro3-picto1', {duration: 0.6, opacity: 0, scale: 1.2, ease: "power2.out"}, 1)
    .to('.intro3-picto1', {duration: 1, opacity: 0}, 2.5)
    .from('.intro3-picto2', {duration: 0.4, opacity: 0}, 2.5);
 
 const TL3 = gsap.timeline({repeat: -1, repeatDelay: 1, paused: true});
-TL3.from('.intro4-picto1', {duration: 0.6, opacity: 0}, 1)
+TL3.from('.intro4-picto1', {duration: 0.6, opacity: 0, scale: 1.2, ease: "power2.out"}, 1)
    .to('.intro4-picto1', {duration: 1, opacity: 0}, 2)
    .from('.intro4-picto2', {duration: 0.4, opacity: 0}, 2)
    .to('.intro4-picto2', {duration: 1, opacity: 0}, 3.5)
    .from('.intro4-picto3', {duration: 0.4, opacity: 0}, 3.5);
 
 const TL4 = gsap.timeline({repeat: -1, repeatDelay: 1, paused: true});
-TL4.from('.slide3-picto1', {duration: 1, opacity: 0}, 0.6)
+// TL4.from('.slide3-picto1', {duration: 1, opacity: 0}, 0.6)
+TL4.from('.slide3-picto1', {duration: 0.8, opacity: 0, x: -50, y: 20}, 0.6)
    .to('.slide3-picto1', {duration: 0.4, opacity: 0}, 1.5)
    .from('.slide3-picto2', {duration: 0.5, opacity: 0}, 1.5)
    .from('.slide3-picto3', {duration: 0.5, opacity: 0}, 1.5)

@@ -304,12 +304,19 @@ a{
     position: absolute;
     width: 100%;
     height: 100%;
-}
-.wrist-rotate{
-    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrist-rotate{
+    position: absolute;
+    width: 42rem;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
 }
 
 /* ------------------------------------- */
@@ -491,14 +498,32 @@ a{
 .intro .btn-nav span{
     transform: translateY(0.1rem);
 }
+
+
 /* Position des pictos de mesure */
+.intro .picto-meas{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .intro .wrist-measure{
+    position: absolute;
+    width: 42rem;
+}
+
+/* .intro .wrist-measure{
     position: absolute;
     top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 45rem;
-}
+} */
 .intro5 .contain-btn{
     flex-direction: column;
     align-items: center;
