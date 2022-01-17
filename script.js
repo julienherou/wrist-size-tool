@@ -2,18 +2,19 @@
 Slider / Outil de mesure
 */
 
-// document.write(window.devicePixelRatio);
 
 // Pour empécher le reload sur la page mobile au scroll
 document.documentElement.style.overflow = 'hidden';
-
 
 // Pour connaitre la taille d'ecran
 function getResolution() {
     alert("Your screen resolution is: " + window.screen.width * window.devicePixelRatio + "x" + window.screen.height * window.devicePixelRatio);
 }
-// getResolution();
+getResolution();
 
+// Affiche le pixel ratio de l'écran (valeur de zoom)
+// alert(window.devicePixelRatio);
+alert(window.screen.availWidth + ' x ' + window.screen.availHeight + ' / ' + window.screen.width + ' x ' + window.screen.height);
 
 // Permet d'ajuster la hauteur sur mobile en 100vh
 // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
@@ -63,7 +64,13 @@ const countryElt = document.querySelectorAll('.country');
 let wristSizePx;
 let wristSizeUnit;
 // Conversion 96dpi px en cm : 0.0264583333
+// 1 px = 2.54 cm / 96
 let convertUnit = 0.0264583333;
+
+// TEST
+// let convertUnit = 0.017638889;
+
+
 let unitInHtml = ' cm';
 // Conversion 144dpi px en cm : 0.017638889
 
@@ -130,37 +137,49 @@ function changeUnit(){
 
 
 
-// Timelines GSAP sur les Pictos
-const TL1 = gsap.timeline({repeat: -1, repeatDelay: 2, paused: true});
-TL1.from('.intro2-picto1', {duration: 1, opacity: 0}, 1)
-   .to('.intro2-picto1', {duration: 1, opacity: 0}, 3)
-   .from('.intro2-picto2', {duration: 0.4, opacity: 0}, 3)
-   .to('.intro2-picto2', {duration: 1, opacity: 0}, 5)
-   .from('.intro2-picto3', {duration: 0.4, opacity: 0}, 5);
+// Animation GSAP sur les Slides
 
-const TL2 = gsap.timeline({repeat: -1, repeatDelay: 2, paused: true});
-TL2.from('.intro3-picto1', {duration: 1, opacity: 0}, 1)
-   .to('.intro3-picto1', {duration: 1, opacity: 0}, 3)
-   .from('.intro3-picto2', {duration: 0.4, opacity: 0}, 3);
+// const BTN1 = gsap.timeline({repeat: 0, repeatDelay: 1, paused: true});
+// BTN1.to('.next', {duration: 0.5, scale: 1.1})
+//     .from('.next', {duration: 0.5, scale: 1.1});
 
-const TL3 = gsap.timeline({repeat: -1, repeatDelay: 2, paused: true});
-TL3.from('.intro4-picto1', {duration: 1, opacity: 0}, 1)
-   .to('.intro4-picto1', {duration: 1, opacity: 0}, 3)
-   .from('.intro4-picto2', {duration: 0.4, opacity: 0}, 3)
-   .to('.intro4-picto2', {duration: 1, opacity: 0}, 6)
-   .from('.intro4-picto3', {duration: 0.4, opacity: 0}, 6);
 
-const TL4 = gsap.timeline({repeat: -1, repeatDelay: 2, paused: true});
-TL4.from('.slide3-picto1', {duration: 1, opacity: 0}, 1)
-   .to('.slide3-picto1', {duration: 0.5, opacity: 0}, 2.5)
-   .from('.slide3-picto2', {duration: 0.5, opacity: 0}, 2.5)
-   .from('.slide3-picto3', {duration: 0.5, opacity: 0}, 2.5)
-   .to('.slide3-picto2', {duration: 0.2, opacity: 0}, 3.5);
+const FX1 = gsap.timeline();
+FX1.from('.intro0 .logo-top', {duration: 1, y: -100})
+   .from('.intro0 .main-elt', {duration: 1, opacity: 0}, 0.5)
+   .from('.intro0 .contain-bot', {duration: 1, opacity: 0}, 1);
+
+const TL1 = gsap.timeline({repeat: -1, repeatDelay: 1, paused: true});
+TL1.from('.intro2-picto1', {duration: 1, opacity: 0}, 0.6)
+   .to('.intro2-picto1', {duration: 1, opacity: 0}, 1.5)
+   .from('.intro2-picto2', {duration: 0.4, opacity: 0}, 1.5)
+   .to('.intro2-picto2', {duration: 1, opacity: 0}, 2.5)
+   .from('.intro2-picto3', {duration: 0.4, opacity: 0}, 2.5);
+
+const TL2 = gsap.timeline({repeat: -1, repeatDelay: 1, paused: true});
+TL2.from('.intro3-picto1', {duration: 0.6, opacity: 0}, 1)
+   .to('.intro3-picto1', {duration: 1, opacity: 0}, 2.5)
+   .from('.intro3-picto2', {duration: 0.4, opacity: 0}, 2.5);
+
+const TL3 = gsap.timeline({repeat: -1, repeatDelay: 1, paused: true});
+TL3.from('.intro4-picto1', {duration: 0.6, opacity: 0}, 1)
+   .to('.intro4-picto1', {duration: 1, opacity: 0}, 2)
+   .from('.intro4-picto2', {duration: 0.4, opacity: 0}, 2)
+   .to('.intro4-picto2', {duration: 1, opacity: 0}, 3.5)
+   .from('.intro4-picto3', {duration: 0.4, opacity: 0}, 3.5);
+
+const TL4 = gsap.timeline({repeat: -1, repeatDelay: 1, paused: true});
+TL4.from('.slide3-picto1', {duration: 1, opacity: 0}, 0.6)
+   .to('.slide3-picto1', {duration: 0.4, opacity: 0}, 1.5)
+   .from('.slide3-picto2', {duration: 0.5, opacity: 0}, 1.5)
+   .from('.slide3-picto3', {duration: 0.5, opacity: 0}, 1.5)
+   .to('.slide3-picto2', {duration: 0.2, opacity: 0}, 2.5);
 
 const TL5 = gsap.timeline({repeat: 0, repeatDelay: 2, paused: true});
-TL5.from('.slide5-title', {duration: 1, opacity: 0, x: 50}, 0.1)
-   .from('.contain-unit2', {duration: 1, opacity: 0}, 1)
-   .from('.contain-cta', {duration: 1, opacity: 0}, 1.5);
+TL5.from('.slide5 .logo-top', {duration: 1, y: -100})
+   .from('.slide5-title', {duration: 1, opacity: 0, x: 50}, 0.5)
+   .from('.contain-unit2', {duration: 1, opacity: 0}, 1.5)
+   .from('.contain-cta', {duration: 1, opacity: 0}, 2);
 
 // On écoute sur chaque slide le click sur "Confirmer"
 suivant.forEach(element => {
@@ -168,7 +187,9 @@ suivant.forEach(element => {
 });
 // fonction page/slide suivante
 function pageSuivante(){
-    console.log(count);
+
+    // BTN1.restart();
+
     // Pour déclencher le calcul final
     // Si on valide la 1ere mesure
     if(count == 7) {
@@ -191,31 +212,55 @@ function pageSuivante(){
     pages[count].classList.add('active');
     showMeasure(measureElt1, numberElt1, lineElt1, symbElt1);
     showMeasure(measureElt2, numberElt2, lineElt2, symbElt2);
+    console.log(count);
 
     // Animation GSAP sur les Pictos
+    if(count == 1) {
+        gsap.from(".intro1 .main-elt", {x: 200, opacity: 0, duration: 0.6});
+    }
     if(count == 2) {
+        gsap.from(".intro2-title", {x: 200, opacity: 0, duration: 0.6});
         TL1.restart();
-        gsap.from(".intro2-title", {x: 50, duration: 1});
     } else {
         TL1.pause();
     }
     if(count == 3) {
+        gsap.from(".intro3-title", {x: 200, opacity: 0, duration: 0.6});
+        gsap.from(".intro3 .picto-mini1", {opacity: 0, duration: 0.6, delay: 0.4});
         TL2.restart();
-        gsap.from(".intro3-title", {x: 50, duration: 1});
     } else {
         TL2.pause();
     }
     if(count == 4) {
+        gsap.from(".intro4-title", {x: 200, opacity: 0, duration: 0.6});
+        gsap.from(".intro4 .picto-mini2", {opacity: 0, duration: 0.6, delay: 0.4});
         TL3.restart();
-        gsap.from(".intro4-title", {x: 50, duration: 1});
     } else {
         TL3.pause();
     }
+    if(count == 5) {
+        gsap.from(".intro5 .picto-mini3", {opacity: 0, duration: 0.6, delay: 0.4});
+        gsap.from(".intro5 .contain-picto-mini span", {color: '#717171', duration: 0.6, delay: 1});
+        gsap.from(".intro5 .contain-picto-mini", {marginTop: 0, duration: 0.6, delay: 1.6});
+        gsap.from(".intro5 .contain-btn", {opacity: 0, duration: 0.6, delay: 2});
+    }
+    if(count == 6) {
+        gsap.from(".slide1 .main-elt", {x: 200, opacity: 0, duration: 0.6});
+    }
+    if(count == 7) {
+        gsap.from(".measure1", {opacity: 0, duration: 0.6, delay: 0.3});
+        gsap.from(".slide2 .contain-bot p", {opacity: 0, duration: 0.6, delay: 0.6});
+        gsap.from(".slide2 .contain-bot img", {opacity: 0, duration: 0.6, delay: 0.6});
+    }
     if(count == 8) {
+        gsap.from(".slide3-title", {x: 200, opacity: 0, duration: 0.6});
         TL4.restart();
-        gsap.from(".slide3-title", {x: 50, duration: 1});
     } else {
         TL4.pause();
+    }
+    if(count == 9) {
+        gsap.from(".measure2", {opacity: 0, duration: 0.6, delay: 0.3});
+        gsap.from(".slide4 .contain-bot p", {opacity: 0, duration: 0.6, delay: 0.6});
     }
     if(count == 10) {
         TL5.restart();
