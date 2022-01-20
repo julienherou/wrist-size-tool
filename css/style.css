@@ -42,6 +42,16 @@ a{
     text-decoration: none;
     color: inherit;
 }
+
+/* Div de calcul dpi */
+#dpi-div{
+    width: 1in;
+    height: 1in;
+    position: absolute;
+    top: -100%;
+    left: -100%;
+}
+
 .container{
     position: relative;
     width: 100%;
@@ -444,7 +454,6 @@ a{
     justify-content: flex-start;
     padding: 0;
     padding-top: 7rem;
-    /* background-color: green; */
 }
 .intro2 .main-elt p,
 .intro3 .main-elt p,
@@ -501,29 +510,44 @@ a{
 
 
 /* Position des pictos de mesure */
+
 .intro .picto-meas{
     position: absolute;
     top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.intro .wrist-measure{
-    position: absolute;
-    width: 42rem;
+
+    top: 75%;
+    width: 19rem;
+    height: 19rem;
+    border-radius: 50%;
+    background-color: var(--color-bg);
+    /* background-color: green; */
+    overflow: hidden;
 }
 
-/* .intro .wrist-measure{
+.intro .wrist-measure{
     position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 45rem;
-} */
+    width: 43rem;
+    bottom: -24rem;
+}
+
+/* Positionnement des pictos */
+.intro3 .wrist-measure{
+    bottom: -24.3rem;
+    left: -11.6rem;
+}
+.intro4 .wrist-measure{
+    bottom: -25.3rem;
+    left: -11.7rem;
+}
+
+
 .intro5 .contain-btn{
     flex-direction: column;
     align-items: center;

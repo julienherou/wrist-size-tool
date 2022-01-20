@@ -3,18 +3,9 @@ Slider / Outil de mesure
 */
 
 
+
 // Pour empécher le reload sur la page mobile au scroll
 document.documentElement.style.overflow = 'hidden';
-
-// Pour connaitre la taille d'ecran
-function getResolution() {
-    alert("Your screen resolution is: " + window.screen.width * window.devicePixelRatio + "x" + window.screen.height * window.devicePixelRatio);
-}
-// getResolution();
-
-// Affiche le pixel ratio de l'écran (valeur de zoom)
-// alert(window.devicePixelRatio);
-// alert(window.screen.availWidth + ' x ' + window.screen.availHeight + ' / ' + window.screen.width + ' x ' + window.screen.height);
 
 // Permet d'ajuster la hauteur sur mobile en 100vh
 // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
@@ -59,20 +50,54 @@ const unitMm2 = document.querySelector('.slide5 .unit-mm');
 let resultats = [];
 let calcul;
 const countryElt = document.querySelectorAll('.country');
+const dpiElt = document.querySelector('#dpi-div');
 
 // Conversion pixel >> cm et affichage au chargement de la page
 let wristSizePx;
 let wristSizeUnit;
-// Conversion 96dpi px en cm : 0.0264583333
-// 1 px = 2.54 cm / 96
-let convertUnit = 0.0264583333;
 
-// TEST
-// let convertUnit = 0.017638889;
+// Détection des dpi
+let devicePixelRatio = window.devicePixelRatio || 1;
+let dpi_x = dpiElt.offsetWidth * devicePixelRatio;
+let dpi_y = dpiElt.offsetHeight * devicePixelRatio;
+
+// Calcul du ppi
+let widthInPx = window.screen.width * window.devicePixelRatio;
+let heightInPx = window.screen.height * window.devicePixelRatio;
+let diagInPx = Math.sqrt((widthInPx * widthInPx) + (heightInPx * heightInPx));
+// Valeur à récupérer pour faire fonctionner la mesure :
+let diagInInch = 6.1;
+
+let ppi = diagInPx / diagInInch;
+
+
+// Pour un écran de 1920x1200 / 14" >> ppi = 161
+// Pour un tel de 1080 x 2340 / 6.3" >> ppi = 409
+// Conversion 96dpi px en cm : 0.0264583333 cm
+// 1 px = 2.54 cm / 96
+// let convertUnit = 0.0264583333;
+
+
+
+// Detection auto de la valeur de conversion
+// let convertUnit = (2.54 / dpi_x) * devicePixelRatio;
+
+// TEST AVEC PPI (manque la détection de la diagonal en inch)
+let convertUnit = (2.54 / ppi) * devicePixelRatio;
+
 
 
 let unitInHtml = ' cm';
-// Conversion 144dpi px en cm : 0.017638889
+
+// Affichage des infos
+// alert('DPI : ' + dpi_x + ' x ' + dpi_y + '\n' + 'PPI : ' + ppi + '\n' + 'ZOOM : ' + devicePixelRatio + '\n' + "Résolution écran : " + widthInPx + "x" + heightInPx  + '\n' + "Résolution écran sans zoom : " + window.screen.width + "x" + window.screen.height);
+// console.log('DPI : ' + dpi_x + ' x ' + dpi_y);
+// console.log('PPI : ' + ppi);
+// console.log('ZOOM : ' + devicePixelRatio);
+// console.log("Résolution écran : " + widthInPx + "x" + heightInPx);
+// console.log("Résolution écran sans zoom : " + window.screen.width + "x" + window.screen.height);
+// console.log("Diagonale (inch) : " + diagInInch);
+
 
 
 // Fonction avec element à mesurer (source) et zone de texte à remplacer (destination)
@@ -117,19 +142,19 @@ function changeUnit(){
     if (this.classList.contains('unit-cm')){
         unitCm1.classList.add('select');
         unitCm2.classList.add('select');
-        convertUnit = 0.0264583333;
+        convertUnit = (2.54 / dpi_x) * devicePixelRatio;
         unitInHtml = ' cm';
         showResult(resultats[0], resultats[1], resultElt, symbElt3)
     } else if (this.classList.contains('unit-mm')){
         unitMm1.classList.add('select');
         unitMm2.classList.add('select');
-        convertUnit = 0.2645833333;
+        convertUnit = (25.4 / dpi_x) * devicePixelRatio;
         unitInHtml = ' mm';
         showResult(resultats[0], resultats[1], resultElt, symbElt3)
     } else if (this.classList.contains('unit-in')){
         unitIn1.classList.add('select');
         unitIn2.classList.add('select');
-        convertUnit = 0.0104166667;
+        convertUnit = (1 / dpi_x) * devicePixelRatio;
         unitInHtml = ' in';
         showResult(resultats[0], resultats[1], resultElt, symbElt3)
     }
@@ -150,25 +175,57 @@ FX1.from('.intro0 .logo-top', {duration: 1, y: -100})
    .from('.intro0 .main-elt', {duration: 1, opacity: 0}, 0.5)
    .from('.intro0 .contain-bot', {duration: 1, opacity: 0}, 1);
 
-const TL1 = gsap.timeline({repeat: -1, repeatDelay: 1, paused: true});
+// INTRO 2
+const TL1 = gsap.timeline({repeat: -1, repeatDelay: 0.8, paused: true});
 TL1.from('.intro2-picto1', {duration: 0.6, opacity: 0, x: -50, y: 20, ease: "power2.out"}, 0.6)
-// TL1.from('.intro2-picto1', {duration: 0.6, opacity: 0}, 0.6)
-   .to('.intro2-picto1', {duration: 1, opacity: 0}, 1.5)
-   .from('.intro2-picto2', {duration: 0.4, opacity: 0}, 1.5)
-   .to('.intro2-picto2', {duration: 1, opacity: 0}, 2.5)
-   .from('.intro2-picto3', {duration: 0.4, opacity: 0}, 2.5);
+.fromTo('.intro2-picto2', {
+    opacity: 0,
+    scale: 1.3,
+    x: 50,
+    y: 10
+},
+{
+    opacity: 1,
+    x: 12,
+    y: -30,
+    duration: 0.6,
+    delay: 0.1,
+    ease: "power1.out"
+})
+.to('.intro2-picto2', {x: 0, y: 0, scale: 1, duration: 1, ease: "power1.inOut"}, 2.1);
 
+// INTRO 3
 const TL2 = gsap.timeline({repeat: -1, repeatDelay: 1, paused: true});
-TL2.from('.intro3-picto1', {duration: 0.6, opacity: 0, scale: 1.2, ease: "power2.out"}, 1)
-   .to('.intro3-picto1', {duration: 1, opacity: 0}, 2.5)
-   .from('.intro3-picto2', {duration: 0.4, opacity: 0}, 2.5);
+TL2.from('.intro3-picto1', {duration: 0.6, opacity: 0, y: -10, scale: 0.9, ease: "power2.out"}, 0.8)
+.fromTo('.intro3-picto2', {
+    opacity: 0,
+    x: 30,
+    y: -10,
+},
+{
+    opacity: 1,
+    x: 22,
+    y: 0,
+    duration: 0.8,
+    delay: -0.6,
+    ease: "power2.out"
+})
+.from('.intro3-picto3', {duration: 0.2, opacity: 0}, 1.4)
+.to('.intro3-picto2', {duration: 0.7, x: 0, ease: "power1.out"}, 2.3)
+.to('.intro3-picto3', {duration: 0.2, opacity: 0}, 2.8)
+.from('.intro3-picto4', {duration: 0.1, opacity: 0}, 3);
 
+// INTRO 4
 const TL3 = gsap.timeline({repeat: -1, repeatDelay: 1, paused: true});
-TL3.from('.intro4-picto1', {duration: 0.6, opacity: 0, scale: 1.2, ease: "power2.out"}, 1)
-   .to('.intro4-picto1', {duration: 1, opacity: 0}, 2)
-   .from('.intro4-picto2', {duration: 0.4, opacity: 0}, 2)
-   .to('.intro4-picto2', {duration: 1, opacity: 0}, 3.5)
-   .from('.intro4-picto3', {duration: 0.4, opacity: 0}, 3.5);
+TL3.from('.intro4-picto1', {duration: 0.4, opacity: 0, y: -5, scale: 1.1, ease: "power2.out"}, 0.6)
+   .from('.intro4-picto2', {duration: 0.4, opacity: 0, y: 5, scale: 1.1, ease: "power2.out"}, 0.6)
+   .from('.intro4-picto3', {duration: 0.4, opacity: 0, scale: 1.1, ease: "power2.out"}, 0.6)
+   .to('.intro4-picto2', {duration: 0.7, y: 8, ease: "power1.out"}, 1.4)
+   .to('.intro4-picto3', {duration: 0.7, y: 8, ease: "power1.out"}, 1.4)
+   .to('.intro4-picto3', {duration: 0.6, y: -11}, 2.2)
+   .from('.intro4-picto4', {duration: 0.1, opacity: 0}, 2.9);
+
+
 
 const TL4 = gsap.timeline({repeat: -1, repeatDelay: 1, paused: true});
 // TL4.from('.slide3-picto1', {duration: 1, opacity: 0}, 0.6)
