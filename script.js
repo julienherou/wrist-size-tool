@@ -61,18 +61,44 @@ let devicePixelRatio = window.devicePixelRatio || 1;
 let dpi_x = dpiElt.offsetWidth * devicePixelRatio;
 let dpi_y = dpiElt.offsetHeight * devicePixelRatio;
 
-// Calcul du ppi
+// Calcul diagonale en px
 let widthInPx = window.screen.width * window.devicePixelRatio;
 let heightInPx = window.screen.height * window.devicePixelRatio;
 let diagInPx = Math.sqrt((widthInPx * widthInPx) + (heightInPx * heightInPx));
+// Dagonale en inch
 // Valeur à récupérer pour faire fonctionner la mesure :
-let diagInInch = 6.1;
+let diagInInch = 24;
 
+// Calcul du ppi
 let ppi = diagInPx / diagInInch;
 
 
-// Pour un écran de 1920x1200 / 14" >> ppi = 161
-// Pour un tel de 1080 x 2340 / 6.3" >> ppi = 409
+
+// ----------------------------------------------------------
+// TEST ZONE
+// ----------------------------------------------------------
+// ----------------------------------------------------------
+
+
+
+// mesure écran 24" : 52.5 x 30 cm
+// détection écran 24" : 50.8 x 28.7 cm
+let widthTest = 1920;
+let heightTest = 1080;
+let testCalc = Math.sqrt((widthTest * widthTest) + (heightTest * heightTest));
+// console.log('TEST : ' + testCalc + ' cm');
+// console.log('TEST : ' + (testCalc / 2.54) + ' inch');
+// console.log('TEST : ' + (testCalc / 96) + ' inch');
+
+
+
+
+// ----------------------------------------------------------
+// ----------------------------------------------------------
+
+
+// Pour un laptop hp envy 14 de 1920x1200 / 14" >> ppi = 161
+// Pour un tel Redmi note 7 de 1080 x 2340 / 6.3" >> ppi = 409
 // Conversion 96dpi px en cm : 0.0264583333 cm
 // 1 px = 2.54 cm / 96
 // let convertUnit = 0.0264583333;
@@ -90,14 +116,14 @@ let convertUnit = (2.54 / ppi) * devicePixelRatio;
 let unitInHtml = ' cm';
 
 // Affichage des infos
-// alert('DPI : ' + dpi_x + ' x ' + dpi_y + '\n' + 'PPI : ' + ppi + '\n' + 'ZOOM : ' + devicePixelRatio + '\n' + "Résolution écran : " + widthInPx + "x" + heightInPx  + '\n' + "Résolution écran sans zoom : " + window.screen.width + "x" + window.screen.height);
-// console.log('DPI : ' + dpi_x + ' x ' + dpi_y);
-// console.log('PPI : ' + ppi);
-// console.log('ZOOM : ' + devicePixelRatio);
-// console.log("Résolution écran : " + widthInPx + "x" + heightInPx);
-// console.log("Résolution écran sans zoom : " + window.screen.width + "x" + window.screen.height);
-// console.log("Diagonale (inch) : " + diagInInch);
-
+alert('DPI : ' + dpi_x + ' x ' + dpi_y + '\n' + 'PPI : ' + ppi + '\n' + 'ZOOM : ' + devicePixelRatio + '\n' + "Résolution écran : " + widthInPx + "x" + heightInPx  + '\n' + "Résolution écran sans zoom : " + window.screen.width + "x" + window.screen.height);
+console.log('DPI : ' + dpi_x + ' x ' + dpi_y);
+console.log('PPI : ' + ppi);
+console.log('ZOOM : ' + devicePixelRatio);
+console.log("Résolution écran : " + widthInPx + "x" + heightInPx);
+console.log("Résolution écran sans zoom : " + window.screen.width + "x" + window.screen.height);
+console.log("Diagonale (inch) : " + diagInInch);
+// console.log("Frubil : " + FRUBIL.device.marketname);
 
 
 // Fonction avec element à mesurer (source) et zone de texte à remplacer (destination)
