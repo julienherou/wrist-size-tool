@@ -100,7 +100,6 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
     <meta name="author" content="Julien Herou">
     <title>Tissot</title>
@@ -510,9 +509,6 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
 
     </div> <!-- End of Container -->
 
-
-    <!-- TEST -->
-    <!-- <script type="text/javascript" src="//js.frubil.info/"></script> -->
     <!-- Device Atlas -->
     <script type="text/javascript" src="https://cs-cdn.deviceatlas.com/dacs.js"></script>
     <!-- JS -->

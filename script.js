@@ -89,23 +89,18 @@ if (isNaN(ppi)){
 // ----------------------------------------------------------
 // ----------------------------------------------------------
 
-
-
-// mesure écran 24" : 52.5 x 30 cm
-// détection écran 24" : 50.8 x 28.7 cm
-let widthTest = 1920;
-let heightTest = 1080;
-let testCalc = Math.sqrt((widthTest * widthTest) + (heightTest * heightTest));
-// console.log('TEST : ' + testCalc + ' cm');
-// console.log('TEST : ' + (testCalc / 2.54) + ' inch');
-// console.log('TEST : ' + (testCalc / 96) + ' inch');
+let numTest = 54;
+// let arrondi = Math.round(num*2)/2;
+let arrondi = Math.ceil(numTest*2)/2;
+Math.ceil
 
 
 
 // ----------------------------------------------------------
 // ----------------------------------------------------------
 
-
+// Mesure écran 24" : 52.5 x 30 cm
+// Détection écran 24" : 50.8 x 28.7 cm
 // Pour un laptop hp envy 14 de 1920x1200 / 14" >> ppi = 161
 // Pour un tel Redmi note 7 de 1080 x 2340 / 6.3" >> ppi = 409
 // Conversion 96dpi px en cm : 0.0264583333 cm
@@ -122,15 +117,14 @@ let convertUnit = (2.54 / ppi) * devicePixelRatio;
 let unitInHtml = ' cm';
 
 // Affichage des infos
-alert('DPI : ' + dpi_x + ' x ' + dpi_y + '\n' + 'PPI (calc): ' + ppi + '\n' + "PPI (DeviceAtlas): " + displayPpi + '\n' + 'ZOOM : ' + devicePixelRatio + '\n' + "Résolution écran : " + widthInPx + " x " + heightInPx + '\n' + "Résolution écran sans zoom : " + window.screen.width + " x " + window.screen.height + '\n' + "Diagonale (inch) (DeviceAtlas): " + diagInInch);
-console.log('DPI : ' + dpi_x + ' x ' + dpi_y);
-console.log('PPI (calc): ' + ppi);
-console.log('PPI (Device Atlas): ' + displayPpi);
-console.log('ZOOM : ' + devicePixelRatio);
-console.log("Résolution écran : " + widthInPx + " x " + heightInPx);
-console.log("Résolution écran sans zoom : " + window.screen.width + " x " + window.screen.height);
-console.log("Diagonale (inch) : " + diagInInch);
-// console.log("Frubil : " + FRUBIL.device.marketname);
+// alert('DPI : ' + dpi_x + ' x ' + dpi_y + '\n' + 'PPI (calc): ' + ppi + '\n' + "PPI (DeviceAtlas): " + displayPpi + '\n' + 'ZOOM : ' + devicePixelRatio + '\n' + "Résolution écran : " + widthInPx + " x " + heightInPx + '\n' + "Résolution écran sans zoom : " + window.screen.width + " x " + window.screen.height + '\n' + "Diagonale (inch) (DeviceAtlas): " + diagInInch);
+// console.log('DPI : ' + dpi_x + ' x ' + dpi_y);
+// console.log('PPI (calc): ' + ppi);
+// console.log('PPI (Device Atlas): ' + displayPpi);
+// console.log('ZOOM : ' + devicePixelRatio);
+// console.log("Résolution écran : " + widthInPx + " x " + heightInPx);
+// console.log("Résolution écran sans zoom : " + window.screen.width + " x " + window.screen.height);
+// console.log("Diagonale (inch) : " + diagInInch);
 
 
 // Fonction avec element à mesurer (source) et zone de texte à remplacer (destination)
@@ -142,7 +136,9 @@ function showMeasure(source, destination, ligne, unite) {
 }
 // Formule (rentrer les mesures en px) >> calcul final
 function showResult(mesure1, mesure2, destination, unite){
-    calcul = (((mesure1 + mesure2) * 1.79) * convertUnit).toFixed(1).replace(/\./g, '\,');
+    // Formule arrondi au 0.5 supérieur
+    // On remplace le '.' par ','
+    calcul = (Math.ceil((((mesure1 + mesure2) * 1.79) * convertUnit)*2)/2).toString().replace(/\./g, '\,');
     destination.innerHTML = calcul;
     unite.innerHTML = unitInHtml;
     console.log('resulat : ' + calcul + unitInHtml);
