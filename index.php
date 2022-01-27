@@ -1,3 +1,100 @@
+<?php
+/**
+ * DeviceAtlas Cloud Example
+ *
+ * This sample code fetches data from the DeviceAtlas Cloud service.
+ *
+ * NOTE: if cookie caching is turned on then the getDeviceData() method must
+ * be called before any output to the browser.
+ *
+ * NOTE: when deviceatlas-X.X.min.js is included on a page, DeviceAtlas Client
+ * Side Component device data and puts it into a cookie, when using
+ * DeviceAtlas Cloud service the cookie data will be used to create the final
+ * result.
+ *
+ * @copyright Copyright (c) DeviceAtlas Ltd 2021. All Rights Reserved.
+ * @author dotMobi
+ */
+
+error_reporting(E_ALL);       // for testing to help seeing problems
+ini_set('display_errors', 1); // for testing to help seeing problems
+$startTime = microtime(true); // timer to see how long it takes to get device data
+
+
+
+/* (1) Edit the DeviceAtlasCloud "Client.php" file and set your licence key: */
+//     const LICENCE_KEY = 'YOUR-DA-LICENCE-KEY';
+
+
+
+/* (2) Include DeviceAtlasCloud: */
+require_once dirname(__FILE__).'/Api/Client.php';
+
+
+
+/* (3) Get data: */
+$errors = null;
+
+// it is highly recommended to use the API in a try/catch block
+try {
+    // get device properties for the current request
+    $properties = DeviceAtlasCloudClient::getDeviceData();
+
+    // if errors happend within the cloud call/API
+    if (isset($properties[DeviceAtlasCloudClient::KEY_ERROR])) {
+        $errors = trim($properties[DeviceAtlasCloudClient::KEY_ERROR]);
+    }
+
+} catch (Exception $ex) {
+    // all errors must be taken care ok
+    $errors = $ex->getMessage();
+}
+
+// time spent for getting device data
+$timeSpent = round((microtime(true) - $startTime) * 1000);
+
+// use the device data...
+// in this example the data will be printed on the page:
+
+
+
+// TEST DEVICE ATLAS
+$propertiesKey = DeviceAtlasCloudClient::KEY_PROPERTIES;
+$uaComment = '';
+if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
+
+    $ua = isset($properties[DeviceAtlasCloudClient::KEY_USERAGENT])?
+        $properties[DeviceAtlasCloudClient::KEY_USERAGENT]: 'None';
+
+    $source = isset($properties[DeviceAtlasCloudClient::KEY_SOURCE])?
+        $properties[DeviceAtlasCloudClient::KEY_SOURCE]: 'None';
+
+
+    $properties = $properties[$propertiesKey];
+    // var_dump($properties);
+    $diagonal_screen_size = '';
+    $display_ppi = '';
+
+    if (isset($properties['diagonalScreenSize'])) {
+        $diagonal_screen_size = $properties['diagonalScreenSize'];
+        // var_dump($diagonal_screen_size);
+    }
+    if (isset($properties['displayPpi'])) {
+        $display_ppi = $properties['displayPpi'];
+        // var_dump($display_ppi);
+    }
+    if (isset($properties['displayHeight'])) {
+        $test = $properties['displayHeight'];
+        // var_dump($test);
+    }
+
+} // Fin du if
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -19,6 +116,9 @@
 <body>
 
     <div id='dpi-div'></div>
+    <!-- Variables Device Atlas -->
+    <input type="hidden" id="diagonal-inch" name="diagonal-inch"  value= <?php echo $diagonal_screen_size ?> />
+    <input type="hidden" id="display-ppi" name="display-ppi"  value= <?php echo $display_ppi ?> />
 
     <div class="container">
 
@@ -413,6 +513,8 @@
 
     <!-- TEST -->
     <!-- <script type="text/javascript" src="//js.frubil.info/"></script> -->
+    <!-- Device Atlas -->
+    <script type="text/javascript" src="https://cs-cdn.deviceatlas.com/dacs.js"></script>
     <!-- JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="script.js"></script>

@@ -52,6 +52,8 @@ let calcul;
 const countryElt = document.querySelectorAll('.country');
 const dpiElt = document.querySelector('#dpi-div');
 
+
+
 // Conversion pixel >> cm et affichage au chargement de la page
 let wristSizePx;
 let wristSizeUnit;
@@ -67,11 +69,19 @@ let heightInPx = window.screen.height * window.devicePixelRatio;
 let diagInPx = Math.sqrt((widthInPx * widthInPx) + (heightInPx * heightInPx));
 // Dagonale en inch
 // Valeur à récupérer pour faire fonctionner la mesure :
-let diagInInch = 24;
+// let diagInInch = 24;
+
+// On récupère la valeur diagonalScreenSize de Device Atlas
+let diagInInch = document.querySelector('#diagonal-inch').value;
+let displayPpi = document.querySelector('#display-ppi').value;
 
 // Calcul du ppi
 let ppi = diagInPx / diagInInch;
 
+// Si la valeur diagonalScreenSize n'est pas détecté on change la valeur du ppi
+if (isNaN(ppi)){
+    ppi = dpi_x;
+}
 
 
 // ----------------------------------------------------------
@@ -92,7 +102,6 @@ let testCalc = Math.sqrt((widthTest * widthTest) + (heightTest * heightTest));
 
 
 
-
 // ----------------------------------------------------------
 // ----------------------------------------------------------
 
@@ -104,24 +113,22 @@ let testCalc = Math.sqrt((widthTest * widthTest) + (heightTest * heightTest));
 // let convertUnit = 0.0264583333;
 
 
-
 // Detection auto de la valeur de conversion
 // let convertUnit = (2.54 / dpi_x) * devicePixelRatio;
 
 // TEST AVEC PPI (manque la détection de la diagonal en inch)
 let convertUnit = (2.54 / ppi) * devicePixelRatio;
 
-
-
 let unitInHtml = ' cm';
 
 // Affichage des infos
-alert('DPI : ' + dpi_x + ' x ' + dpi_y + '\n' + 'PPI : ' + ppi + '\n' + 'ZOOM : ' + devicePixelRatio + '\n' + "Résolution écran : " + widthInPx + "x" + heightInPx  + '\n' + "Résolution écran sans zoom : " + window.screen.width + "x" + window.screen.height);
+alert('DPI : ' + dpi_x + ' x ' + dpi_y + '\n' + 'PPI (calc): ' + ppi + '\n' + "PPI (DeviceAtlas): " + displayPpi + '\n' + 'ZOOM : ' + devicePixelRatio + '\n' + "Résolution écran : " + widthInPx + " x " + heightInPx + '\n' + "Résolution écran sans zoom : " + window.screen.width + " x " + window.screen.height + '\n' + "Diagonale (inch) (DeviceAtlas): " + diagInInch);
 console.log('DPI : ' + dpi_x + ' x ' + dpi_y);
-console.log('PPI : ' + ppi);
+console.log('PPI (calc): ' + ppi);
+console.log('PPI (Device Atlas): ' + displayPpi);
 console.log('ZOOM : ' + devicePixelRatio);
-console.log("Résolution écran : " + widthInPx + "x" + heightInPx);
-console.log("Résolution écran sans zoom : " + window.screen.width + "x" + window.screen.height);
+console.log("Résolution écran : " + widthInPx + " x " + heightInPx);
+console.log("Résolution écran sans zoom : " + window.screen.width + " x " + window.screen.height);
 console.log("Diagonale (inch) : " + diagInInch);
 // console.log("Frubil : " + FRUBIL.device.marketname);
 
@@ -168,19 +175,19 @@ function changeUnit(){
     if (this.classList.contains('unit-cm')){
         unitCm1.classList.add('select');
         unitCm2.classList.add('select');
-        convertUnit = (2.54 / dpi_x) * devicePixelRatio;
+        convertUnit = (2.54 / ppi) * devicePixelRatio;
         unitInHtml = ' cm';
         showResult(resultats[0], resultats[1], resultElt, symbElt3)
     } else if (this.classList.contains('unit-mm')){
         unitMm1.classList.add('select');
         unitMm2.classList.add('select');
-        convertUnit = (25.4 / dpi_x) * devicePixelRatio;
+        convertUnit = (25.4 / ppi) * devicePixelRatio;
         unitInHtml = ' mm';
         showResult(resultats[0], resultats[1], resultElt, symbElt3)
     } else if (this.classList.contains('unit-in')){
         unitIn1.classList.add('select');
         unitIn2.classList.add('select');
-        convertUnit = (1 / dpi_x) * devicePixelRatio;
+        convertUnit = (1 / ppi) * devicePixelRatio;
         unitInHtml = ' in';
         showResult(resultats[0], resultats[1], resultElt, symbElt3)
     }
