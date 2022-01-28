@@ -507,6 +507,27 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
             </div>
         </div>
 
+
+        <!-- DESKTOP -->
+        <!-- <div class="desktop">
+            <div class="inside-slide">
+                <div class="logo-top">
+                    <img src="img/logo.png" alt="Logo Tissot">
+                </div>
+                <div class="main-elt">
+                    <p>Veuillez suivre<br>
+                        les <span class="red">indications suivantes</span><br>
+                        pour une mesure exacte<br>
+                        de votre poignet
+                    </p>
+                    <div class="contain-btn">
+                        <div class="btn-nav next">Commencer</div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
     </div> <!-- End of Container -->
 
     <!-- Device Atlas -->
