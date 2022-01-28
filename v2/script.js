@@ -51,6 +51,7 @@ let resultats = [];
 let calcul;
 const countryElt = document.querySelectorAll('.country');
 const dpiElt = document.querySelector('#dpi-div');
+const closeElts = document.querySelectorAll('.close');
 
 
 
@@ -79,6 +80,7 @@ let displayPpi = document.querySelector('#display-ppi').value;
 let ppi = diagInPx / diagInInch;
 
 // Si la valeur diagonalScreenSize n'est pas détecté on change la valeur du ppi
+// Temp en attendant une fenetre d'info
 if (isNaN(ppi)){
     ppi = dpi_x;
 }
@@ -144,6 +146,20 @@ function showResult(mesure1, mesure2, destination, unite){
     unite.innerHTML = unitInHtml;
     console.log('resulat : ' + calcul + unitInHtml);
 }
+
+
+
+// On écoute le click sur les croix
+closeElts.forEach(element => {
+    element.addEventListener('click', closeWindow);
+});
+// On ferme la fenètre active
+// Ne fonctionne pas sur la fenètre actuelle
+function closeWindow(){
+    window.close();
+};
+
+
 
 
 // On écoute le click sur les boutons country
@@ -269,7 +285,7 @@ const TL5 = gsap.timeline({repeat: 0, repeatDelay: 2, paused: true});
 TL5.from('.slide5 .logo-top', {duration: 1, y: -100})
    .from('.slide5-title', {duration: 1, opacity: 0, x: 50}, 0.5)
    .from('.contain-unit2', {duration: 1, opacity: 0}, 1.5)
-   .from('.contain-cta', {duration: 1, opacity: 0}, 2);
+   .from('.slide5 .contain-cta', {duration: 1, opacity: 0}, 2);
 
 // On écoute sur chaque slide le click sur "Confirmer"
 suivant.forEach(element => {

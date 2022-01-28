@@ -23,7 +23,7 @@
 :root{
     --color-white: #FFF;
     --color-black: #1c1c1c;
-    --color-bg: #393939;
+    --color-bg-black: #393939;
     --color-red: #e32119;
     --color-red-cta: #c04e49;
     --color-grey: #717171;
@@ -35,7 +35,7 @@ body{
     font-size: 1.6rem;
     font-family: 'Heebo', sans-serif;
     color: var(--color-white);
-    background: var(--color-bg);
+    background: var(--color-bg-black);
 }
 
 a{
@@ -71,6 +71,7 @@ a{
     display: block;
     /* animation: inframe 0s ease-in-out 3s; */
 }
+
 /* animation d'apparition des slides */
 /* @keyframes inframe {
     from {
@@ -115,10 +116,12 @@ a{
     width: 8rem;
     text-align: center;
 }
-
-/* ------------------------------------- */
-
-/* SLIDE 1 */
+.close{
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+    cursor: pointer;
+}
 .logo-top{
     position: absolute;
     top: 0;
@@ -126,6 +129,9 @@ a{
     padding-top: 5rem;
     display: flex;
     justify-content: center;
+}
+.logo-top img{
+    width: 18rem;
 }
 .main-elt{
     position: absolute;
@@ -145,13 +151,15 @@ a{
     font-size: 2.2rem;
     z-index: 1;
 }
-.slide1 .main-elt p{
-    margin-bottom: 1rem;
-}
+
 
 /* ------------------------------------- */
 
 /* SLIDE 1 / SLIDE 2 / SLIDE 4 */
+.slide1 .main-elt p{
+    margin-bottom: 1rem;
+}
+
 .slide2 .inside-slide,
 .slide4 .inside-slide{
     padding-top: 1rem;
@@ -214,7 +222,7 @@ a{
     justify-content: center;
     align-items: center;
     padding: 1rem;
-    background: var(--color-bg);
+    background: var(--color-bg-black);
 }
 .size p{
     margin: 0;
@@ -348,7 +356,7 @@ a{
 .slide5 .contain-unit{
     margin-top: 1.5rem;
 }
-.contain-cta{
+.slide5 .contain-cta{
     margin-top: 6rem;
 }
 .cta{
@@ -364,7 +372,7 @@ a{
 .link-website{
     border: .1rem solid var(--color-white);
 }
-.close{
+.link-close{
     border: .1rem solid var(--color-red-cta);
     color: var(--color-red-cta);
 }
@@ -526,7 +534,7 @@ a{
     width: 19rem;
     height: 19rem;
     border-radius: 50%;
-    background-color: var(--color-bg);
+    background-color: var(--color-bg-black);
     /* background-color: green; */
     overflow: hidden;
 }
@@ -598,8 +606,31 @@ a{
 
 
 
-/* Pour les écrans en dessous de 470px de large*/
+/* ------------------------------------- */
+/* DESKTOP */
+.desktop{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 2;
+    background: var(--color-bg-black);
+}
+.desktop .close{
+    z-index: 3;
+}
+
+
+
+/* On désactive l'outil sur desktop */
+@media only screen and (min-width: 1224px){
+    .desktop{
+        display: block;
+    }
+}
+/* Pour les écrans en dessous de 470px de large */
 @media only screen and (max-width: 470px){
+
     .intro0 .main-elt p,
     .intro1 .main-elt p{
         font-size: 1.9rem;

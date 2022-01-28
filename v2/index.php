@@ -1,17 +1,5 @@
 <?php
 /**
- * DeviceAtlas Cloud Example
- *
- * This sample code fetches data from the DeviceAtlas Cloud service.
- *
- * NOTE: if cookie caching is turned on then the getDeviceData() method must
- * be called before any output to the browser.
- *
- * NOTE: when deviceatlas-X.X.min.js is included on a page, DeviceAtlas Client
- * Side Component device data and puts it into a cookie, when using
- * DeviceAtlas Cloud service the cookie data will be used to create the final
- * result.
- *
  * @copyright Copyright (c) DeviceAtlas Ltd 2021. All Rights Reserved.
  * @author dotMobi
  */
@@ -21,15 +9,12 @@ ini_set('display_errors', 1); // for testing to help seeing problems
 $startTime = microtime(true); // timer to see how long it takes to get device data
 
 
-
 /* (1) Edit the DeviceAtlasCloud "Client.php" file and set your licence key: */
 //     const LICENCE_KEY = 'YOUR-DA-LICENCE-KEY';
 
 
-
 /* (2) Include DeviceAtlasCloud: */
 require_once dirname(__FILE__).'/Api/Client.php';
-
 
 
 /* (3) Get data: */
@@ -57,8 +42,7 @@ $timeSpent = round((microtime(true) - $startTime) * 1000);
 // in this example the data will be printed on the page:
 
 
-
-// TEST DEVICE ATLAS
+// DEVICE ATLAS
 $propertiesKey = DeviceAtlasCloudClient::KEY_PROPERTIES;
 $uaComment = '';
 if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
@@ -94,7 +78,6 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
 
 
 
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -119,11 +102,36 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
     <input type="hidden" id="diagonal-inch" name="diagonal-inch"  value= <?php echo $diagonal_screen_size ?> />
     <input type="hidden" id="display-ppi" name="display-ppi"  value= <?php echo $display_ppi ?> />
 
+    <!-- DESKTOP -->
+    <div class="desktop">
+        <div class="inside-slide">
+            <div class="close">
+                <img src="img/close-white.png" alt="Close">
+            </div>
+            <div class="logo-top">
+                <img src="img/logo.png" alt="Logo Tissot">
+            </div>
+            <div class="main-elt">
+                <p>Pour utiliser l'outil de mesure<br>
+                    récharger cette page sur Mobile
+                </p>
+                <div class="contain-cta">
+                    <a href="#"><div class="cta link-website">Retourner sur le site</div></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
+
+
 
         <!-- INTRO 0 -->
         <div class="slide intro intro0 active">
             <div class="inside-slide">
+                <div class="close">
+                    <img src="img/close-white.png" alt="Close">
+                </div>
                 <div class="logo-top">
                     <img src="img/logo.png" alt="Logo Tissot">
                 </div>
@@ -191,6 +199,9 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
         <!-- INTRO 1 -->
         <div class="slide intro intro1">
             <div class="inside-slide">
+                <div class="close">
+                    <img src="img/close-white.png" alt="Close">
+                </div>
                 <div class="logo-top">
                     <img src="img/logo.png" alt="Logo Tissot">
                 </div>
@@ -210,6 +221,9 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
         <!-- INTRO 2 -->
         <div class="slide intro intro2">
             <div class="inside-slide">
+                <div class="close">
+                    <img src="img/close-white.png" alt="Close">
+                </div>
                 <div class="logo-top">
                     <img src="img/logo.png" alt="Logo Tissot">
                 </div>
@@ -250,6 +264,9 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
         <!-- INTRO 3 -->
         <div class="slide intro intro3">
             <div class="inside-slide">
+                <div class="close">
+                    <img src="img/close-white.png" alt="Close">
+                </div>
                 <div class="logo-top">
                     <img src="img/logo.png" alt="Logo Tissot">
                 </div>
@@ -290,6 +307,9 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
         <!-- INTRO 4 -->
         <div class="slide intro intro4">
             <div class="inside-slide">
+                <div class="close">
+                    <img src="img/close-white.png" alt="Close">
+                </div>
                 <div class="logo-top">
                     <img src="img/logo.png" alt="Logo Tissot">
                 </div>
@@ -330,6 +350,9 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
         <!-- INTRO 5 -->
         <div class="slide intro intro5">
             <div class="inside-slide">
+                <div class="close">
+                    <img src="img/close-white.png" alt="Close">
+                </div>
                 <div class="logo-top">
                     <img src="img/logo.png" alt="Logo Tissot">
                 </div>
@@ -362,6 +385,9 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
         <!-- SLIDE 1 -->
         <div class="slide slide1">
             <div class="inside-slide">
+                <div class="close">
+                    <img src="img/close-white.png" alt="Close">
+                </div>
                 <div class="logo-top">
                     <img src="img/logo.png" alt="Logo Tissot">
                 </div>
@@ -387,7 +413,9 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
         <!-- SLIDE 2 - 1ere mesure -->
         <div class="slide slide2">
             <div class="inside-slide">
-
+                <div class="close">
+                    <img src="img/close-white.png" alt="Close">
+                </div>
                 <!-- Zone de mesure 1 -->
                 <div class="measure measure1">
                     <div class="contain-top">
@@ -426,6 +454,9 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
         <!-- SLIDE 3 -->
         <div class="slide slide3">
             <div class="inside-slide">
+                <div class="close">
+                    <img src="img/close-white.png" alt="Close">
+                </div>
                 <div class="main-elt">
                     <p class="slide3-title">Tournez votre poignet et prenez la mesure<br>
                         comme sur l'étape précédente</p>
@@ -448,7 +479,9 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
         <!-- SLIDE 4 -->
         <div class="slide slide4">
             <div class="inside-slide">
-
+                <div class="close">
+                    <img src="img/close-white.png" alt="Close">
+                </div>
                 <!-- Zone de mesure 2 -->
                 <div class="measure measure2">
                     <div class="contain-top">
@@ -485,6 +518,9 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
         <!-- SLIDE 5 -->
         <div class="slide slide5">
             <div class="inside-slide">
+                <div class="close">
+                    <img src="img/close-white.png" alt="Close">
+                </div>
                 <div class="logo-top"><img src="img/logo.png" alt="Logo Tissot"></div>
                 <div class="main-elt">
                     <p class="slide5-title">Votre taille est :<br>
@@ -496,7 +532,7 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                     </div>
                     <div class="contain-cta">
                         <a href="#"><div class="cta link-website">Retourner sur le site</div></a>
-                        <a href="#"><div class="cta close">Fermer l'outil</div></a>
+                        <a href="#"><div class="cta link-close">Fermer l'outil</div></a>
                     </div>
                 </div>
                 <div class="contain-bot">
@@ -508,24 +544,7 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
         </div>
 
 
-        <!-- DESKTOP -->
-        <!-- <div class="desktop">
-            <div class="inside-slide">
-                <div class="logo-top">
-                    <img src="img/logo.png" alt="Logo Tissot">
-                </div>
-                <div class="main-elt">
-                    <p>Veuillez suivre<br>
-                        les <span class="red">indications suivantes</span><br>
-                        pour une mesure exacte<br>
-                        de votre poignet
-                    </p>
-                    <div class="contain-btn">
-                        <div class="btn-nav next">Commencer</div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
+
 
 
     </div> <!-- End of Container -->
