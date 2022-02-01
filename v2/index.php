@@ -14,7 +14,7 @@ $startTime = microtime(true); // timer to see how long it takes to get device da
 
 
 /* (2) Include DeviceAtlasCloud: */
-require_once dirname(__FILE__).'/Api/Client.php';
+require_once dirname(__FILE__).'/../Api/Client.php';
 
 
 /* (3) Get data: */
