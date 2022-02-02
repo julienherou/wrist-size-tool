@@ -87,7 +87,6 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
     <meta name="author" content="Julien Herou">
     <title>Tissot</title>
 
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -124,102 +123,8 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
 
     <div class="container">
 
-
-
-        <!-- INTRO 0 -->
-        <div class="slide intro intro0 active">
-            <div class="inside-slide">
-                <div class="close">
-                    <img src="img/close-white.png" alt="Close">
-                </div>
-                <div class="logo-top">
-                    <img src="img/logo.png" alt="Logo Tissot">
-                </div>
-                <div class="main-elt">
-                    <p>Choisissez<br>
-                        votre <span class="red">langue</span></p>
-                    <div class="contain-country">
-                        <div class="country select">
-                            <img class="country-flag" src="img/001-france.svg" alt="Flag of country">
-                            <span class="country-text">Français</span>
-                        </div>
-                        <div class="country">
-                            <img class="country-flag" src="img/002-united-kingdom.svg" alt="Flag of country">
-                            <span class="country-text">English</span>
-                        </div>
-                        <div class="country">
-                            <img class="country-flag" src="img/003-germany.svg" alt="Flag of country">
-                            <span class="country-text">Deutsch</span>
-                        </div>
-                        <div class="country">
-                            <img class="country-flag" src="img/004-italy.svg" alt="Flag of country">
-                            <span class="country-text">Italiano</span>
-                        </div>
-                        <div class="country">
-                            <img class="country-flag" src="img/005-spain.svg" alt="Flag of country">
-                            <span class="country-text">Español</span>
-                        </div>
-                        <div class="country">
-                            <img class="country-flag" src="img/006-netherlands.svg" alt="Flag of country">
-                            <span class="country-text">Nederlands</span>
-                        </div>
-                        <div class="country">
-                            <img class="country-flag" src="img/007-poland.svg" alt="Flag of country">
-                            <span class="country-text">Polonis</span>
-                        </div>
-                        <div class="country">
-                            <img class="country-flag" src="img/008-austria.svg" alt="Flag of country">
-                            <span class="country-text">Österreichisch</span>
-                        </div>
-                        <div class="country">
-                            <img class="country-flag" src="img/009-russia.svg" alt="Flag of country">
-                            <span class="country-text">Pусский</span>
-                        </div>
-                        <div class="country">
-                            <img class="country-flag" src="img/010-japan.svg" alt="Flag of country">
-                            <span class="country-text">日本</span>
-                        </div>
-                        <div class="country">
-                            <img class="country-flag" src="img/011-switzerland.svg" alt="Flag of country">
-                            <span class="country-text">Suisse</span>
-                        </div>
-
-                        
-                    </div>
-                </div>
-                <div class="contain-bot">
-                    <div class="contain-btn">
-                        <div class="btn-nav next">Commencer</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- INTRO 1 -->
-        <div class="slide intro intro1">
-            <div class="inside-slide">
-                <div class="close">
-                    <img src="img/close-white.png" alt="Close">
-                </div>
-                <div class="logo-top">
-                    <img src="img/logo.png" alt="Logo Tissot">
-                </div>
-                <div class="main-elt">
-                    <p>Veuillez suivre<br>
-                        les <span class="red">indications suivantes</span><br>
-                        pour une mesure exacte<br>
-                        de votre poignet
-                    </p>
-                    <div class="contain-btn">
-                        <div class="btn-nav next">Commencer</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- INTRO 2 ( NEW 1 ) -->
-        <div class="slide intro intro2">
+        <div class="slide intro intro2 active">
             <div class="inside-slide">
                 <div class="close">
                     <img src="img/close-white.png" alt="Close">
@@ -229,7 +134,7 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                 </div>
                 <div class="main-elt">
                     <div class="contain-picto-mini">
-                        <div class="picto-meas-mini hidden">
+                        <!-- <div class="picto-meas-mini hidden">
                             <span>1</span>
                             <img class="wrist-measure-mini" src="img/wrist-meas-mini-1.png" alt="Picture of wrist measure">
                         </div>
@@ -240,142 +145,19 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                         <div class="picto-meas-mini hidden">
                             <span>3</span>
                             <img class="wrist-measure-mini" src="img/wrist-meas-mini-3.png" alt="Picture of wrist measure">
-                        </div>
+                        </div> -->
                     </div>
                     <p class="intro2-title">Put your smartphone in contact<br>
                         with the skin of your wrist
                     </p>
                     <div class="picto-meas">
-
                         <img class="wrist-measure intro2-picto1" src="img/picto/picto-wrist-1.png" alt="Picture of wrist measure">
                         <img class="wrist-measure intro2-picto2" src="img/picto/picto-wrist-2.png" alt="Picture of wrist measure">
-
                     </div>
                 </div>
                 <div class="contain-bot">
                     <div class="contain-btn">
-                        <!-- <div class="btn-nav back"><img src="img/arrow-left.png" alt="Flèche"><span>Précédent</span></div> -->
-                        <div class="btn-nav next"><span>Start</span><img src="img/arrow-right.png" alt="Flèche"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- INTRO 3 -->
-        <div class="slide intro intro3">
-            <div class="inside-slide">
-                <div class="close">
-                    <img src="img/close-white.png" alt="Close">
-                </div>
-                <div class="logo-top">
-                    <img src="img/logo.png" alt="Logo Tissot">
-                </div>
-                <div class="main-elt">
-                    <div class="contain-picto-mini">
-                        <div class="picto-meas-mini picto-mini1">
-                            <span>1</span>
-                            <img class="wrist-measure-mini" src="img/wrist-meas-mini-1.png" alt="Picture of wrist measure">
-                        </div>
-                        <div class="picto-meas-mini hidden">
-                            <span>2</span>
-                            <img class="wrist-measure-mini" src="img/wrist-meas-mini-2.png" alt="Picture of wrist measure">
-                        </div>
-                        <div class="picto-meas-mini hidden">
-                            <span>3</span>
-                            <img class="wrist-measure-mini" src="img/wrist-meas-mini-3.png" alt="Picture of wrist measure">
-                        </div>
-                    </div>
-                    <p class="intro3-title"><span class="red">2 - </span>Se positionner<br>
-                        après l'os du poignet
-                    </p>
-                    <div class="picto-meas">
-                        <img class="wrist-measure intro3-picto1" src="img/picto/picto-wrist-3.png" alt="Picture of wrist measure">
-                        <img class="wrist-measure intro3-picto3" src="img/picto/picto-wrist-5.png" alt="Picture of wrist measure">
-                        <img class="wrist-measure intro3-picto4" src="img/picto/picto-wrist-6.png" alt="Picture of wrist measure">
-                        <img class="wrist-measure intro3-picto2" src="img/picto/picto-wrist-4.png" alt="Picture of wrist measure">
-                    </div>
-                </div>
-                <div class="contain-bot">
-                    <div class="contain-btn">
-                        <div class="btn-nav back"><img src="img/arrow-left.png" alt="Flèche"><span>Précédent</span></div>
-                        <div class="btn-nav next"><span>Suivant</span><img src="img/arrow-right.png" alt="Flèche"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- INTRO 4 -->
-        <div class="slide intro intro4">
-            <div class="inside-slide">
-                <div class="close">
-                    <img src="img/close-white.png" alt="Close">
-                </div>
-                <div class="logo-top">
-                    <img src="img/logo.png" alt="Logo Tissot">
-                </div>
-                <div class="main-elt">
-                    <div class="contain-picto-mini">
-                        <div class="picto-meas-mini">
-                            <span>1</span>
-                            <img class="wrist-measure-mini" src="img/wrist-meas-mini-1.png" alt="Picture of wrist measure">
-                        </div>
-                        <div class="picto-meas-mini picto-mini2">
-                            <span>2</span>
-                            <img class="wrist-measure-mini" src="img/wrist-meas-mini-2.png" alt="Picture of wrist measure">
-                        </div>
-                        <div class="picto-meas-mini hidden">
-                            <span>3</span>
-                            <img class="wrist-measure-mini" src="img/wrist-meas-mini-3.png" alt="Picture of wrist measure">
-                        </div>
-                    </div>
-                    <p class="intro4-title"><span class="red">3 - </span>Ajuster la réglette virtuelle<br>
-                        sur la largeur dans la continuité du bras
-                    </p>
-                    <div class="picto-meas">
-                        <img class="wrist-measure intro4-picto1" src="img/picto/picto-wrist-7.png" alt="Picture of wrist measure">
-                        <img class="wrist-measure intro4-picto2" src="img/picto/picto-wrist-8.png" alt="Picture of wrist measure">
-                        <img class="wrist-measure intro4-picto3" src="img/picto/picto-wrist-9.png" alt="Picture of wrist measure">
-                        <img class="wrist-measure intro4-picto4" src="img/picto/picto-wrist-10.png" alt="Picture of wrist measure">
-                    </div>
-                </div>
-                <div class="contain-bot">
-                    <div class="contain-btn">
-                        <div class="btn-nav back"><img src="img/arrow-left.png" alt="Flèche"><span>Précédent</span></div>
-                        <div class="btn-nav next"><span>Suivant</span><img src="img/arrow-right.png" alt="Flèche"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- INTRO 5 -->
-        <div class="slide intro intro5">
-            <div class="inside-slide">
-                <div class="close">
-                    <img src="img/close-white.png" alt="Close">
-                </div>
-                <div class="logo-top">
-                    <img src="img/logo.png" alt="Logo Tissot">
-                </div>
-                <div class="main-elt">
-                    <div class="contain-picto-mini">
-                        <div class="picto-meas-mini">
-                            <span>1</span>
-                            <img class="wrist-measure-mini" src="img/wrist-meas-mini-1.png" alt="Picture of wrist measure">
-                        </div>
-                        <div class="picto-meas-mini">
-                            <span>2</span>
-                            <img class="wrist-measure-mini" src="img/wrist-meas-mini-2.png" alt="Picture of wrist measure">
-                        </div>
-                        <div class="picto-meas-mini picto-mini3">
-                            <span>3</span>
-                            <img class="wrist-measure-mini" src="img/wrist-meas-mini-3.png" alt="Picture of wrist measure">
-                        </div>
-                    </div>
-                    <div class="contain-btn">
-                        <div class="btn-nav next">Prendre la mesure<br>
-                            de mon poignet
-                        </div>
-                        <div class="btn-nav back"><img src="img/refresh.png" alt="Refresh"><span>Revoir les instructions</span></div>
+                        <div class="btn-nav next"><span>Start</span><img src="img/arrow-right-w.png" alt="Flèche"></div>
                     </div>
                 </div>
             </div>
@@ -440,8 +222,8 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                 </div>
                 <div class="contain-bot">
                     <div class="contain-btn">
-                        <div class="btn-nav back"><img src="img/arrow-left.png" alt="Flèche"><span>Previous</span></div>
-                        <div class="btn-nav next"><span>Confirm</span><img src="img/arrow-right.png" alt="Flèche"></div>
+                        <div class="btn-nav back"><img src="img/arrow-left-w.png" alt="Flèche"><span>Previous</span></div>
+                        <div class="btn-nav next"><span>Confirm</span><img src="img/arrow-right-b.png" alt="Flèche"></div>
                     </div>
                 </div>
                 <!-- <div class="contain-bot">
@@ -474,8 +256,8 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                 </div>
                 <div class="contain-bot">
                     <div class="contain-btn">
-                        <div class="btn-nav back"><img src="img/arrow-left.png" alt="Flèche"><span>Previous</span></div>
-                        <div class="btn-nav next"><span>Confirm</span><img src="img/arrow-right.png" alt="Flèche"></div>
+                        <div class="btn-nav back"><img src="img/arrow-left-w.png" alt="Flèche"><span>Previous</span></div>
+                        <div class="btn-nav next"><span>Confirm</span><img src="img/arrow-right-b.png" alt="Flèche"></div>
                     </div>
                 </div>
                 <!-- <div class="contain-bot">
@@ -517,8 +299,8 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                 </div>
                 <div class="contain-bot">
                     <div class="contain-btn">
-                        <div class="btn-nav back"><img src="img/arrow-left.png" alt="Flèche"><span>Previous</span></div>
-                        <div class="btn-nav next"><span>Confirm</span><img src="img/arrow-right.png" alt="Flèche"></div>
+                        <div class="btn-nav back"><img src="img/arrow-left-w.png" alt="Flèche"><span>Previous</span></div>
+                        <div class="btn-nav next"><span>Confirm</span><img src="img/arrow-right-b.png" alt="Flèche"></div>
                     </div>
                 </div>
                 <!-- <div class="contain-bot">
@@ -550,7 +332,7 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                     </div>
                     <div class="contain-cta">
                         <a href="#"><div class="cta link-website">Return to the site</div></a>
-                        <a href="#"><div class="cta link-again">Measure again<br>your wrist</div></a>
+                        <a href="#"><div class="cta link-again back">Measure again<br>your wrist</div></a>
                     </div>
                 </div>
                 <!-- <div class="contain-bot">

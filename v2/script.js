@@ -40,16 +40,13 @@ const numberElt2 = document.querySelector('.number2');
 const symbElt2 = document.querySelector('.symb-unit2');
 const resultElt = document.querySelector('.result');
 const symbElt3 = document.querySelector('.symb-unit3');
-const unitElt = document.querySelectorAll('.unit');
+const unitElts = document.querySelectorAll('.unit');
 const unitIn1 = document.querySelector('.slide1 .unit-in');
 const unitCm1 = document.querySelector('.slide1 .unit-cm');
-// const unitMm1 = document.querySelector('.slide1 .unit-mm');
 const unitIn2 = document.querySelector('.slide5 .unit-in');
 const unitCm2 = document.querySelector('.slide5 .unit-cm');
-// const unitMm2 = document.querySelector('.slide5 .unit-mm');
 let resultats = [];
 let calcul;
-const countryElt = document.querySelectorAll('.country');
 const dpiElt = document.querySelector('#dpi-div');
 const closeElts = document.querySelectorAll('.close');
 
@@ -162,26 +159,13 @@ function closeWindow(){
 
 
 
-// On écoute le click sur les boutons country
-countryElt.forEach(element => {
-    element.addEventListener('click', changeCountry);
-});
-// On selectionne le pays
-function changeCountry(){
-    countryElt.forEach(element => {
-        element.classList.remove('select');
-    });
-    this.classList.add('select');
-};
-
-
 // On écoute le click sur les boutons unit
-unitElt.forEach(element => {
+unitElts.forEach(element => {
     element.addEventListener('click', changeUnit);
 });
 // On selectionne l'unite
 function changeUnit(){
-    unitElt.forEach(element => {
+    unitElts.forEach(element => {
         element.classList.remove('select');
     });
     // this.classList.add('select');
@@ -191,12 +175,6 @@ function changeUnit(){
         convertUnit = (2.54 / ppi) * devicePixelRatio;
         unitInHtml = ' cm';
         showResult(resultats[0], resultats[1], resultElt, symbElt3)
-    // } else if (this.classList.contains('unit-mm')){
-    //     unitMm1.classList.add('select');
-    //     unitMm2.classList.add('select');
-    //     convertUnit = (25.4 / ppi) * devicePixelRatio;
-    //     unitInHtml = ' mm';
-    //     showResult(resultats[0], resultats[1], resultElt, symbElt3)
     } else if (this.classList.contains('unit-in')){
         unitIn1.classList.add('select');
         unitIn2.classList.add('select');
@@ -210,19 +188,16 @@ function changeUnit(){
 
 // Animation GSAP sur les Slides
 
-// Test anim BTN
-// const BTN1 = gsap.timeline({repeat: 0, repeatDelay: 1, paused: true});
-// BTN1.to('.next', {duration: 0.5, scale: 1.1})
-//     .from('.next', {duration: 0.5, scale: 1.1});
-
-
+// INTRO 2 ( NEW 1 )
 const FX1 = gsap.timeline();
-FX1.from('.intro0 .logo-top', {duration: 1, y: -100})
-   .from('.intro0 .main-elt', {duration: 1, opacity: 0}, 0.5)
-   .from('.intro0 .contain-bot', {duration: 1, opacity: 0}, 1);
+// FX1.from('.intro2 .logo-top', {duration: 2, y: -100}, 1)
+FX1.from('.intro2 .logo-top', {duration: 3, opacity: 0}, 1)
+   .from('.intro2 .contain-bot', {duration: 3, opacity: 0}, 1)
+   .from('.intro2 .close', {duration: 3, opacity: 0}, 1);
 
-// INTRO 2
-const TL1 = gsap.timeline({repeat: -1, repeatDelay: 0.8, paused: true});
+gsap.from(".intro2-title", {x: 200, opacity: 0, duration: 0.6});
+
+const TL1 = gsap.timeline({repeat: -1, repeatDelay: 0.8});
 TL1.from('.intro2-picto1', {duration: 0.6, opacity: 0, x: -50, y: 20, ease: "power2.out"}, 0.6)
 .fromTo('.intro2-picto2', {
     opacity: 0,
@@ -240,52 +215,57 @@ TL1.from('.intro2-picto1', {duration: 0.6, opacity: 0, x: -50, y: 20, ease: "pow
 })
 .to('.intro2-picto2', {x: 0, y: 0, scale: 1, duration: 1, ease: "power1.inOut"}, 2.1);
 
-// INTRO 3
-const TL2 = gsap.timeline({repeat: -1, repeatDelay: 1, paused: true});
-TL2.from('.intro3-picto1', {duration: 0.6, opacity: 0, y: -10, scale: 0.9, ease: "power2.out"}, 0.8)
-.fromTo('.intro3-picto2', {
-    opacity: 0,
-    x: 30,
-    y: -10,
-},
-{
-    opacity: 1,
-    x: 22,
-    y: 0,
-    duration: 0.8,
-    delay: -0.6,
-    ease: "power2.out"
-})
-.from('.intro3-picto3', {duration: 0.2, opacity: 0}, 1.4)
-.to('.intro3-picto2', {duration: 0.7, x: 0, ease: "power1.out"}, 2.3)
-.to('.intro3-picto3', {duration: 0.2, opacity: 0}, 2.8)
-.from('.intro3-picto4', {duration: 0.1, opacity: 0}, 3);
 
-// INTRO 4
-const TL3 = gsap.timeline({repeat: -1, repeatDelay: 1, paused: true});
-TL3.from('.intro4-picto1', {duration: 0.4, opacity: 0, y: -5, scale: 1.1, ease: "power2.out"}, 0.6)
-   .from('.intro4-picto2', {duration: 0.4, opacity: 0, y: 5, scale: 1.1, ease: "power2.out"}, 0.6)
-   .from('.intro4-picto3', {duration: 0.4, opacity: 0, scale: 1.1, ease: "power2.out"}, 0.6)
-   .to('.intro4-picto2', {duration: 0.7, y: 8, ease: "power1.out"}, 1.4)
-   .to('.intro4-picto3', {duration: 0.7, y: 8, ease: "power1.out"}, 1.4)
-   .to('.intro4-picto3', {duration: 0.6, y: -11}, 2.2)
-   .from('.intro4-picto4', {duration: 0.1, opacity: 0}, 2.9);
+// INTRO 3 ( OLD )
+// const TL2 = gsap.timeline({repeat: -1, repeatDelay: 1, paused: true});
+// TL2.from('.intro3-picto1', {duration: 0.6, opacity: 0, y: -10, scale: 0.9, ease: "power2.out"}, 0.8)
+// .fromTo('.intro3-picto2', {
+//     opacity: 0,
+//     x: 30,
+//     y: -10,
+// },
+// {
+//     opacity: 1,
+//     x: 22,
+//     y: 0,
+//     duration: 0.8,
+//     delay: -0.6,
+//     ease: "power2.out"
+// })
+// .from('.intro3-picto3', {duration: 0.2, opacity: 0}, 1.4)
+// .to('.intro3-picto2', {duration: 0.7, x: 0, ease: "power1.out"}, 2.3)
+// .to('.intro3-picto3', {duration: 0.2, opacity: 0}, 2.8)
+// .from('.intro3-picto4', {duration: 0.1, opacity: 0}, 3);
 
+// INTRO 4 ( OLD )
+// const TL3 = gsap.timeline({repeat: -1, repeatDelay: 1, paused: true});
+// TL3.from('.intro4-picto1', {duration: 0.4, opacity: 0, y: -5, scale: 1.1, ease: "power2.out"}, 0.6)
+//    .from('.intro4-picto2', {duration: 0.4, opacity: 0, y: 5, scale: 1.1, ease: "power2.out"}, 0.6)
+//    .from('.intro4-picto3', {duration: 0.4, opacity: 0, scale: 1.1, ease: "power2.out"}, 0.6)
+//    .to('.intro4-picto2', {duration: 0.7, y: 8, ease: "power1.out"}, 1.4)
+//    .to('.intro4-picto3', {duration: 0.7, y: 8, ease: "power1.out"}, 1.4)
+//    .to('.intro4-picto3', {duration: 0.6, y: -11}, 2.2)
+//    .from('.intro4-picto4', {duration: 0.1, opacity: 0}, 2.9);
 
-
+// SLIDE 3 ( NEW 3 )
 const TL4 = gsap.timeline({repeat: -1, repeatDelay: 1, paused: true});
-// TL4.from('.slide3-picto1', {duration: 1, opacity: 0}, 0.6)
 TL4.from('.slide3-picto1', {duration: 0.8, opacity: 0, x: -50, y: 20}, 0.6)
    .to('.slide3-picto1', {duration: 0.4, opacity: 0}, 1.5)
    .from('.slide3-picto2', {duration: 0.5, opacity: 0}, 1.5)
    .from('.slide3-picto3', {duration: 0.5, opacity: 0}, 1.5)
    .to('.slide3-picto2', {duration: 0.2, opacity: 0}, 2.5);
 
+// SLIDE 5 ( NEW 5 )
 const TL5 = gsap.timeline({repeat: 0, repeatDelay: 2, paused: true});
 TL5.from('.slide5 .logo-top', {duration: 1, y: -100})
    .from('.slide5-title', {duration: 1, opacity: 0, x: 50}, 0.5)
    .from('.contain-unit2', {duration: 1, opacity: 0}, 1.5)
    .from('.slide5 .contain-cta', {duration: 1, opacity: 0}, 2);
+
+
+
+
+// Attention au count !!!
 
 // On écoute sur chaque slide le click sur "Confirmer"
 suivant.forEach(element => {
@@ -294,16 +274,14 @@ suivant.forEach(element => {
 // fonction page/slide suivante
 function pageSuivante(){
 
-    // BTN1.restart();
-
     // Pour déclencher le calcul final
     // Si on valide la 1ere mesure
-    if(count == 7) {
+    if(count == 2) {
         resultats[0] = measureElt1.offsetHeight - (lineElt1.offsetHeight / 2);
         console.log('mesure 1 : ' + resultats[0] + 'px');
     }
     // Si on valide la 2eme mesure
-    if(count == 9) {
+    if(count == 4) {
         resultats[1] = measureElt2.offsetHeight - (lineElt2.offsetHeight / 2);
         console.log('mesure 2 : ' + resultats[1] + 'px');
         showResult(resultats[0], resultats[1], resultElt, symbElt3)
@@ -312,7 +290,6 @@ function pageSuivante(){
     if(count < nbPages - 1){
         count++;
     } else {
-        // count = 0;
         count--;
     }
     pages[count].classList.add('active');
@@ -321,59 +298,54 @@ function pageSuivante(){
     console.log(count);
 
     // Animation GSAP sur les Pictos
-    if(count == 1) {
-        gsap.from(".intro1 .main-elt", {x: 200, opacity: 0, duration: 0.6});
-    }
-    if(count == 2) {
-        gsap.from(".intro2-title", {x: 200, opacity: 0, duration: 0.6});
-        TL1.restart();
-    } else {
+    if(count != 0) {
         TL1.pause();
     }
-    if(count == 3) {
-        gsap.from(".intro3-title", {x: 200, opacity: 0, duration: 0.6});
-        gsap.from(".intro3 .picto-mini1", {opacity: 0, duration: 0.6, delay: 0.4});
-        TL2.restart();
-    } else {
-        TL2.pause();
-    }
-    if(count == 4) {
-        gsap.from(".intro4-title", {x: 200, opacity: 0, duration: 0.6});
-        gsap.from(".intro4 .picto-mini2", {opacity: 0, duration: 0.6, delay: 0.4});
-        TL3.restart();
-    } else {
-        TL3.pause();
-    }
-    if(count == 5) {
-        gsap.from(".intro5 .picto-mini3", {opacity: 0, duration: 0.6, delay: 0.4});
-        gsap.from(".intro5 .contain-picto-mini span", {color: '#717171', duration: 0.6, delay: 1});
-        gsap.from(".intro5 .contain-picto-mini", {marginTop: 0, duration: 0.6, delay: 1.6});
-        gsap.from(".intro5 .contain-btn", {opacity: 0, duration: 0.6, delay: 2});
-    }
-    if(count == 6) {
-        gsap.from(".slide1 .main-elt", {x: 200, opacity: 0, duration: 0.6});
-    }
-    if(count == 7) {
+    // if(count == 3) {
+    //     gsap.from(".intro3-title", {x: 200, opacity: 0, duration: 0.6});
+    //     gsap.from(".intro3 .picto-mini1", {opacity: 0, duration: 0.6, delay: 0.4});
+    //     TL2.restart();
+    // } else {
+    //     TL2.pause();
+    // }
+    // if(count == 4) {
+    //     gsap.from(".intro4-title", {x: 200, opacity: 0, duration: 0.6});
+    //     gsap.from(".intro4 .picto-mini2", {opacity: 0, duration: 0.6, delay: 0.4});
+    //     TL3.restart();
+    // } else {
+    //     TL3.pause();
+    // }
+    // if(count == 5) {
+    //     gsap.from(".intro5 .picto-mini3", {opacity: 0, duration: 0.6, delay: 0.4});
+    //     gsap.from(".intro5 .contain-picto-mini span", {color: '#717171', duration: 0.6, delay: 1});
+    //     gsap.from(".intro5 .contain-picto-mini", {marginTop: 0, duration: 0.6, delay: 1.6});
+    //     gsap.from(".intro5 .contain-btn", {opacity: 0, duration: 0.6, delay: 2});
+    // }
+    // if(count == 6) {
+    //     gsap.from(".slide1 .main-elt", {x: 200, opacity: 0, duration: 0.6});
+    // }
+    if(count == 2) {
         gsap.from(".measure1", {opacity: 0, duration: 0.6, delay: 0.3});
-        gsap.from(".slide2 .contain-bot p", {opacity: 0, duration: 0.6, delay: 0.6});
-        gsap.from(".slide2 .contain-bot img", {opacity: 0, duration: 0.6, delay: 0.6});
+        // gsap.from(".slide2 .contain-bot p", {opacity: 0, duration: 0.6, delay: 0.6});
+        // gsap.from(".slide2 .contain-bot img", {opacity: 0, duration: 0.6, delay: 0.6});
     }
-    if(count == 8) {
+    if(count == 3) {
         gsap.from(".slide3-title", {x: 200, opacity: 0, duration: 0.6});
         TL4.restart();
     } else {
         TL4.pause();
     }
-    if(count == 9) {
+    if(count == 4) {
         gsap.from(".measure2", {opacity: 0, duration: 0.6, delay: 0.3});
-        gsap.from(".slide4 .contain-bot p", {opacity: 0, duration: 0.6, delay: 0.6});
+        // gsap.from(".slide4 .contain-bot p", {opacity: 0, duration: 0.6, delay: 0.6});
     }
-    if(count == 10) {
+    if(count == 5) {
         TL5.restart();
     } else {
         TL5.pause();
     }
 } // Fin de fonction pageSuivante
+
 
 
 // On écoute sur chaque slide le click sur "Retour"
@@ -386,34 +358,48 @@ function pagePrecedente(){
     if(count > 0 && count != 5){
         count--;
     } else if(count > 0 && count == 5){
-        count = 1;
+        count = 0;
     } else {
         count = nbPages - 1;
     }
     pages[count].classList.add('active');
     showMeasure(measureElt1, numberElt1, lineElt1, symbElt1);
     showMeasure(measureElt2, numberElt2, lineElt2, symbElt2);
-    if(count == 2) {
+    // Animation GSAP sur les Pictos
+    if(count == 0) {
         TL1.restart();
     } else {
         TL1.pause();
     }
+    // if(count == 3) {
+    //     TL2.restart();
+    // } else {
+    //     TL2.pause();
+    // }
+    // if(count == 4) {
+    //     TL3.restart();
+    // } else {
+    //     TL3.pause();
+    // }
     if(count == 3) {
-        TL2.restart();
-    } else {
-        TL2.pause();
-    }
-    if(count == 4) {
-        TL3.restart();
-    } else {
-        TL3.pause();
-    }
-    if(count == 8) {
         TL4.restart();
     } else {
         TL4.pause();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
