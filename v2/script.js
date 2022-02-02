@@ -43,10 +43,10 @@ const symbElt3 = document.querySelector('.symb-unit3');
 const unitElt = document.querySelectorAll('.unit');
 const unitIn1 = document.querySelector('.slide1 .unit-in');
 const unitCm1 = document.querySelector('.slide1 .unit-cm');
-const unitMm1 = document.querySelector('.slide1 .unit-mm');
+// const unitMm1 = document.querySelector('.slide1 .unit-mm');
 const unitIn2 = document.querySelector('.slide5 .unit-in');
 const unitCm2 = document.querySelector('.slide5 .unit-cm');
-const unitMm2 = document.querySelector('.slide5 .unit-mm');
+// const unitMm2 = document.querySelector('.slide5 .unit-mm');
 let resultats = [];
 let calcul;
 const countryElt = document.querySelectorAll('.country');
@@ -191,12 +191,12 @@ function changeUnit(){
         convertUnit = (2.54 / ppi) * devicePixelRatio;
         unitInHtml = ' cm';
         showResult(resultats[0], resultats[1], resultElt, symbElt3)
-    } else if (this.classList.contains('unit-mm')){
-        unitMm1.classList.add('select');
-        unitMm2.classList.add('select');
-        convertUnit = (25.4 / ppi) * devicePixelRatio;
-        unitInHtml = ' mm';
-        showResult(resultats[0], resultats[1], resultElt, symbElt3)
+    // } else if (this.classList.contains('unit-mm')){
+    //     unitMm1.classList.add('select');
+    //     unitMm2.classList.add('select');
+    //     convertUnit = (25.4 / ppi) * devicePixelRatio;
+    //     unitInHtml = ' mm';
+    //     showResult(resultats[0], resultats[1], resultElt, symbElt3)
     } else if (this.classList.contains('unit-in')){
         unitIn1.classList.add('select');
         unitIn2.classList.add('select');
