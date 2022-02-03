@@ -103,21 +103,49 @@ a{
     align-items: flex-end;
     padding: 3rem;
 }
+
+/* BUTTON NAV */
 .btn-nav{
     cursor: pointer;
+    width: 18rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    letter-spacing: 0.2rem;
+    font-weight: 400;
+    background: var(--color-white);
+    color: var(--color-bg-black);
 }
 .btn-nav:hover{
     color: var(--color-red-cta);
 }
-.contain-btn img{
-    padding-bottom: 1.5rem;
+.btn-nav.back{
+    margin-right: 4rem;
+    border: .1rem solid var(--color-white);
+    background: transparent;
+    color: var(--color-white);
+    font-weight: 300;
 }
+.btn-nav img{
+    height: 1.3rem;
+    padding: 0;
+}
+.btn-nav.back img{
+    margin-right: 1rem;
+}
+.btn-nav.next img{
+    margin-left: 1rem;
+}
+.btn-nav span{
+    transform: translateY(0.2rem);
+    /* line-height: 0; */
+}
+
 .red{
     color: var(--color-red);
-}
-.slide .btn-nav{
-    width: 8rem;
-    text-align: center;
 }
 .close{
     position: absolute;
@@ -158,15 +186,67 @@ a{
 
 /* ------------------------------------- */
 
-/* SLIDE 1 / SLIDE 2 / SLIDE 4 */
-.slide1 .main-elt p{
-    margin-bottom: 1rem;
+/* SLIDE 1 */
+
+.slide1 .btn-nav{
+    background: linear-gradient(60deg, rgba(155,36,27,1) 0%, rgba(223,30,24,1) 40%);
+    color: var(--color-white);
 }
+/* Permet de positionner les instructions */
+.slide1 .main-elt{
+    height: 45rem;
+    justify-content: flex-start;
+    padding: 0;
+    padding-top: 7rem;
+}
+.slide1 .main-elt p{
+    font-size: 1.8rem;
+}
+.contain-picto-mini{
+    width: 100%;
+    max-width: 30rem;
+    height: 8rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+}
+
+/* Position des pictos de mesure */
+.slide1 .picto-meas{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* width: 100%;
+    height: 100%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    top: 75%;
+    width: 19rem;
+    height: 19rem;
+    border-radius: 50%;
+    background-color: var(--color-bg-black);
+    overflow: hidden;
+}
+
+.slide1 .wrist-measure{
+    position: absolute;
+    width: 43rem;
+    bottom: -24rem;
+}
+
+
+
+
+/* SLIDE 2 / SLIDE 4 */
 
 .slide2 .inside-slide,
 .slide4 .inside-slide{
     padding-top: 1rem;
 }
+/* Zone de mesure */
 .measure{
     width: 100%;
     height: 50%;
@@ -186,7 +266,8 @@ a{
     height: 0.5rem;
     background: var(--color-red);
 }
-.contain-measure{
+/* Zone d'animation */
+.contain-motion{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -200,7 +281,7 @@ a{
 .arrow-meas{
     opacity: 0.3;
 }
-.contain-size{
+.contain-arrow{
     position: relative;
     margin: 0;
     height: 100%;
@@ -218,8 +299,8 @@ a{
     opacity: 0.3;
     z-index: -1;
 }
+/* Affichage de la mesure temps réel */
 .size{
-    /* position: absolute; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -240,6 +321,7 @@ a{
 .symb-unit2{
     font-family: "Gotham Book", sans-serif;
 }
+/* Changement d'unité */
 .contain-unit{
     width: 10rem;
     display: flex;
@@ -257,18 +339,13 @@ a{
     cursor: pointer;
     line-height: 1;
 }
-.slide1 .contain-unit{
-    width: 19rem;
-}
-.slide1 .unit{
-    font-size: 2rem;
-    width: 9rem;
-    height: 4rem;
-}
 .unit.select{
     border: solid .1rem var(--color-white);
     background: var(--color-black);
 }
+
+
+/* Ligne pointillé */
 .contain-line{
     width: 100%;
     display: flex;
@@ -301,12 +378,18 @@ a{
     100% { opacity: 0; }
 }
 
-.contain-bot p{
-    margin: 0;
-    width: 100%;
-    text-align: center;
-    opacity: 0.3;
+
+/* Zone d'affichage mesure et unit */
+.contain-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+
+
+
 
 /* ------------------------------------- */
 
@@ -384,135 +467,6 @@ a{
 
 
 
-
-
-/* ------------------------------------- */
-/* ------------------------------------- */
-/* ------------------------------------- */
-
-/* INTRO */
-.intro .contain-btn{
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    padding: 0;
-}
-
-
-.slide .btn-nav{
-    width: 18rem;
-    height: 5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
-    font-size: 1.7rem;
-    letter-spacing: 0.2rem;
-    font-weight: 400;
-    background: var(--color-white);
-    color: var(--color-bg-black);
-}
-.intro .btn-nav{
-    background: linear-gradient(60deg, rgba(155,36,27,1) 0%, rgba(223,30,24,1) 40%);
-    color: var(--color-white);
-}
-
-
-
-/* Permet de positionner les instructions */
-.intro2 .main-elt{
-    height: 45rem;
-    justify-content: flex-start;
-    padding: 0;
-    padding-top: 7rem;
-}
-.intro2 .main-elt p{
-    font-size: 1.8rem;
-}
-.contain-picto-mini{
-    width: 100%;
-    max-width: 30rem;
-    height: 8rem;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 3rem;
-}
-.picto-meas-mini{
-    position: relative;
-}
-.picto-meas-mini.hidden{
-    opacity: 0;
-}
-.picto-meas-mini span{
-    position: absolute;
-    font-size: 2rem;
-    color: var(--color-grey)
-}
-.wrist-measure-mini{
-    height: 100%;
-}
-.intro2 .contain-btn{
-    padding-bottom: 3rem;
-}
-.intro .btn-nav.back,
-.slide .btn-nav.back{
-    margin-right: 4rem;
-    border: .1rem solid var(--color-white);
-    background: transparent;
-    color: var(--color-white);
-    font-weight: 300;
-}
-.intro .btn-nav.back img,
-.slide .btn-nav.back img{
-    height: 1.3rem;
-    padding: 0;
-    margin-right: 1rem;
-}
-.intro .btn-nav.next img,
-.slide .btn-nav.next img{
-    height: 1.3rem;
-    padding: 0;
-    margin-left: 1rem;
-}
-.intro .btn-nav span,
-.slide .btn-nav span{
-    transform: translateY(0.2rem);
-    /* line-height: 0; */
-}
-
-
-/* Position des pictos de mesure */
-
-.intro .picto-meas{
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* width: 100%;
-    height: 100%; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    top: 75%;
-    width: 19rem;
-    height: 19rem;
-    border-radius: 50%;
-    background-color: var(--color-bg-black);
-    overflow: hidden;
-}
-
-.intro .wrist-measure{
-    position: absolute;
-    width: 43rem;
-    bottom: -24rem;
-}
-
-
-
-
-
-
 /* ------------------------------------- */
 /* DESKTOP */
 .desktop{
@@ -538,8 +492,7 @@ a{
 /* Pour les écrans en dessous de 470px de large */
 @media only screen and (max-width: 470px){
 
-    .intro2 .btn-nav,
-    .slide .btn-nav{
+    .btn-nav{
         width: 14rem;
         height: 4.5rem;
         font-size: 1.4rem;

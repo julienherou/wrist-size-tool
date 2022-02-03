@@ -31,6 +31,8 @@ const measureElt1 = document.querySelector('.measure1');
 const measureElt2 = document.querySelector('.measure2');
 const lineElt1 = document.querySelector('.line1');
 const lineElt2 = document.querySelector('.line2');
+const infoElt1 = document.querySelector('.info1');
+const infoElt2 = document.querySelector('.info2');
 const slide2Elt = document.querySelector('.slide2');
 const slide4Elt = document.querySelector('.slide4');
 // Selecteurs d'affichage mesure 1 & 2
@@ -41,10 +43,12 @@ const symbElt2 = document.querySelector('.symb-unit2');
 const resultElt = document.querySelector('.result');
 const symbElt3 = document.querySelector('.symb-unit3');
 const unitElts = document.querySelectorAll('.unit');
-const unitIn1 = document.querySelector('.slide1 .unit-in');
-const unitCm1 = document.querySelector('.slide1 .unit-cm');
-const unitIn2 = document.querySelector('.slide5 .unit-in');
-const unitCm2 = document.querySelector('.slide5 .unit-cm');
+const unitIn1 = document.querySelector('.slide2 .unit-in');
+const unitCm1 = document.querySelector('.slide2 .unit-cm');
+const unitIn2 = document.querySelector('.slide4 .unit-in');
+const unitCm2 = document.querySelector('.slide4 .unit-cm');
+const unitIn3 = document.querySelector('.slide5 .unit-in');
+const unitCm3 = document.querySelector('.slide5 .unit-cm');
 let resultats = [];
 let calcul;
 const dpiElt = document.querySelector('#dpi-div');
@@ -128,8 +132,8 @@ let unitInHtml = ' cm';
 
 
 // Fonction avec element à mesurer (source) et zone de texte à remplacer (destination)
-function showMeasure(source, destination, ligne, unite) {
-    wristSizePx = source.offsetHeight - (ligne.offsetHeight / 2);
+function showMeasure(source, destination, ligne, info, unite) {
+    wristSizePx = source.offsetHeight - (ligne.offsetHeight / 2) - info.offsetHeight;
     wristSizeUnit = (wristSizePx * convertUnit).toFixed(2).replace(/\./g, '\,');
     destination.innerHTML = wristSizeUnit;
     unite.innerHTML = unitInHtml;
@@ -141,7 +145,7 @@ function showResult(mesure1, mesure2, destination, unite){
     calcul = (Math.ceil((((mesure1 + mesure2) * 1.79) * convertUnit)*2)/2).toString().replace(/\./g, '\,');
     destination.innerHTML = calcul;
     unite.innerHTML = unitInHtml;
-    console.log('resulat : ' + calcul + unitInHtml);
+    console.log('resultat : ' + calcul + unitInHtml);
 }
 
 
@@ -172,15 +176,21 @@ function changeUnit(){
     if (this.classList.contains('unit-cm')){
         unitCm1.classList.add('select');
         unitCm2.classList.add('select');
+        unitCm3.classList.add('select');
         convertUnit = (2.54 / ppi) * devicePixelRatio;
         unitInHtml = ' cm';
-        showResult(resultats[0], resultats[1], resultElt, symbElt3)
+        showMeasure(measureElt1, numberElt1, lineElt1, infoElt1, symbElt1);
+        showMeasure(measureElt2, numberElt2, lineElt2, infoElt2, symbElt2);
+        showResult(resultats[0], resultats[1], resultElt, symbElt3);
     } else if (this.classList.contains('unit-in')){
         unitIn1.classList.add('select');
         unitIn2.classList.add('select');
+        unitIn3.classList.add('select');
         convertUnit = (1 / ppi) * devicePixelRatio;
         unitInHtml = ' in';
-        showResult(resultats[0], resultats[1], resultElt, symbElt3)
+        showMeasure(measureElt1, numberElt1, lineElt1, infoElt1, symbElt1);
+        showMeasure(measureElt2, numberElt2, lineElt2, infoElt2, symbElt2);
+        showResult(resultats[0], resultats[1], resultElt, symbElt3);
     }
 };
 
@@ -188,18 +198,18 @@ function changeUnit(){
 
 // Animation GSAP sur les Slides
 
-// INTRO 2 ( NEW 1 )
+// SLIDE 1
 const FX1 = gsap.timeline();
-// FX1.from('.intro2 .logo-top', {duration: 2, y: -100}, 1)
-FX1.from('.intro2 .logo-top', {duration: 3, opacity: 0}, 1)
-   .from('.intro2 .contain-bot', {duration: 3, opacity: 0}, 1)
-   .from('.intro2 .close', {duration: 3, opacity: 0}, 1);
+// FX1.from('.slide1 .logo-top', {duration: 2, y: -100}, 1)
+FX1.from('.slide1 .logo-top', {duration: 3, opacity: 0}, 1)
+   .from('.slide1 .contain-bot', {duration: 3, opacity: 0}, 1)
+   .from('.slide1 .close', {duration: 3, opacity: 0}, 1);
 
-gsap.from(".intro2-title", {x: 200, opacity: 0, duration: 0.6});
+gsap.from(".slide1-title", {x: 200, opacity: 0, duration: 0.6});
 
 const TL1 = gsap.timeline({repeat: -1, repeatDelay: 0.8});
-TL1.from('.intro2-picto1', {duration: 0.6, opacity: 0, x: -50, y: 20, ease: "power2.out"}, 0.6)
-.fromTo('.intro2-picto2', {
+TL1.from('.slide1-picto1', {duration: 0.6, opacity: 0, x: -50, y: 20, ease: "power2.out"}, 0.6)
+.fromTo('.slide1-picto2', {
     opacity: 0,
     scale: 1.3,
     x: 50,
@@ -213,7 +223,7 @@ TL1.from('.intro2-picto1', {duration: 0.6, opacity: 0, x: -50, y: 20, ease: "pow
     delay: 0.1,
     ease: "power1.out"
 })
-.to('.intro2-picto2', {x: 0, y: 0, scale: 1, duration: 1, ease: "power1.inOut"}, 2.1);
+.to('.slide1-picto2', {x: 0, y: 0, scale: 1, duration: 1, ease: "power1.inOut"}, 2.1);
 
 
 // INTRO 3 ( OLD )
@@ -247,7 +257,7 @@ TL1.from('.intro2-picto1', {duration: 0.6, opacity: 0, x: -50, y: 20, ease: "pow
 //    .to('.intro4-picto3', {duration: 0.6, y: -11}, 2.2)
 //    .from('.intro4-picto4', {duration: 0.1, opacity: 0}, 2.9);
 
-// SLIDE 3 ( NEW 3 )
+// SLIDE 3
 const TL4 = gsap.timeline({repeat: -1, repeatDelay: 1, paused: true});
 TL4.from('.slide3-picto1', {duration: 0.8, opacity: 0, x: -50, y: 20}, 0.6)
    .to('.slide3-picto1', {duration: 0.4, opacity: 0}, 1.5)
@@ -255,7 +265,7 @@ TL4.from('.slide3-picto1', {duration: 0.8, opacity: 0, x: -50, y: 20}, 0.6)
    .from('.slide3-picto3', {duration: 0.5, opacity: 0}, 1.5)
    .to('.slide3-picto2', {duration: 0.2, opacity: 0}, 2.5);
 
-// SLIDE 5 ( NEW 5 )
+// SLIDE 5
 const TL5 = gsap.timeline({repeat: 0, repeatDelay: 2, paused: true});
 TL5.from('.slide5 .logo-top', {duration: 1, y: -100})
    .from('.slide5-title', {duration: 1, opacity: 0, x: 50}, 0.5)
@@ -276,13 +286,13 @@ function pageSuivante(){
 
     // Pour déclencher le calcul final
     // Si on valide la 1ere mesure
-    if(count == 2) {
-        resultats[0] = measureElt1.offsetHeight - (lineElt1.offsetHeight / 2);
+    if(count == 1) {
+        resultats[0] = measureElt1.offsetHeight - (lineElt1.offsetHeight / 2) - infoElt1.offsetHeight;
         console.log('mesure 1 : ' + resultats[0] + 'px');
     }
     // Si on valide la 2eme mesure
-    if(count == 4) {
-        resultats[1] = measureElt2.offsetHeight - (lineElt2.offsetHeight / 2);
+    if(count == 3) {
+        resultats[1] = measureElt2.offsetHeight - (lineElt2.offsetHeight / 2) - infoElt2.offsetHeight;
         console.log('mesure 2 : ' + resultats[1] + 'px');
         showResult(resultats[0], resultats[1], resultElt, symbElt3)
     }
@@ -293,8 +303,8 @@ function pageSuivante(){
         count--;
     }
     pages[count].classList.add('active');
-    showMeasure(measureElt1, numberElt1, lineElt1, symbElt1);
-    showMeasure(measureElt2, numberElt2, lineElt2, symbElt2);
+    showMeasure(measureElt1, numberElt1, lineElt1, infoElt1, symbElt1);
+    showMeasure(measureElt2, numberElt2, lineElt2, infoElt2, symbElt2);
     console.log(count);
 
     // Animation GSAP sur les Pictos
@@ -324,22 +334,22 @@ function pageSuivante(){
     // if(count == 6) {
     //     gsap.from(".slide1 .main-elt", {x: 200, opacity: 0, duration: 0.6});
     // }
-    if(count == 2) {
+    if(count == 1) {
         gsap.from(".measure1", {opacity: 0, duration: 0.6, delay: 0.3});
         // gsap.from(".slide2 .contain-bot p", {opacity: 0, duration: 0.6, delay: 0.6});
         // gsap.from(".slide2 .contain-bot img", {opacity: 0, duration: 0.6, delay: 0.6});
     }
-    if(count == 3) {
+    if(count == 2) {
         gsap.from(".slide3-title", {x: 200, opacity: 0, duration: 0.6});
         TL4.restart();
     } else {
         TL4.pause();
     }
-    if(count == 4) {
+    if(count == 3) {
         gsap.from(".measure2", {opacity: 0, duration: 0.6, delay: 0.3});
         // gsap.from(".slide4 .contain-bot p", {opacity: 0, duration: 0.6, delay: 0.6});
     }
-    if(count == 5) {
+    if(count == 4) {
         TL5.restart();
     } else {
         TL5.pause();
@@ -355,16 +365,16 @@ precedent.forEach(element => {
 // fonction page/slide précédente
 function pagePrecedente(){
     pages[count].classList.remove('active');
-    if(count > 0 && count != 5){
+    if(count > 0 && count != 4){
         count--;
-    } else if(count > 0 && count == 5){
+    } else if(count > 0 && count == 4){
         count = 0;
     } else {
         count = nbPages - 1;
     }
     pages[count].classList.add('active');
-    showMeasure(measureElt1, numberElt1, lineElt1, symbElt1);
-    showMeasure(measureElt2, numberElt2, lineElt2, symbElt2);
+    showMeasure(measureElt1, numberElt1, lineElt1, infoElt1, symbElt1);
+    showMeasure(measureElt2, numberElt2, lineElt2, infoElt2, symbElt2);
     // Animation GSAP sur les Pictos
     if(count == 0) {
         TL1.restart();
@@ -381,7 +391,7 @@ function pagePrecedente(){
     // } else {
     //     TL3.pause();
     // }
-    if(count == 3) {
+    if(count == 2) {
         TL4.restart();
     } else {
         TL4.pause();
@@ -420,7 +430,7 @@ function mousedown1(e) {
         const rect1 = measureElt1.getBoundingClientRect();
         measureElt1.style.height = rect1.height - (prevY1 - e.clientY) + "px";
         prevY1 = e.clientY;
-        showMeasure(measureElt1, numberElt1, lineElt1, symbElt1);
+        showMeasure(measureElt1, numberElt1, lineElt1, infoElt1, symbElt1);
     }
     function mouseup1() {
         slide2Elt.removeEventListener('mousemove', mousemove1);
@@ -437,7 +447,7 @@ function mousedown2(e) {
         const rect2 = measureElt2.getBoundingClientRect();
         measureElt2.style.height = rect2.height - (prevY2 - e.clientY) + "px";
         prevY2 = e.clientY;
-        showMeasure(measureElt2, numberElt2, lineElt2, symbElt2);
+        showMeasure(measureElt2, numberElt2, lineElt2, infoElt2, symbElt2);
     }
     function mouseup2() {
         slide4Elt.removeEventListener('mousemove', mousemove2);
@@ -459,7 +469,7 @@ function touchstart1(e) {
         const rect3 = measureElt1.getBoundingClientRect();
         measureElt1.style.height = rect3.height - (prevY3 - e.targetTouches[0].clientY) + "px";
         prevY3 = e.targetTouches[0].clientY;
-        showMeasure(measureElt1, numberElt1, lineElt1, symbElt1);
+        showMeasure(measureElt1, numberElt1, lineElt1, infoElt1, symbElt1);
     }
     function touchend1() {
         slide2Elt.removeEventListener('touchmove', touchmove1);
@@ -475,7 +485,7 @@ function touchstart2(e) {
         const rect4 = measureElt2.getBoundingClientRect();
         measureElt2.style.height = rect4.height - (prevY4 - e.targetTouches[0].clientY) + "px";
         prevY4 = e.targetTouches[0].clientY;
-        showMeasure(measureElt2, numberElt2, lineElt2, symbElt2);
+        showMeasure(measureElt2, numberElt2, lineElt2, infoElt2, symbElt2);
     }
     function touchend2() {
         slide4Elt.removeEventListener('touchmove', touchmove2);

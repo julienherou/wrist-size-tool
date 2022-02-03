@@ -123,8 +123,8 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
 
     <div class="container">
 
-        <!-- INTRO 2 ( NEW 1 ) -->
-        <div class="slide intro intro2 active">
+        <!-- SLIDE 1 -->
+        <div class="slide slide1 active">
             <div class="inside-slide">
                 <div class="close">
                     <img src="img/close-white.png" alt="Close">
@@ -133,26 +133,16 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                     <img src="img/logo.png" alt="Logo Tissot">
                 </div>
                 <div class="main-elt">
-                    <div class="contain-picto-mini">
-                        <!-- <div class="picto-meas-mini hidden">
-                            <span>1</span>
-                            <img class="wrist-measure-mini" src="img/wrist-meas-mini-1.png" alt="Picture of wrist measure">
-                        </div>
-                        <div class="picto-meas-mini hidden">
-                            <span>2</span>
-                            <img class="wrist-measure-mini" src="img/wrist-meas-mini-2.png" alt="Picture of wrist measure">
-                        </div>
-                        <div class="picto-meas-mini hidden">
-                            <span>3</span>
-                            <img class="wrist-measure-mini" src="img/wrist-meas-mini-3.png" alt="Picture of wrist measure">
-                        </div> -->
-                    </div>
-                    <p class="intro2-title">Put your smartphone in contact<br>
+
+                    <!-- Temp a sup -->
+                    <div class="contain-picto-mini"></div>
+
+                    <p class="slide1-title">Put your smartphone in contact<br>
                         with the skin of your wrist
                     </p>
                     <div class="picto-meas">
-                        <img class="wrist-measure intro2-picto1" src="img/picto/picto-wrist-1.png" alt="Picture of wrist measure">
-                        <img class="wrist-measure intro2-picto2" src="img/picto/picto-wrist-2.png" alt="Picture of wrist measure">
+                        <img class="wrist-measure slide1-picto1" src="img/picto/picto-wrist-1.png" alt="Picture of wrist measure">
+                        <img class="wrist-measure slide1-picto2" src="img/picto/picto-wrist-2.png" alt="Picture of wrist measure">
                     </div>
                 </div>
                 <div class="contain-bot">
@@ -164,36 +154,7 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
         </div>
 
 
-        <!-- SLIDE 1 -->
-        <div class="slide slide1">
-            <div class="inside-slide">
-                <div class="close">
-                    <img src="img/close-white.png" alt="Close">
-                </div>
-                <div class="logo-top">
-                    <img src="img/logo.png" alt="Logo Tissot">
-                </div>
-                <div class="main-elt">
-                    <p>Choisissez<br>
-                        votre <span class="red">unité de mesure</span><br>
-                    </p>
-                    <div class="contain-unit">
-                        <div class="unit unit-in">IN</div>
-                        <div class="unit unit-cm select">CM</div>
-                        <!-- <div class="unit unit-mm">MM</div> -->
-                    </div>
-                </div>
-                <div class="contain-bot">
-                    <div class="contain-btn">
-                        <div class="btn-nav back">Retour</div>
-                        <div class="btn-nav next">Confirmer</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- SLIDE 2 - 1ere mesure ( NEW 2 ) -->
+        <!-- SLIDE 2 - 1ere mesure -->
         <div class="slide slide2">
             <div class="inside-slide">
                 <div class="close">
@@ -204,13 +165,10 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                     <div class="contain-top">
                         <span class="line"></span>
                     </div>
-                    <div class="contain-measure">
+                    <div class="contain-motion">
                         <img class="arrow arrow-meas" src="img/arrow-top.svg" alt="Fleche du haut">
-                        <div class="contain-size">
+                        <div class="contain-arrow">
                             <div class="line-vertical"></div>
-                            <div class="size">
-                                <p><span class="number number1"></span><span class="symb-unit1"></span></p>
-                            </div>
                         </div>
                         <img class="arrow arrow-meas" src="img/arrow-bot.svg" alt="Fleche du bas">
                     </div>
@@ -219,6 +177,20 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                         <span class="line-dash"></span>
                         <img class="arrow" src="img/arrow-bot.svg" alt="Fleche du bas">
                     </div>
+
+                    <!-- Affichage de la mesure -->
+                    <div class="contain-info info1">
+                        <div class="contain-size">
+                            <div class="size">
+                                <p><span class="number number1"></span><span class="symb-unit1"></span></p>
+                            </div>
+                        </div>
+                        <div class="contain-unit">
+                            <div class="unit unit-in">IN</div>
+                            <div class="unit unit-cm select">CM</div>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="contain-bot">
                     <div class="contain-btn">
@@ -226,20 +198,12 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                         <div class="btn-nav next"><span>Confirm</span><img src="img/arrow-right-b.png" alt="Flèche"></div>
                     </div>
                 </div>
-                <!-- <div class="contain-bot">
-                    <p>Ajuster la réglette virtuelle<br>
-                        sur la largeur dans la continuité du bras</p>
-                    <div class="contain-btn">
-                        <div class="btn-nav back">Retour</div>
-                        <img src="img/logo-bot.png" alt="Logo Tissot">
-                        <div class="btn-nav next">Confirmer</div>
-                    </div>
-                </div> -->
     
             </div>
         </div>
 
-        <!-- SLIDE 3 ( NEW 3 ) -->
+
+        <!-- SLIDE 3 -->
         <div class="slide slide3">
             <div class="inside-slide">
                 <div class="close">
@@ -260,17 +224,10 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                         <div class="btn-nav next"><span>Confirm</span><img src="img/arrow-right-b.png" alt="Flèche"></div>
                     </div>
                 </div>
-                <!-- <div class="contain-bot">
-                    <div class="contain-btn">
-                        <div class="btn-nav back">Retour</div>
-                        <img src="img/logo-bot.png" alt="Logo Tissot">
-                        <div class="btn-nav next">Confirmer</div>
-                    </div>
-                </div> -->
             </div>
         </div>
 
-        <!-- SLIDE 4 ( NEW 4 ) -->
+        <!-- SLIDE 4 - 2eme mesure -->
         <div class="slide slide4">
             <div class="inside-slide">
                 <div class="close">
@@ -281,13 +238,10 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                     <div class="contain-top">
                         <span class="line"></span>
                     </div>
-                    <div class="contain-measure">
+                    <div class="contain-motion">
                         <img class="arrow arrow-meas" src="img/arrow-top.svg" alt="Fleche du haut">
-                        <div class="contain-size">
+                        <div class="contain-arrow">
                             <div class="line-vertical"></div>
-                            <div class="size">
-                                <p><span class="number number2"></span><span class="symb-unit2"></span></p>
-                            </div>
                         </div>
                         <img class="arrow arrow-meas" src="img/arrow-bot.svg" alt="Fleche du bas">
                     </div>
@@ -296,26 +250,30 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                         <span class="line-dash"></span>
                         <img class="arrow" src="img/arrow-bot.svg" alt="Fleche du bas">
                     </div>
+                    <div class="contain-info info2">
+                        <div class="contain-size">
+                            <div class="size">
+                                <p><span class="number number2"></span><span class="symb-unit2"></span></p>
+                            </div>
+                        </div>
+                        <div class="contain-unit">
+                            <div class="unit unit-in">IN</div>
+                            <div class="unit unit-cm select">CM</div>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="contain-bot">
                     <div class="contain-btn">
                         <div class="btn-nav back"><img src="img/arrow-left-w.png" alt="Flèche"><span>Previous</span></div>
                         <div class="btn-nav next"><span>Confirm</span><img src="img/arrow-right-b.png" alt="Flèche"></div>
                     </div>
                 </div>
-                <!-- <div class="contain-bot">
-                    <p>Ajuster la réglette virtuelle<br>
-                        sur la largeur dans la continuité du bras</p>
-                    <div class="contain-btn">
-                        <div class="btn-nav back">Retour</div>
-                        <img src="img/logo-bot.png" alt="Logo Tissot">
-                        <div class="btn-nav next">Confirmer</div>
-                    </div>
-                </div> -->
+
             </div>
         </div>
 
-        <!-- SLIDE 5 ( NEW 5 ) -->
+        <!-- SLIDE 5 -->
         <div class="slide slide5">
             <div class="inside-slide">
                 <div class="close">
@@ -328,18 +286,12 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                     <div class="contain-unit contain-unit2">
                         <div class="unit unit-in">IN</div>
                         <div class="unit unit-cm select">CM</div>
-                        <!-- <div class="unit unit-mm">MM</div> -->
                     </div>
                     <div class="contain-cta">
                         <a href="#"><div class="cta link-website">Return to the site</div></a>
                         <a href="#"><div class="cta link-again back">Measure again<br>your wrist</div></a>
                     </div>
                 </div>
-                <!-- <div class="contain-bot">
-                    <div class="contain-btn">
-                        <div class="btn-nav next">Retour</div>
-                    </div>
-                </div> -->
             </div>
         </div>
 
