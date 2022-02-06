@@ -127,22 +127,20 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
         <div class="slide slide1 active">
             <div class="inside-slide">
                 <div class="close">
-                    <img src="img/close-white.png" alt="Close">
+                    <img src="img/close-black.png" alt="Close">
                 </div>
                 <div class="logo-top">
-                    <img src="img/logo.png" alt="Logo Tissot">
+                    <!-- <img src="img/logo.png" alt="Logo Tissot"> -->
+                    <img src="img/tissot-logo-b.svg" alt="Logo Tissot">
                 </div>
                 <div class="main-elt">
-
-                    <!-- Temp a sup -->
-                    <div class="contain-picto-mini"></div>
 
                     <p class="slide1-title">Put your smartphone in contact<br>
                         with the skin of your wrist
                     </p>
                     <div class="picto-meas">
-                        <img class="wrist-measure slide1-picto1" src="img/picto/picto-wrist-1.png" alt="Picture of wrist measure">
-                        <img class="wrist-measure slide1-picto2" src="img/picto/picto-wrist-2.png" alt="Picture of wrist measure">
+                        <img class="wrist-measure slide1-picto1" src="img/picto/picto-white-slide1-1.png" alt="Picture of wrist measure">
+                        <img class="wrist-measure slide1-picto2" src="img/picto/picto-white-slide1-2.png" alt="Picture of wrist measure">
                     </div>
                 </div>
                 <div class="contain-bot">
@@ -165,13 +163,26 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                     <div class="contain-top">
                         <span class="line"></span>
                     </div>
+
                     <div class="contain-motion">
-                        <img class="arrow arrow-meas" src="img/arrow-top.svg" alt="Fleche du haut">
-                        <div class="contain-arrow">
-                            <div class="line-vertical"></div>
+                        <p class="instruction">
+                            Place it before your wrist bone<br>
+                            Adjust the virtual strip on the width in the<br>
+                            continuity of the arm
+                        </p>
+                        <div class="picto-meas">
+                            <img class="wrist-measure intro3-picto1" src="img/picto/picto-white-slide2-1.png" alt="Picture of wrist measure">
+                            <img class="wrist-measure intro3-picto3" src="img/picto/picto-white-slide2-4.png" alt="Picture of wrist measure">
+                            <img class="wrist-measure intro3-picto4" src="img/picto/picto-white-slide2-5.png" alt="Picture of wrist measure">
+                            <img class="wrist-measure intro3-picto2" src="img/picto/picto-white-slide2-2.png" alt="Picture of wrist measure">
+
+
+
                         </div>
-                        <img class="arrow arrow-meas" src="img/arrow-bot.svg" alt="Fleche du bas">
+
+
                     </div>
+
                     <div class="contain-line line1">
                         <img class="arrow" src="img/arrow-top.svg" alt="Fleche du haut">
                         <span class="line-dash"></span>
@@ -193,7 +204,7 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
 
                 </div>
                 <div class="contain-bot">
-                    <div class="contain-btn">
+                    <div class="contain-btn double">
                         <div class="btn-nav back"><img src="img/arrow-left-w.png" alt="Flèche"><span>Previous</span></div>
                         <div class="btn-nav next"><span>Confirm</span><img src="img/arrow-right-b.png" alt="Flèche"></div>
                     </div>
@@ -219,7 +230,7 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                     </div>
                 </div>
                 <div class="contain-bot">
-                    <div class="contain-btn">
+                    <div class="contain-btn double">
                         <div class="btn-nav back"><img src="img/arrow-left-w.png" alt="Flèche"><span>Previous</span></div>
                         <div class="btn-nav next"><span>Confirm</span><img src="img/arrow-right-b.png" alt="Flèche"></div>
                     </div>
@@ -264,7 +275,7 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                 </div>
 
                 <div class="contain-bot">
-                    <div class="contain-btn">
+                    <div class="contain-btn double">
                         <div class="btn-nav back"><img src="img/arrow-left-w.png" alt="Flèche"><span>Previous</span></div>
                         <div class="btn-nav next"><span>Confirm</span><img src="img/arrow-right-b.png" alt="Flèche"></div>
                     </div>

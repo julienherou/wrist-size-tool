@@ -161,8 +161,6 @@ function closeWindow(){
 };
 
 
-
-
 // On écoute le click sur les boutons unit
 unitElts.forEach(element => {
     element.addEventListener('click', changeUnit);
@@ -196,34 +194,89 @@ function changeUnit(){
 
 
 
+
 // Animation GSAP sur les Slides
 
 // SLIDE 1
-const FX1 = gsap.timeline();
-// FX1.from('.slide1 .logo-top', {duration: 2, y: -100}, 1)
-FX1.from('.slide1 .logo-top', {duration: 3, opacity: 0}, 1)
-   .from('.slide1 .contain-bot', {duration: 3, opacity: 0}, 1)
-   .from('.slide1 .close', {duration: 3, opacity: 0}, 1);
+function introSL1() {
+    let TL1 = gsap.timeline();
+    TL1.from('.slide1 .logo-top', {duration: 1, opacity: 0}, 0.5)
+       .from('.slide1 .close', {duration: 1, opacity: 0}, "-=0.5")
+       .from(".slide1-title", {duration: 0.6, x: 200, opacity: 0}, "-=0.8")
+       .from('.slide1 .picto-meas', {duration: 1, opacity: 0}, "<");
+	return TL1;
+}
+function middleSL1() {
+    let TL2 = gsap.timeline({repeat: -1, repeatDelay: 0.4});
+    TL2.from('.slide1-picto1', {duration: 0.6, opacity: 0, x: -50, y: 20, ease: "power2.out"})
+    .fromTo('.slide1-picto2', {
+        opacity: 0,
+        scale: 1.2,
+        x: 50,
+        y: 10
+    },
+    {   
+        duration: 0.6,
+        opacity: 1,
+        x: 12,
+        y: -30,
+        ease: "power1.out"
+    })
+    .to('.slide1-picto2', {x: 0, y: 0, scale: 1, duration: 0.9, ease: "power1.inOut"}, "+=0.1")
+    .to('.slide1 .wrist-measure', {opacity: 0, duration: 0.3, ease: "power1.inOut"}, "+=1");
+	return TL2;
+}
+function conclusionSL1() {
+    let TL3 = gsap.timeline();
+    TL3.from('.slide1 .contain-bot', {duration: 2, opacity: 0}, "+=2");
+    return TL3;
+}
 
-gsap.from(".slide1-title", {x: 200, opacity: 0, duration: 0.6});
+let masterSL1 = gsap.timeline();
+masterSL1.add(introSL1())
+         .add(middleSL1())
+         .add(conclusionSL1(), "<0.5");
 
-const TL1 = gsap.timeline({repeat: -1, repeatDelay: 0.8});
-TL1.from('.slide1-picto1', {duration: 0.6, opacity: 0, x: -50, y: 20, ease: "power2.out"}, 0.6)
-.fromTo('.slide1-picto2', {
-    opacity: 0,
-    scale: 1.3,
-    x: 50,
-    y: 10
-},
-{
-    opacity: 1,
-    x: 12,
-    y: -30,
-    duration: 0.6,
-    delay: 0.1,
-    ease: "power1.out"
-})
-.to('.slide1-picto2', {x: 0, y: 0, scale: 1, duration: 1, ease: "power1.inOut"}, 2.1);
+
+// SLIDE 2
+function introSL2() {
+    let TL1 = gsap.timeline();
+    TL1.from('.measure1', {duration: 1, opacity: 0}, 0.3)
+       .from('.slide2 .contain-bot', {duration: 3, opacity: 0}, "<0.5");
+	return TL1;
+}
+function middleSL2() {
+    let TL2 = gsap.timeline({repeat: -1, repeatDelay: 0.4});
+    TL2.from('.intro3-picto1', {duration: 0.6, opacity: 0, y: -15, scale: 0.9, ease: "power2.out"})
+    .fromTo('.intro3-picto2', {
+        opacity: 0,
+        x: 35,
+        y: -10,
+    },
+    {
+        duration: 0.8,
+        opacity: 1,
+        x: 26,
+        y: 0,
+        delay: -0.6,
+        ease: "power2.out"
+    })
+    .from('.intro3-picto3', {duration: 0.2, opacity: 0}, "<0.5")
+    .to('.intro3-picto2', {duration: 1, x: 0, ease: "power1.out"}, "<0.7")
+    .to('.intro3-picto3', {duration: 0.2, opacity: 0}, ">-0.1")
+    .from('.intro3-picto4', {duration: 0.1, opacity: 0}, "<0.2")
+    .to('.slide2 .wrist-measure', {opacity: 0, duration: 0.3, ease: "power1.inOut"}, "+=1");
+
+    return TL2;
+}
+
+// let masterSL2 = gsap.timeline({paused: true});
+let masterSL2 = gsap.timeline();
+masterSL2.add(introSL2())
+         .add(middleSL2(), "<0.7");
+
+
+
 
 
 // INTRO 3 ( OLD )
@@ -275,12 +328,24 @@ TL5.from('.slide5 .logo-top', {duration: 1, y: -100})
 
 
 
-// Attention au count !!!
-
 // On écoute sur chaque slide le click sur "Confirmer"
 suivant.forEach(element => {
-    element.addEventListener('click', pageSuivante);
+    element.addEventListener("click", function(){setTimeout(pageSuivante, 400)});
+    element.addEventListener("click", ctaSuivant);
 });
+
+// Fonction pour animer les CTA
+function ctaSuivant(){
+    gsap.to(suivant, {
+        keyframes: {
+            "0": {scale: 1},
+            "50%": {scale: 0.95},
+            "100%": {scale: 1}
+        },
+        duration: 0.4
+    });
+}
+
 // fonction page/slide suivante
 function pageSuivante(){
 
@@ -309,7 +374,7 @@ function pageSuivante(){
 
     // Animation GSAP sur les Pictos
     if(count != 0) {
-        TL1.pause();
+        masterSL1.pause();
     }
     // if(count == 3) {
     //     gsap.from(".intro3-title", {x: 200, opacity: 0, duration: 0.6});
@@ -335,9 +400,9 @@ function pageSuivante(){
     //     gsap.from(".slide1 .main-elt", {x: 200, opacity: 0, duration: 0.6});
     // }
     if(count == 1) {
-        gsap.from(".measure1", {opacity: 0, duration: 0.6, delay: 0.3});
-        // gsap.from(".slide2 .contain-bot p", {opacity: 0, duration: 0.6, delay: 0.6});
-        // gsap.from(".slide2 .contain-bot img", {opacity: 0, duration: 0.6, delay: 0.6});
+        // gsap.from(".measure1", {opacity: 0, duration: 1, delay: 0.3});
+        // gsap.from(".slide2 .contain-bot", {opacity: 0, duration: 1, delay: 0.6});
+        masterSL2.restart();
     }
     if(count == 2) {
         gsap.from(".slide3-title", {x: 200, opacity: 0, duration: 0.6});
@@ -354,14 +419,29 @@ function pageSuivante(){
     } else {
         TL5.pause();
     }
-} // Fin de fonction pageSuivante
+}; // Fin de fonction pageSuivante
 
 
 
 // On écoute sur chaque slide le click sur "Retour"
 precedent.forEach(element => {
-    element.addEventListener('click', pagePrecedente);
+    element.addEventListener("click", function(){setTimeout(pagePrecedente, 400)});
+    element.addEventListener("click", ctaPrecedent);
 });
+
+
+// Fonction pour animer les CTA
+function ctaPrecedent(){
+    gsap.to(precedent, {
+        keyframes: {
+            "0": {scale: 1},
+            "50%": {scale: 0.95},
+            "100%": {scale: 1}
+        },
+        duration: 0.4
+    });
+}
+
 // fonction page/slide précédente
 function pagePrecedente(){
     pages[count].classList.remove('active');
@@ -377,9 +457,9 @@ function pagePrecedente(){
     showMeasure(measureElt2, numberElt2, lineElt2, infoElt2, symbElt2);
     // Animation GSAP sur les Pictos
     if(count == 0) {
-        TL1.restart();
+        masterSL1.restart();
     } else {
-        TL1.pause();
+        masterSL1.pause();
     }
     // if(count == 3) {
     //     TL2.restart();
@@ -397,13 +477,6 @@ function pagePrecedente(){
         TL4.pause();
     }
 }
-
-
-
-
-
-
-
 
 
 
