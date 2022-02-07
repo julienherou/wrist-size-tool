@@ -247,8 +247,8 @@ function introSL2() {
 }
 function middleSL2() {
     let TL2 = gsap.timeline({repeat: -1, repeatDelay: 0.4});
-    TL2.from('.intro3-picto1', {duration: 0.6, opacity: 0, y: -15, scale: 0.9, ease: "power2.out"})
-    .fromTo('.intro3-picto2', {
+    TL2.from('.slide2-picto1', {duration: 0.6, opacity: 0, y: -15, scale: 0.9, ease: "power2.out"})
+    .fromTo('.slide2-picto2, .slide2-picto3', {
         opacity: 0,
         x: 35,
         y: -10,
@@ -261,62 +261,80 @@ function middleSL2() {
         delay: -0.6,
         ease: "power2.out"
     })
-    .from('.intro3-picto3', {duration: 0.2, opacity: 0}, "<0.5")
-    .to('.intro3-picto2', {duration: 1, x: 0, ease: "power1.out"}, "<0.7")
-    .to('.intro3-picto3', {duration: 0.2, opacity: 0}, ">-0.1")
-    .from('.intro3-picto4', {duration: 0.1, opacity: 0}, "<0.2")
+    .from('.slide2-picto4', {duration: 0.2, opacity: 0}, "<0.5")
+    .to('.slide2-picto2, .slide2-picto3', {duration: 1, x: 0, ease: "power1.out"}, "<0.7")
+    .to('.slide2-picto4', {duration: 0.2, opacity: 0}, ">-0.1")
+    .from('.slide2-picto5', {duration: 0.1, opacity: 0}, "<0.2")
+    .to('.slide2-picto3', {duration: 0.1, opacity: 0}, ">1")
+    .from('.slide2-picto7, .slide2-picto8', {duration: 0.1, opacity: 0}, "<")
+    .to('.slide2-picto2, .slide2-picto7, .slide2-picto8', {duration: 0.6, y: 8, ease: "power1.out"}, ">1")
+    .to('.slide2-picto8', {duration: 0.7, y: -11, ease: "power1.out"}, ">0.8")
     .to('.slide2 .wrist-measure', {opacity: 0, duration: 0.3, ease: "power1.inOut"}, "+=1");
-
     return TL2;
 }
-
-// let masterSL2 = gsap.timeline({paused: true});
 let masterSL2 = gsap.timeline();
 masterSL2.add(introSL2())
-         .add(middleSL2(), "<0.7");
+         .add(middleSL2(), "<0.8");
 
 
-
-
-
-// INTRO 3 ( OLD )
-// const TL2 = gsap.timeline({repeat: -1, repeatDelay: 1, paused: true});
-// TL2.from('.intro3-picto1', {duration: 0.6, opacity: 0, y: -10, scale: 0.9, ease: "power2.out"}, 0.8)
-// .fromTo('.intro3-picto2', {
-//     opacity: 0,
-//     x: 30,
-//     y: -10,
-// },
-// {
-//     opacity: 1,
-//     x: 22,
-//     y: 0,
-//     duration: 0.8,
-//     delay: -0.6,
-//     ease: "power2.out"
-// })
-// .from('.intro3-picto3', {duration: 0.2, opacity: 0}, 1.4)
-// .to('.intro3-picto2', {duration: 0.7, x: 0, ease: "power1.out"}, 2.3)
-// .to('.intro3-picto3', {duration: 0.2, opacity: 0}, 2.8)
-// .from('.intro3-picto4', {duration: 0.1, opacity: 0}, 3);
-
-// INTRO 4 ( OLD )
-// const TL3 = gsap.timeline({repeat: -1, repeatDelay: 1, paused: true});
-// TL3.from('.intro4-picto1', {duration: 0.4, opacity: 0, y: -5, scale: 1.1, ease: "power2.out"}, 0.6)
-//    .from('.intro4-picto2', {duration: 0.4, opacity: 0, y: 5, scale: 1.1, ease: "power2.out"}, 0.6)
-//    .from('.intro4-picto3', {duration: 0.4, opacity: 0, scale: 1.1, ease: "power2.out"}, 0.6)
-//    .to('.intro4-picto2', {duration: 0.7, y: 8, ease: "power1.out"}, 1.4)
-//    .to('.intro4-picto3', {duration: 0.7, y: 8, ease: "power1.out"}, 1.4)
-//    .to('.intro4-picto3', {duration: 0.6, y: -11}, 2.2)
-//    .from('.intro4-picto4', {duration: 0.1, opacity: 0}, 2.9);
 
 // SLIDE 3
-const TL4 = gsap.timeline({repeat: -1, repeatDelay: 1, paused: true});
-TL4.from('.slide3-picto1', {duration: 0.8, opacity: 0, x: -50, y: 20}, 0.6)
-   .to('.slide3-picto1', {duration: 0.4, opacity: 0}, 1.5)
-   .from('.slide3-picto2', {duration: 0.5, opacity: 0}, 1.5)
-   .from('.slide3-picto3', {duration: 0.5, opacity: 0}, 1.5)
-   .to('.slide3-picto2', {duration: 0.2, opacity: 0}, 2.5);
+function introSL3() {
+    let TL1 = gsap.timeline();
+    TL1.from(".slide3-title", {x: 200, opacity: 0, duration: 0.6});
+	return TL1;
+}
+function middleSL3() {
+    let TL2 = gsap.timeline({repeat: -1, repeatDelay: 0.4});
+    TL2.from('.slide3-picto1', {duration: 0.8, opacity: 0, x: -50, y: 20}, ">")
+       .to('.slide3-picto1', {duration: 0.4, opacity: 0}, ">0.4")
+       .from('.slide3-picto2', {duration: 0.4, opacity: 0}, "<")
+       .to('.slide3 .wrist-rotate', {opacity: 0, duration: 0.3, ease: "power1.inOut"}, "+=0.9");
+    return TL2;
+}
+let masterSL3 = gsap.timeline();
+masterSL3.add(introSL3())
+         .add(middleSL3(), ">0.2");
+
+
+// SLIDE 4
+function introSL4() {
+    let TL1 = gsap.timeline();
+    TL1.from('.measure2', {duration: 1, opacity: 0}, 0.3)
+       .from('.slide4 .contain-bot', {duration: 3, opacity: 0}, "<0.5");
+	return TL1;
+}
+function middleSL4() {
+    let TL2 = gsap.timeline({repeat: -1, repeatDelay: 0.4});
+    TL2.from('.slide4-picto1', {duration: 0.6, opacity: 0, x: -10, y: -15, scale: 0.9, ease: "power2.out"})
+       .from('.slide4-picto2, .slide4-picto3, .slide4-picto4', {duration: 0.6, opacity: 0, x: 5, y: -10, scale: 0.9, ease: "power2.out"}, "<")
+       .to('.slide4-picto2, .slide4-picto3, .slide4-picto4', {duration: 0.5, y: 8, ease: "power1.out"}, ">0.8")
+       .to('.slide4-picto3', {duration: 0.6, y: -27, ease: "power1.out"}, ">0.8")
+
+
+
+
+
+
+
+
+    .to('.slide4 .wrist-measure', {opacity: 0, duration: 0.3, ease: "power1.inOut"}, "+=1");
+    return TL2;
+}
+let masterSL4 = gsap.timeline();
+masterSL4.add(introSL4())
+         .add(middleSL4(), "<0.8");
+
+
+
+
+
+
+
+
+
+
+
 
 // SLIDE 5
 const TL5 = gsap.timeline({repeat: 0, repeatDelay: 2, paused: true});
@@ -324,9 +342,6 @@ TL5.from('.slide5 .logo-top', {duration: 1, y: -100})
    .from('.slide5-title', {duration: 1, opacity: 0, x: 50}, 0.5)
    .from('.contain-unit2', {duration: 1, opacity: 0}, 1.5)
    .from('.slide5 .contain-cta', {duration: 1, opacity: 0}, 2);
-
-
-
 
 // On écoute sur chaque slide le click sur "Confirmer"
 suivant.forEach(element => {
@@ -376,44 +391,26 @@ function pageSuivante(){
     if(count != 0) {
         masterSL1.pause();
     }
-    // if(count == 3) {
-    //     gsap.from(".intro3-title", {x: 200, opacity: 0, duration: 0.6});
-    //     gsap.from(".intro3 .picto-mini1", {opacity: 0, duration: 0.6, delay: 0.4});
-    //     TL2.restart();
-    // } else {
-    //     TL2.pause();
-    // }
-    // if(count == 4) {
-    //     gsap.from(".intro4-title", {x: 200, opacity: 0, duration: 0.6});
-    //     gsap.from(".intro4 .picto-mini2", {opacity: 0, duration: 0.6, delay: 0.4});
-    //     TL3.restart();
-    // } else {
-    //     TL3.pause();
-    // }
-    // if(count == 5) {
-    //     gsap.from(".intro5 .picto-mini3", {opacity: 0, duration: 0.6, delay: 0.4});
-    //     gsap.from(".intro5 .contain-picto-mini span", {color: '#717171', duration: 0.6, delay: 1});
-    //     gsap.from(".intro5 .contain-picto-mini", {marginTop: 0, duration: 0.6, delay: 1.6});
-    //     gsap.from(".intro5 .contain-btn", {opacity: 0, duration: 0.6, delay: 2});
-    // }
-    // if(count == 6) {
-    //     gsap.from(".slide1 .main-elt", {x: 200, opacity: 0, duration: 0.6});
-    // }
     if(count == 1) {
-        // gsap.from(".measure1", {opacity: 0, duration: 1, delay: 0.3});
-        // gsap.from(".slide2 .contain-bot", {opacity: 0, duration: 1, delay: 0.6});
         masterSL2.restart();
+    } else {
+        masterSL2.pause();
     }
     if(count == 2) {
-        gsap.from(".slide3-title", {x: 200, opacity: 0, duration: 0.6});
-        TL4.restart();
+        masterSL3.restart();
     } else {
-        TL4.pause();
+        masterSL3.pause();
     }
     if(count == 3) {
-        gsap.from(".measure2", {opacity: 0, duration: 0.6, delay: 0.3});
+        // gsap.from(".measure2", {opacity: 0, duration: 0.6, delay: 0.3});
         // gsap.from(".slide4 .contain-bot p", {opacity: 0, duration: 0.6, delay: 0.6});
+        masterSL4.restart();
+    } else {
+        masterSL4.pause();
     }
+
+
+
     if(count == 4) {
         TL5.restart();
     } else {
@@ -461,20 +458,15 @@ function pagePrecedente(){
     } else {
         masterSL1.pause();
     }
-    // if(count == 3) {
-    //     TL2.restart();
-    // } else {
-    //     TL2.pause();
-    // }
-    // if(count == 4) {
-    //     TL3.restart();
-    // } else {
-    //     TL3.pause();
-    // }
-    if(count == 2) {
-        TL4.restart();
+    if(count == 1) {
+        masterSL2.restart();
     } else {
-        TL4.pause();
+        masterSL2.pause();
+    }
+    if(count == 2) {
+        masterSL3.restart();
+    } else {
+        masterSL3.pause();
     }
 }
 

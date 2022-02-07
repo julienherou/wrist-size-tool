@@ -171,16 +171,15 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                             continuity of the arm
                         </p>
                         <div class="picto-meas">
-                            <img class="wrist-measure intro3-picto1" src="img/picto/picto-white-slide2-1.png" alt="Picture of wrist measure">
-                            <img class="wrist-measure intro3-picto3" src="img/picto/picto-white-slide2-4.png" alt="Picture of wrist measure">
-                            <img class="wrist-measure intro3-picto4" src="img/picto/picto-white-slide2-5.png" alt="Picture of wrist measure">
-                            <img class="wrist-measure intro3-picto2" src="img/picto/picto-white-slide2-2.png" alt="Picture of wrist measure">
-
-
-
+                            <img class="wrist-measure slide2-picto1" src="img/picto/picto-white-slide2-1.png" alt="Picture of wrist measure">
+                            <img class="wrist-measure slide2-picto4" src="img/picto/picto-white-slide2-4.png" alt="Picture of wrist measure">
+                            <img class="wrist-measure slide2-picto5" src="img/picto/picto-white-slide2-5.png" alt="Picture of wrist measure">
+                            <img class="wrist-measure slide2-picto2" src="img/picto/picto-white-slide2-2.png" alt="Picture of wrist measure">
+                            <img class="wrist-measure slide2-picto3" src="img/picto/picto-white-slide2-3.png" alt="Picture of wrist measure">
+                            <!-- <img class="wrist-measure slide2-picto6" src="img/picto/picto-white-slide2-6.png" alt="Picture of wrist measure"> -->
+                            <img class="wrist-measure slide2-picto7" src="img/picto/picto-white-slide2-7.png" alt="Picture of wrist measure">
+                            <img class="wrist-measure slide2-picto8" src="img/picto/picto-white-slide2-8.png" alt="Picture of wrist measure">
                         </div>
-
-
                     </div>
 
                     <div class="contain-line line1">
@@ -224,9 +223,8 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                     <p class="slide3-title">Turn your wrist<br>
                         and take the measurement</p>
                     <div class="picto-meas">
-                        <img class="wrist-rotate slide3-picto1" src="img/wrist-rotate-1.png" alt="Picture of wrist rotate 1">
-                        <img class="wrist-rotate slide3-picto3" src="img/wrist-rotate-3.png" alt="Picture of wrist rotate 3">
-                        <img class="wrist-rotate slide3-picto2" src="img/wrist-rotate-2.png" alt="Picture of wrist rotate 2">
+                        <img class="wrist-rotate slide3-picto1" src="img/picto/picto-white-slide3-1.png" alt="Picture of wrist rotate 1">
+                        <img class="wrist-rotate slide3-picto2" src="img/picto/picto-white-slide3-2.png" alt="Picture of wrist rotate 3">
                     </div>
                 </div>
                 <div class="contain-bot">
@@ -249,13 +247,28 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                     <div class="contain-top">
                         <span class="line"></span>
                     </div>
+
+
                     <div class="contain-motion">
-                        <img class="arrow arrow-meas" src="img/arrow-top.svg" alt="Fleche du haut">
-                        <div class="contain-arrow">
-                            <div class="line-vertical"></div>
+                        <p class="instruction">
+                            Adjust the virtual strip on the width in the<br>
+                            continuity of the arm
+                        </p>
+                        <div class="picto-meas">
+
+                            <img class="wrist-measure slide4-picto1" src="img/picto/picto-white-slide4-1.png" alt="Picture of wrist measure">
+                            <img class="wrist-measure slide4-picto2" src="img/picto/picto-white-slide4-2.png" alt="Picture of wrist measure">
+                            <img class="wrist-measure slide4-picto3" src="img/picto/picto-white-slide4-3.png" alt="Picture of wrist measure">
+                            <img class="wrist-measure slide4-picto4" src="img/picto/picto-white-slide4-4.png" alt="Picture of wrist measure">
+
                         </div>
-                        <img class="arrow arrow-meas" src="img/arrow-bot.svg" alt="Fleche du bas">
                     </div>
+
+
+
+
+
+
                     <div class="contain-line line2">
                         <img class="arrow" src="img/arrow-top.svg" alt="Fleche du haut">
                         <span class="line-dash"></span>

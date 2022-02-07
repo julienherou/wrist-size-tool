@@ -268,7 +268,8 @@ p{
     margin: 3rem 0 0 0;
     text-align: center;
 }
-.slide2 .picto-meas{
+.slide2 .picto-meas,
+.slide4 .picto-meas{
     position: absolute;
     top: 22rem;
     left: 50%;
@@ -283,18 +284,12 @@ p{
     overflow: hidden;
     z-index: -1;
 }
-.slide2 .wrist-measure{
+.slide2 .wrist-measure,
+.slide4 .wrist-measure{
     position: absolute;
     width: 43rem;
     bottom: -37.5rem;
-    
 }
-
-
-
-
-
-
 
 
 
@@ -405,7 +400,7 @@ p{
     height: 100%;
 }
 .slide3-title{
-    padding-bottom: 20rem;
+    padding-bottom: 10rem;
 }
 .slide3 .picto-meas{
     position: absolute;
@@ -413,7 +408,7 @@ p{
     height: 100%;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -45%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -423,7 +418,6 @@ p{
     width: 42rem;
 }
 
-/* ------------------------------------- */
 
 /* SLIDE 5 */
 .slide5 .main-elt{
