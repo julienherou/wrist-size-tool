@@ -299,9 +299,6 @@ p{
 
 
 
-
-
-
 /* Affichage de la mesure temps réel */
 .size{
     display: flex;
@@ -344,7 +341,7 @@ p{
 }
 .unit.select{
     border: solid .1rem var(--color-white);
-    background: var(--color-black);
+    background: #353535;
 }
 
 
@@ -457,8 +454,8 @@ p{
     margin: 1.5rem;
 }
 .link-website{
-    border: .1rem solid var(--color-red-cta);
-    color: var(--color-red-cta);
+    border: .1rem solid var(--color-red);
+    color: var(--color-red);
 }
 .link-again{
     border: .1rem solid var(--color-white);
@@ -491,8 +488,8 @@ p{
 }
 /* Pour les écrans en dessous de 470px de large */
 @media only screen and (max-width: 470px){
-    .double .contain-btn{
-        padding: 2rem 2rem 3rem 2rem;
+    .double{
+        padding: 1rem 1rem 3rem 1rem;
     }
     .double .btn-nav{
         width: 14rem;
@@ -500,8 +497,9 @@ p{
         font-size: 1.4rem;
     }
     .double .btn-nav.back{
-        margin-right: 3.5rem;
+        margin-right: 3rem;
     }
+
 }
 
 

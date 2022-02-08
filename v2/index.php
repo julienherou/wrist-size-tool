@@ -184,9 +184,9 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                     </div>
 
                     <div class="contain-line line1">
-                        <img class="arrow" src="img/arrow-top.svg" alt="Fleche du haut">
+                        <img class="arrow" src="img/arrow-top-green.svg" alt="Fleche du haut">
                         <span class="line-dash"></span>
-                        <img class="arrow" src="img/arrow-bot.svg" alt="Fleche du bas">
+                        <img class="arrow" src="img/arrow-bot-green.svg" alt="Fleche du bas">
                     </div>
 
                     <!-- Affichage de la mesure -->
@@ -252,8 +252,8 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
 
                     <div class="contain-motion">
                         <p class="instruction">
-                            Adjust the virtual strip on the width in the<br>
-                            continuity of the arm
+                            Adjust the virtual strip on the width<br>
+                            in the continuity of the arm
                         </p>
                         <div class="picto-meas">
 
@@ -267,9 +267,9 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                     </div>
 
                     <div class="contain-line line2">
-                        <img class="arrow" src="img/arrow-top.svg" alt="Fleche du haut">
+                        <img class="arrow" src="img/arrow-top-green.svg" alt="Fleche du haut">
                         <span class="line-dash"></span>
-                        <img class="arrow" src="img/arrow-bot.svg" alt="Fleche du bas">
+                        <img class="arrow" src="img/arrow-bot-green.svg" alt="Fleche du bas">
                     </div>
                     <div class="contain-info info2">
                         <div class="contain-size">
