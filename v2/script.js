@@ -242,40 +242,54 @@ masterSL1.add(introSL1())
 function introSL2() {
     let TL1 = gsap.timeline();
     TL1.from('.measure1', {duration: 1, opacity: 0}, 0.3)
-       .from('.slide2 .contain-bot', {duration: 3, opacity: 0}, "<0.5");
+
+       .from('.line1', {duration: 2, opacity: 0}, "<")
+       .to('.measure1', {
+            keyframes: {
+                "0": {height: '460px'},
+                "50%": {height: '580px'},
+                "100%": {height: '530px'}
+            },
+            duration: 1.4,
+            ease: "none"
+        }, "<")
+        .from('.info1', {duration: 2, opacity: 0}, ">")
+
+       .from('.slide2 .contain-bot', {duration: 3, opacity: 0}, "<1");
 	return TL1;
 }
+
+
 function middleSL2() {
     let TL2 = gsap.timeline({repeat: -1, repeatDelay: 0.4});
-    TL2.from('.slide2-picto1', {duration: 0.6, opacity: 0, y: -15, scale: 0.9, ease: "power2.out"})
+    TL2.from('.slide2-picto1', {duration: 1, opacity: 0, y: -15, scale: 0.9, ease: "power1.out"})
     .fromTo('.slide2-picto2, .slide2-picto3', {
         opacity: 0,
         x: 35,
         y: -10,
     },
     {
-        duration: 0.8,
+        duration: 1.1,
         opacity: 1,
         x: 26,
         y: 0,
-        delay: -0.6,
         ease: "power2.out"
-    })
-    .from('.slide2-picto4', {duration: 0.2, opacity: 0}, "<0.5")
-    .to('.slide2-picto2, .slide2-picto3', {duration: 1, x: 0, ease: "power1.out"}, "<0.7")
+    }, "<")
+    .from('.slide2-picto4', {duration: 0.2, opacity: 0}, "<0.4")
+    .to('.slide2-picto2, .slide2-picto3', {duration: 0.9, x: 0, ease: "power1.out"}, ">0.6")
     .to('.slide2-picto4', {duration: 0.2, opacity: 0}, ">-0.1")
-    .from('.slide2-picto5', {duration: 0.1, opacity: 0}, "<0.2")
-    .to('.slide2-picto3', {duration: 0.1, opacity: 0}, ">1")
-    .from('.slide2-picto7, .slide2-picto8', {duration: 0.1, opacity: 0}, "<")
-    .to('.slide2-picto2, .slide2-picto7, .slide2-picto8', {duration: 0.6, y: 8, ease: "power1.out"}, ">1")
-    .to('.slide2-picto8', {duration: 0.7, y: -11, ease: "power1.out"}, ">0.8")
-    .to('.slide2 .wrist-measure', {opacity: 0, duration: 0.3, ease: "power1.inOut"}, "+=1");
+    .from('.slide2-picto5', {duration: 0.2, opacity: 0}, ">-0.1")
+    .to('.slide2-picto3', {duration: 1, opacity: 0}, ">0.2")
+    .from('.slide2-picto7, .slide2-picto8, .slide2-picto9', {duration: 0.8, opacity: 0}, "<")
+    .to('.slide2-picto2, .slide2-picto7, .slide2-picto8', {duration: 0.5, y: 8, ease: "power1.out"}, ">0.2")
+    .to('.slide2-picto8', {duration: 0.8, y: -11, ease: "back.out"}, ">0.5")
+    .to('.slide2 .wrist-measure', {opacity: 0, duration: 0.3, ease: "power1.inOut"}, ">0.8");
     return TL2;
 }
 let masterSL2 = gsap.timeline();
 masterSL2.add(introSL2())
-         .add(middleSL2(), "<0.8");
-
+        //  .add(middleSL2(), "<0.8");
+         .add(middleSL2(), ">-4");
 
 
 // SLIDE 3
@@ -286,7 +300,7 @@ function introSL3() {
 }
 function middleSL3() {
     let TL2 = gsap.timeline({repeat: -1, repeatDelay: 0.4});
-    TL2.from('.slide3-picto1', {duration: 0.8, opacity: 0, x: -50, y: 20}, ">")
+    TL2.from('.slide3-picto1', {duration: 0.6, opacity: 0, x: -50, y: 20, scale: 0.9, ease: "power2.out"}, ">")
        .to('.slide3-picto1', {duration: 0.4, opacity: 0}, ">0.4")
        .from('.slide3-picto2', {duration: 0.4, opacity: 0}, "<")
        .to('.slide3 .wrist-rotate', {opacity: 0, duration: 0.3, ease: "power1.inOut"}, "+=0.9");
@@ -301,40 +315,51 @@ masterSL3.add(introSL3())
 function introSL4() {
     let TL1 = gsap.timeline();
     TL1.from('.measure2', {duration: 1, opacity: 0}, 0.3)
-       .from('.slide4 .contain-bot', {duration: 3, opacity: 0}, "<0.5");
+
+    .from('.line2', {duration: 2, opacity: 0}, "<")
+    .to('.measure2', {
+         keyframes: {
+             "0": {height: '400px'},
+             "50%": {height: '550px'},
+             "100%": {height: '500px'}
+         },
+         duration: 1.4,
+         ease: "none"
+     }, "<")
+     .from('.info2', {duration: 2, opacity: 0}, ">");
+
 	return TL1;
 }
 function middleSL4() {
     let TL2 = gsap.timeline({repeat: -1, repeatDelay: 0.4});
-    TL2.from('.slide4-picto1', {duration: 0.6, opacity: 0, x: -10, y: -15, scale: 0.9, ease: "power2.out"})
-       .from('.slide4-picto2, .slide4-picto3, .slide4-picto4', {duration: 0.6, opacity: 0, x: 5, y: -10, scale: 0.9, ease: "power2.out"}, "<")
-       .to('.slide4-picto2, .slide4-picto3, .slide4-picto4', {duration: 0.5, y: 8, ease: "power1.out"}, ">0.8")
-       .to('.slide4-picto3', {duration: 0.6, y: -27, ease: "power1.out"}, ">0.8")
+    TL2.from('.slide4-picto1', {duration: 0.5, opacity: 0, x: -15, y: -15, scale: 0.8, ease: "power1.out"})
+       .from('.slide4-picto2, .slide4-picto3, .slide4-picto4', {duration: 0.5, opacity: 0, x: 5, y: -10, scale: 0.9, ease: "power2.out"}, "<")
+       .from('.slide4-picto5', {duration: 0.5, x: 5, y: -10, scale: 0.9, ease: "power2.out"}, "<")
+    //    .to('.slide4-picto2, .slide4-picto3, .slide4-picto4, .slide4-picto5', {duration: 0.5, y: 8, ease: "power1.out"}, ">0.4")
+       .to('.slide4-picto2, .slide4-picto3, .slide4-picto4, .slide4-picto5', {
+            keyframes: {
+                // "0": {y: -10},
+                "50%": {y: 10},
+                "100%": {y: 8}
+            },
+            duration: 1
+        }, ">0.4")
 
-
-
-
-
-
-
-
-    .to('.slide4 .wrist-measure', {opacity: 0, duration: 0.3, ease: "power1.inOut"}, "+=1");
+       .to('.slide4-picto3', {duration: 0.9, y: -27, ease: "back"}, ">0.5")
+       .to('.slide4 .wrist-measure', {opacity: 0, duration: 0.4, ease: "power1.inOut"}, ">0.9");
     return TL2;
+
+    // TEST ANIM
+    // TL2.from('.slide4-picto1', {duration: 1, opacity: 0, x: -15, y: -15, scale: 0.8, ease: "power4.out"})
+    //     .from('.slide4-picto2, .slide4-picto3, .slide4-picto4', {duration: 1, opacity: 0, x: 5, y: -10, scale: 0.9, ease: "power4.out"}, "<")
+    //     .to('.slide4-picto2, .slide4-picto3, .slide4-picto4', {duration: 0.8, y: 8, ease: "back"}, ">")
+    //     .to('.slide4-picto3', {duration: 0.5, y: -27, ease: "back"}, ">0.6")
+    //     .to('.slide4 .wrist-measure', {opacity: 0, duration: 0.3, ease: "power1.inOut"}, "+=1");
+    // return TL2;
 }
 let masterSL4 = gsap.timeline();
 masterSL4.add(introSL4())
-         .add(middleSL4(), "<0.8");
-
-
-
-
-
-
-
-
-
-
-
+         .add(middleSL4(), "<2");
 
 // SLIDE 5
 const TL5 = gsap.timeline({repeat: 0, repeatDelay: 2, paused: true});
@@ -342,6 +367,12 @@ TL5.from('.slide5 .logo-top', {duration: 1, y: -100})
    .from('.slide5-title', {duration: 1, opacity: 0, x: 50}, 0.5)
    .from('.contain-unit2', {duration: 1, opacity: 0}, 1.5)
    .from('.slide5 .contain-cta', {duration: 1, opacity: 0}, 2);
+
+
+// Animation après touch reglette
+let TLtouch = gsap.timeline({ paused: true });
+TLtouch.to('.slide2 .picto-meas, .slide4 .picto-meas', {duration: 0.5, opacity: 0});
+
 
 // On écoute sur chaque slide le click sur "Confirmer"
 suivant.forEach(element => {
@@ -408,14 +439,18 @@ function pageSuivante(){
     } else {
         masterSL4.pause();
     }
-
-
-
     if(count == 4) {
         TL5.restart();
     } else {
         TL5.pause();
     }
+
+    // Pour réinitiailiser la timeline au touch sur la reglette
+    if(count != 1){
+        TLtouch.reverse();
+    }
+
+
 }; // Fin de fonction pageSuivante
 
 
@@ -468,13 +503,11 @@ function pagePrecedente(){
     } else {
         masterSL3.pause();
     }
+    // Pour réinitiailiser la timeline au touch sur la reglette
+    if(count != 1){
+        TLtouch.reverse();
+    }
 }
-
-
-
-
-
-
 
 
 
@@ -488,6 +521,7 @@ lineElt2.addEventListener('mousedown', mousedown2);
 // SLIDE 2
 // Fonction déclenchée au click sur la reglette
 function mousedown1(e) {
+    TLtouch.play();
     let prevY1 = e.clientY;
     slide2Elt.addEventListener('mousemove', mousemove1);
     slide2Elt.addEventListener('mouseup', mouseup1);
@@ -505,6 +539,7 @@ function mousedown1(e) {
 // SLIDE 4
 // Fonction déclenchée au click sur la reglette
 function mousedown2(e) {
+    TLtouch.play();
     let prevY2 = e.clientY;
     slide4Elt.addEventListener('mousemove', mousemove2);
     slide4Elt.addEventListener('mouseup', mouseup2);
@@ -527,6 +562,7 @@ lineElt2.addEventListener('touchstart', touchstart2);
 // SLIDE 2
 // Fonction déclenchée au touch sur la reglette
 function touchstart1(e) {
+    TLtouch.play();
     let prevY3 = e.targetTouches[0].clientY;
     slide2Elt.addEventListener('touchmove', touchmove1);
     slide2Elt.addEventListener('touchend', touchend1);
@@ -543,6 +579,7 @@ function touchstart1(e) {
 }
 // SLIDE 4
 function touchstart2(e) {
+    TLtouch.play();
     let prevY4 = e.targetTouches[0].clientY;
     slide4Elt.addEventListener('touchmove', touchmove2);
     slide4Elt.addEventListener('touchend', touchend2);

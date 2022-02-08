@@ -174,6 +174,7 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                             <img class="wrist-measure slide2-picto1" src="img/picto/picto-white-slide2-1.png" alt="Picture of wrist measure">
                             <img class="wrist-measure slide2-picto4" src="img/picto/picto-white-slide2-4.png" alt="Picture of wrist measure">
                             <img class="wrist-measure slide2-picto5" src="img/picto/picto-white-slide2-5.png" alt="Picture of wrist measure">
+                            <img class="wrist-measure slide2-picto9" src="img/picto/picto-white-slide2-9.png" alt="Picture of wrist measure">
                             <img class="wrist-measure slide2-picto2" src="img/picto/picto-white-slide2-2.png" alt="Picture of wrist measure">
                             <img class="wrist-measure slide2-picto3" src="img/picto/picto-white-slide2-3.png" alt="Picture of wrist measure">
                             <!-- <img class="wrist-measure slide2-picto6" src="img/picto/picto-white-slide2-6.png" alt="Picture of wrist measure"> -->
@@ -257,17 +258,13 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                         <div class="picto-meas">
 
                             <img class="wrist-measure slide4-picto1" src="img/picto/picto-white-slide4-1.png" alt="Picture of wrist measure">
+                            <img class="wrist-measure slide4-picto5" src="img/picto/picto-white-slide4-5.png" alt="Picture of wrist measure">
                             <img class="wrist-measure slide4-picto2" src="img/picto/picto-white-slide4-2.png" alt="Picture of wrist measure">
                             <img class="wrist-measure slide4-picto3" src="img/picto/picto-white-slide4-3.png" alt="Picture of wrist measure">
                             <img class="wrist-measure slide4-picto4" src="img/picto/picto-white-slide4-4.png" alt="Picture of wrist measure">
 
                         </div>
                     </div>
-
-
-
-
-
 
                     <div class="contain-line line2">
                         <img class="arrow" src="img/arrow-top.svg" alt="Fleche du haut">
