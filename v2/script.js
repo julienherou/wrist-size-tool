@@ -469,17 +469,6 @@ function pageSuivante(){
         TL5.pause();
     }
 
-
-    // if(count == 4) {
-    //     TL5.restart();
-    //     console.log('slide5 calcul : ' + calcul);
-    // } else {
-    //     TL5.pause();
-    // }
-
-
-
-
     pages[count].classList.remove('active');
     if(count < nbPages - 1){
         count++;
@@ -487,7 +476,6 @@ function pageSuivante(){
     pages[count].classList.add('active');
     showMeasure(measureElt1, numberElt1, lineElt1, infoElt1, symbElt1);
     showMeasure(measureElt2, numberElt2, lineElt2, infoElt2, symbElt2);
-    console.log('count 2 : '+ count);
 
     // Animation GSAP sur les Pictos
     // Slide 2
