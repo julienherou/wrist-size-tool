@@ -58,6 +58,7 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
     // var_dump($properties);
     $diagonal_screen_size = '';
     $display_ppi = '';
+    $marketing_name = '';
 
     if (isset($properties['diagonalScreenSize'])) {
         $diagonal_screen_size = $properties['diagonalScreenSize'];
@@ -67,10 +68,15 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
         $display_ppi = $properties['displayPpi'];
         // var_dump($display_ppi);
     }
+    if (isset($properties['marketingName'])) {
+        $marketing_name = $properties['marketingName'];
+        // var_dump($marketingName);
+    }
     if (isset($properties['displayHeight'])) {
         $test = $properties['displayHeight'];
         // var_dump($test);
     }
+
 
 } // Fin du if
 
@@ -100,6 +106,7 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
     <!-- Variables Device Atlas -->
     <input type="hidden" id="diagonal-inch" name="diagonal-inch"  value= <?php echo $diagonal_screen_size ?> />
     <input type="hidden" id="display-ppi" name="display-ppi"  value= <?php echo $display_ppi ?> />
+    <input type="hidden" id="marketing-name" name="marketing-name"  value= <?php echo $marketing_name ?> />
 
     <!-- DESKTOP -->
     <div class="desktop">

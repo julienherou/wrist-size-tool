@@ -69,13 +69,14 @@ let dpi_y = dpiElt.offsetHeight * devicePixelRatio;
 let widthInPx = window.screen.width * window.devicePixelRatio;
 let heightInPx = window.screen.height * window.devicePixelRatio;
 let diagInPx = Math.sqrt((widthInPx * widthInPx) + (heightInPx * heightInPx));
-// Dagonale en inch
+// Diagonale en inch
 // Valeur à récupérer pour faire fonctionner la mesure :
 // let diagInInch = 24;
 
 // On récupère la valeur diagonalScreenSize de Device Atlas
 let diagInInch = document.querySelector('#diagonal-inch').value;
 let displayPpi = document.querySelector('#display-ppi').value;
+let marketingName = document.querySelector('#marketing-name').value;
 
 // Calcul du ppi
 let ppi = diagInPx / diagInInch;
@@ -84,7 +85,16 @@ let ppi = diagInPx / diagInInch;
 // Temp en attendant une fenetre d'info
 if (isNaN(ppi)){
     ppi = dpi_x;
+    console.log('deviceAtlas infos non detectes')
 }
+// if (isNaN(diagInInch) && isNaN(displayPpi)){
+//     ppi = dpi_x;
+//     console.log('aucune info detecte')
+// } else if(isNaN(diagInInch)){
+//     ppi = displayPpi
+// }
+
+
 
 
 // ----------------------------------------------------------
@@ -121,7 +131,8 @@ let convertUnit = (2.54 / ppi) * devicePixelRatio;
 let unitInHtml = ' cm';
 
 // Affichage des infos
-// alert('DPI : ' + dpi_x + ' x ' + dpi_y + '\n' + 'PPI (calc): ' + ppi + '\n' + "PPI (DeviceAtlas): " + displayPpi + '\n' + 'ZOOM : ' + devicePixelRatio + '\n' + "Résolution écran : " + widthInPx + " x " + heightInPx + '\n' + "Résolution écran sans zoom : " + window.screen.width + " x " + window.screen.height + '\n' + "Diagonale (inch) (DeviceAtlas): " + diagInInch);
+// alert('Modele : ' + marketingName + '\n' + "Diagonale (inch) (DeviceAtlas) : " + diagInInch + '\n' + "PPI (DeviceAtlas) : " + displayPpi + '\n' + 'DPI : ' + dpi_x + ' x ' + dpi_y + '\n' + 'PPI (calc): ' + ppi + '\n' + 'ZOOM : ' + devicePixelRatio + '\n' + "Résolution écran : " + widthInPx + " x " + heightInPx + '\n' + "Résolution écran sans zoom : " + window.screen.width + " x " + window.screen.height);
+// console.log('Modele : ' + marketingName);
 // console.log('DPI : ' + dpi_x + ' x ' + dpi_y);
 // console.log('PPI (calc): ' + ppi);
 // console.log('PPI (Device Atlas): ' + displayPpi);
@@ -150,48 +161,15 @@ function showResult(mesure1, mesure2, destination, unite){
 
 
 // Resultat affiché avec jauge
-function gaugeResult(){
+function gaugeResult(valeur){
 
-    // resultElt.innerHTML = calcul;
-    // for (let i = 0; i <= calcul; i+=0.1){
+    // resultElt.innerHTML = valeur;
+    // console.log(valeur);
+    // for (let i = 0; i < valeur; i+=1){
     //     console.log(i)
     // }
 
-
-
-    // var n = 15; // Nombre final du compteur
-    // var cpt = 0; // Initialisation du compteur
-    // var duree = 5; // Durée en seconde pendant laquel le compteur ira de 0 à 15
-    // var delta = Math.ceil((duree * 1000) / n); // On calcule l'intervalle de temps entre chaque rafraîchissement du compteur (durée mise en milliseconde)
-    // var node =  document.getElementById("compteur"); // On récupère notre noeud où sera rafraîchi la valeur du compteur
-    // function countdown() {
-    //   node.innerHTML = ++cpt;
-    //   if( cpt < n ) { // Si on est pas arrivé à la valeur finale, on relance notre compteur une nouvelle fois
-    //      setTimeout(countdown, delta);
-    //   }
-    // }
-     
-    // setTimeout(countdown, delta);
-
-
-    // let cpt = 0; // Initialisation du compteur
-    // let duree = 2; // Durée en seconde pendant laquel le compteur ira de 0 à 15
-    // let delta = Math.ceil((duree * 1000) / calcul); // On calcule l'intervalle de temps entre chaque rafraîchissement du compteur (durée mise en milliseconde)
-
-    // function countdown() {
-    // resultElt.innerHTML = ++cpt;
-    //   if( cpt < calcul ) { // Si on est pas arrivé à la valeur finale, on relance notre compteur une nouvelle fois
-    //      setTimeout(countdown, delta);
-    //      console.log(cpt);
-    //   }
-    // }
-     
-    // setTimeout(countdown, delta);
-
-
 }
-
-
 
 
 // On écoute le click sur les croix
@@ -241,14 +219,27 @@ function changeUnit(){
 // Animation GSAP sur les Slides
 
 // SLIDE 1
+gsap.to(".slide1 .inside-slide", {opacity: 1, duration: 1});
+
+// function introSL1() {
+//     let TL1 = gsap.timeline();
+//     TL1.from('.slide1 .logo-top', {duration: 1, opacity: 0}, 0.5)
+//        .from('.slide1 .close', {duration: 1, opacity: 0}, "-=0.5")
+//        .from(".slide1-title", {duration: 0.6, x: 200, opacity: 0}, "-=0.8")
+//        .from('.slide1 .picto-meas', {duration: 1, opacity: 0}, "<");
+// 	return TL1;
+// }
 function introSL1() {
     let TL1 = gsap.timeline();
-    TL1.from('.slide1 .logo-top', {duration: 1, opacity: 0}, 0.5)
-       .from('.slide1 .close', {duration: 1, opacity: 0}, "-=0.5")
-       .from(".slide1-title", {duration: 0.6, x: 200, opacity: 0}, "-=0.8")
-       .from('.slide1 .picto-meas', {duration: 1, opacity: 0}, "<");
+    TL1.from('.slide1 .logo-top', {duration: 2, opacity: 0}, 1)
+       .from(".slide1-title", {duration: 0.6, x: 200, opacity: 0}, "<0.5")
+       .from('.slide1 .picto-meas', {duration: 1, opacity: 0}, "<")
+       .from('.slide1 .close', {duration: 2, opacity: 0}, "<0.5");
 	return TL1;
 }
+
+
+
 function middleSL1() {
     let TL2 = gsap.timeline({repeat: -1, repeatDelay: 0.4});
     TL2.from('.slide1-picto1', {duration: 0.6, opacity: 0, x: -50, y: 20, ease: "power2.out"})
@@ -266,8 +257,6 @@ function middleSL1() {
         ease: "power1.out"
     })
     .to('.slide1-picto2', {x: 0, y: 0, scale: 1, duration: 0.9, ease: "power1.inOut"}, "+=0.1")
-    // .to('.slide1 .wrist-measure', {opacity: 0, duration: 0.3, ease: "power1.inOut"}, "+=1");
-    // .to('.slide1 .wrist-measure', {opacity: 0, stagger: 0.3, ease: "power1.inOut"}, "+=1");
     .to('.slide1-picto1', {opacity: 0, duration: 0.3, ease: "power1.inOut"}, ">1")
     .to('.slide1-picto2', {opacity: 0, duration: 0.3, ease: "power1.inOut"}, ">-0.2");
 	return TL2;
@@ -280,8 +269,10 @@ function conclusionSL1() {
 
 let masterSL1 = gsap.timeline();
 masterSL1.add(introSL1())
-         .add(middleSL1())
-         .add(conclusionSL1(), "<0.5");
+        //  .add(middleSL1())
+         .add(middleSL1(), ">-1.8")
+         .add(conclusionSL1(), "<0.3");
+         
 
 
 // SLIDE 2
@@ -292,9 +283,9 @@ function introSL2() {
        .from('.line1', {duration: 2, opacity: 0}, "<")
        .to('.measure1', {
             keyframes: {
-                "0": {height: '460px'},
-                "50%": {height: '580px'},
-                "100%": {height: '530px'}
+                "0": {height: '400px'},
+                "50%": {height: '550px'},
+                "100%": {height: '520px'}
             },
             duration: 1.4,
             ease: "none"
@@ -319,13 +310,34 @@ function middleSL2() {
         ease: "power2.out"
     }, "<")
     .from('.slide2-picto4', {duration: 0.2, opacity: 0}, "<0.4")
-    .to('.slide2-picto2, .slide2-picto3', {duration: 0.9, x: 0, ease: "power1.out"}, ">0.6")
+    // .to('.slide2-picto2, .slide2-picto3', {duration: 0.9, x: 0, ease: "power1.out"}, ">0.6")
+    .to('.slide2-picto2, .slide2-picto3', {
+        keyframes: {
+            "60%": {x: -7},
+            "100%": {x: 0}
+        },
+        duration: 1.3
+    }, ">0.6")
     .to('.slide2-picto4', {duration: 0.2, opacity: 0}, ">-0.1")
     .from('.slide2-picto5', {duration: 0.2, opacity: 0}, ">-0.1")
     .to('.slide2-picto3', {duration: 1, opacity: 0}, ">0.2")
-    .from('.slide2-picto7, .slide2-picto8, .slide2-picto9', {duration: 0.8, opacity: 0}, "<")
+    .from('.slide2-picto7, .slide2-picto8, .slide2-picto9', {duration: 0.7, opacity: 0}, "<")
     .to('.slide2-picto2, .slide2-picto7, .slide2-picto8', {duration: 0.5, y: 8, ease: "power1.out"}, ">0.2")
-    .to('.slide2-picto8', {duration: 0.8, y: -11, ease: "back.out"}, ">0.5")
+    // .to('.slide2-picto2, .slide2-picto7, .slide2-picto8', {
+    //     keyframes: {
+    //         "60%": {y: 9},
+    //         "100%": {y: 8}
+    //     },
+    //     duration: 1
+    // }, ">0.2")
+    // .to('.slide2-picto8', {duration: 0.8, y: -11, ease: "back.out"}, ">0.5")
+    .to('.slide2-picto8', {
+        keyframes: {
+            "50%": {y: -20},
+            "100%": {y: -11}
+        },
+        duration: 1
+    }, ">0.4")
     .to('.slide2-picto1, .slide2-picto5', {opacity: 0, duration: 0.3, ease: "power1.inOut"}, ">1")
     .to('.slide2-picto2, .slide2-picto9, .slide2-picto7, .slide2-picto8', {opacity: 0, duration: 0.3, ease: "power1.inOut"}, ">-0.2");
 
@@ -434,39 +446,45 @@ function ctaSuivant(){
 
 // fonction page/slide suivante
 function pageSuivante(){
-    console.log('count 1 : ' + count);
-    // Slide 2
+    console.log('count : ' + count);
+    // Slide 2 (mesure 1)
     if(count == 0) {
-        console.log('slide 2 - calcul : ' + calcul);
         masterSL2.restart();
         masterSL1.pause();
+        showMeasure(measureElt1, numberElt1, lineElt1, infoElt1, symbElt1);
+        console.log('slide 2 - calcul : ' + calcul);
     } else {
         masterSL2.pause();
     }
-    // Slide 3 - On valide la 1ere mesure
+    // Slide 3 (on valide la 1ere mesure)
     if(count == 1) {
-        console.log('slide 3 - calcul : ' + calcul);
         resultats[0] = measureElt1.offsetHeight - (lineElt1.offsetHeight / 2) - infoElt1.offsetHeight;
         masterSL3.restart();
+        console.log('slide 3 - calcul : ' + calcul);
     }  else {
         masterSL3.pause();
     }
-    // Slide 4
+    // Slide 4 (mesure 2)
     if(count == 2) {
-        console.log('slide 4 - calcul : ' + calcul);
         masterSL4.restart();
+        showMeasure(measureElt2, numberElt2, lineElt2, infoElt2, symbElt2);
+        console.log('slide 4 - calcul : ' + calcul);
     } else {
         masterSL4.pause();
     }
-    // Slide 5 - On valide la 2eme mesure
+    // Slide 5 (on valide la 2eme mesure)
     if(count == 3) {
-        console.log('slide 5 - calcul : ' + calcul);
         resultats[1] = measureElt2.offsetHeight - (lineElt2.offsetHeight / 2) - infoElt2.offsetHeight;
         showResult(resultats[0], resultats[1], resultElt, symbElt3);
+        gaugeResult(calcul);
         TL5.restart();
-        gaugeResult();
+        console.log('slide 5 - calcul : ' + calcul);
     } else {
         TL5.pause();
+    }
+    // Pour réinitiailiser la timeline au touch sur la regle
+    if(count != 1){
+        TLtouch.reverse();
     }
 
     pages[count].classList.remove('active');
@@ -476,45 +494,7 @@ function pageSuivante(){
     pages[count].classList.add('active');
     showMeasure(measureElt1, numberElt1, lineElt1, infoElt1, symbElt1);
     showMeasure(measureElt2, numberElt2, lineElt2, infoElt2, symbElt2);
-
-    // Animation GSAP sur les Pictos
-    // Slide 2
-    // if(count == 1) {
-    //     masterSL2.restart();
-    //     masterSL1.pause();
-    //     console.log('slide2 calcul : ' + calcul);
-    // } else {
-    //     masterSL2.pause();
-    // }
-    // Slide 3
-    // if(count == 2) {
-    //     masterSL3.restart();
-    //     console.log('slide3 calcul : ' + calcul);
-    // } else {
-    //     masterSL3.pause();
-    // }
-    // Slide 4
-    // if(count == 3) {
-    //     masterSL4.restart();
-    //     console.log('slide4 calcul : ' + calcul);
-    // } else {
-    //     masterSL4.pause();
-    // }
-
-    // Slide 5
-    // if(count == 4) {
-    //     TL5.restart();
-    //     console.log('slide5 calcul : ' + calcul);
-    // } else {
-    //     TL5.pause();
-    // }
-
-    // Pour réinitiailiser la timeline au touch sur la reglette
-    if(count != 1){
-        TLtouch.reverse();
-    }
-
-    console.log('-------------------------------------------------')
+    console.log('------------------------ Suivant ---------------------------')
 }; // Fin de fonction pageSuivante
 
 
@@ -524,7 +504,6 @@ precedent.forEach(element => {
     element.addEventListener("click", function(){setTimeout(pagePrecedente, 400)});
     element.addEventListener("click", ctaPrecedent);
 });
-
 
 // Fonction pour animer les CTA
 function ctaPrecedent(){
@@ -540,37 +519,41 @@ function ctaPrecedent(){
 
 // fonction page/slide précédente
 function pagePrecedente(){
+    console.log('count : ' + count);
     pages[count].classList.remove('active');
     if(count > 0 && count != 4){
         count--;
-    } else if(count > 0 && count == 4){
+    } else if(count == 4){
         count = 0;
-    } else {
-        count = nbPages - 1;
     }
     pages[count].classList.add('active');
-    showMeasure(measureElt1, numberElt1, lineElt1, infoElt1, symbElt1);
-    showMeasure(measureElt2, numberElt2, lineElt2, infoElt2, symbElt2);
-    // Animation GSAP sur les Pictos
+    // Slide 1
     if(count == 0) {
         masterSL1.restart();
+        console.log('slide 1 - calcul : ' + calcul);
     } else {
         masterSL1.pause();
     }
+    // Slide 2
     if(count == 1) {
         masterSL2.restart();
+        showMeasure(measureElt1, numberElt1, lineElt1, infoElt1, symbElt1);
+        console.log('slide 2 - calcul : ' + calcul);
     } else {
         masterSL2.pause();
     }
+    // Slide 3
     if(count == 2) {
         masterSL3.restart();
+        console.log('slide 3 - calcul : ' + calcul);
     } else {
         masterSL3.pause();
     }
-    // Pour réinitiailiser la timeline au touch sur la reglette
+    // Pour réinitiailiser la timeline au touch sur la regle
     if(count != 1){
         TLtouch.reverse();
     }
+    console.log('----------------------- Precedent --------------------------')
 }
 
 
