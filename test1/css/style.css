@@ -445,11 +445,11 @@ p{
     margin-top: 1.5rem;
 }
 .slide5 .contain-cta{
-    margin-top: 5rem;
+    margin-top: 6rem;
 }
 .cta{
-    width: 27rem;
-    height: 6.5rem;
+    width: 28rem;
+    height: 6rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -465,7 +465,6 @@ p{
 }
 .link-again{
     border: .1rem solid var(--color-white);
-    line-height: 1.2;
 }
 
 

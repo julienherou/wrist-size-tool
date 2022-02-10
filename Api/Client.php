@@ -93,7 +93,7 @@ class DeviceAtlasCloudClient {
     /////////////// BASIC SETUP ////////////////////////////////////////////////
 
     /** Set to your DeviceAtlas licence key */
-    const LICENCE_KEY = '9aa9d1a3aa8a3692a47019a3a210b4c3';
+    const LICENCE_KEY = '38dee1facd09d1936ec35407f323d242';
     /** true = throw exceptions on all errors and failures */
     const DEBUG_MODE  = true;
 

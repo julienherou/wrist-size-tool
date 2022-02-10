@@ -61,6 +61,10 @@ $timeSpent = round((microtime(true) - $startTime) * 1000);
 // TEST DEVICE ATLAS
 $propertiesKey = DeviceAtlasCloudClient::KEY_PROPERTIES;
 $uaComment = '';
+
+$diagonal_screen_size = '';
+$display_ppi = '';
+
 if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
 
     $ua = isset($properties[DeviceAtlasCloudClient::KEY_USERAGENT])?
@@ -72,8 +76,8 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
 
     $properties = $properties[$propertiesKey];
     // var_dump($properties);
-    $diagonal_screen_size = '';
-    $display_ppi = '';
+    // $diagonal_screen_size = '';
+    // $display_ppi = '';
 
     if (isset($properties['diagonalScreenSize'])) {
         $diagonal_screen_size = $properties['diagonalScreenSize'];
