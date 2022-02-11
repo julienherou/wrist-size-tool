@@ -1,5 +1,5 @@
 /*
-Slider / Outil de mesure
+Size Tool Tissot
 */
 
 
@@ -49,10 +49,10 @@ const unitCm2 = document.querySelector('.slide4 .unit-cm');
 const unitIn3 = document.querySelector('.slide5 .unit-in');
 const unitCm3 = document.querySelector('.slide5 .unit-cm');
 let resultats = [];
+let calculNumber;
 let calcul;
 const dpiElt = document.querySelector('#dpi-div');
 const closeElts = document.querySelectorAll('.close');
-
 
 
 // Conversion pixel >> cm et affichage au chargement de la page
@@ -92,8 +92,6 @@ if (isNaN(ppi) || ppi === undefined){
 }
 
 
-
-
 // ----------------------------------------------------------
 // TEST ZONE
 // ----------------------------------------------------------
@@ -107,7 +105,6 @@ Math.ceil
 
 // ----------------------------------------------------------
 // ----------------------------------------------------------
-
 
 
 // Mesure écran 24" : 52.5 x 30 cm
@@ -150,10 +147,15 @@ function showMeasure(source, destination, ligne, info, unite) {
 function showResult(mesure1, mesure2, destination, unite){
     if(unitCm3.classList.contains('select')){
         // Formule arrondi au 0.5 supérieur
+        calculNumber = Math.ceil((((mesure1 + mesure2) * 1.79) * convertUnit)*2)/2;
+        // calcul = (Math.ceil((((mesure1 + mesure2) * 1.79) * convertUnit)*2)/2).toString().replace(/\./g, '\,');
         // On remplace le '.' par ','
-        calcul = (Math.ceil((((mesure1 + mesure2) * 1.79) * convertUnit)*2)/2).toString().replace(/\./g, '\,');
+        calcul = calculNumber.toString().replace(/\./g, '\,');
     } else if(unitIn3.classList.contains('select')){
-        calcul = (((mesure1 + mesure2) * 1.79) * convertUnit).toFixed(1).replace(/\./g, '\,');
+        // Formule arrondi au 0.1 le plus proche
+        calculNumber = (((mesure1 + mesure2) * 1.79) * convertUnit).toFixed(1);
+        // calcul = (((mesure1 + mesure2) * 1.79) * convertUnit).toFixed(1).replace(/\./g, '\,');
+        calcul = calculNumber.replace(/\./g, '\,');
     }
     destination.innerHTML = calcul;
     unite.innerHTML = unitInHtml;
@@ -163,16 +165,47 @@ function showResult(mesure1, mesure2, destination, unite){
 
 // Resultat affiché avec jauge
 function risingResult(){
-    console.log('calcul dans risingResult : ' + calcul);
-    
     let compteur = 0;
+    // On indique la durée du compteur en ms
+    let duree = 1500;
 
-    // resultElt.innerHTML = valeur;
-    // console.log(valeur);
-    // for (let i = 0; i < valeur; i+=1){
-    //     console.log(i)
-    // }
-
+    if(unitCm3.classList.contains('select') && Number.isInteger(calculNumber)){
+        let calculNumberEnt = parseInt(calculNumber)
+        let time = Math.round(duree / calculNumberEnt);
+        let downloadTimer = setInterval(function(){
+            if(compteur >= calculNumberEnt){
+                resultElt.innerHTML = calcul;
+                clearInterval(downloadTimer);
+            } else {
+                resultElt.innerHTML = compteur;
+                compteur += 1;
+            }
+        }, time);
+    } else if(unitCm3.classList.contains('select') && !Number.isInteger(calculNumber)){
+        let time = Math.round(duree / (calculNumber * 10));
+        console.log(time);
+        let downloadTimer = setInterval(function(){
+            if(compteur >= calculNumber){
+                resultElt.innerHTML = calcul;
+                clearInterval(downloadTimer);
+            } else {
+                resultElt.innerHTML = compteur.toFixed(1).replace(/\./g, '\,');
+                compteur += 0.1;
+            }
+        }, time);
+    } else if(unitIn3.classList.contains('select')){
+        let time = Math.round(duree / (calculNumber * 10));
+        console.log(time);
+        let downloadTimer = setInterval(function(){
+            if(compteur >= calculNumber){
+                resultElt.innerHTML = calcul;
+                clearInterval(downloadTimer);
+            } else {
+                resultElt.innerHTML = compteur.toFixed(1).replace(/\./g, '\,');
+                compteur += 0.1;
+            }
+        }, time);
+    }
 }
 
 
@@ -270,17 +303,31 @@ function introSL2() {
     let TL1 = gsap.timeline();
     TL1.from('.measure1', {duration: 1, opacity: 0}, 0.3)
 
-       .from('.line1', {duration: 2, opacity: 0}, "<")
-       .to('.measure1', {
+    //    .from('.line1', {duration: 2, opacity: 0}, "<")
+    //    .to('.measure1', {
+    //         keyframes: {
+    //             "0": {height: '400px'},
+    //             "50%": {height: '550px'},
+    //             "100%": {height: '520px'}
+    //         },
+    //         duration: 1.4,
+    //         ease: "none"
+    //     }, "<")
+
+       .set('.measure1', {height: '520px'}, "<")
+       .from('.line1', {duration: 0.6, opacity: 0}, "<")
+       .to('.line1', {
             keyframes: {
-                "0": {height: '400px'},
-                "50%": {height: '550px'},
-                "100%": {height: '520px'}
+                "0": {y: -150},
+                "70%": {y: 50},
+                "100%": {y: 0}
             },
             duration: 1.4,
-            ease: "none"
+            ease: "sine.out"
+            // ease: "none"
         }, "<")
-        .from('.info1', {duration: 2, opacity: 0}, ">")
+
+        .from('.info1', {duration: 2, opacity: 0}, ">-0.2")
         .from('.slide2 .contain-bot', {duration: 3, opacity: 0}, "<1");
 	return TL1;
 }
@@ -399,7 +446,7 @@ let masterSL4 = gsap.timeline();
 masterSL4.add(introSL4())
         // old anim to keep in case
         //  .add(middleSL4(), "<2");
-         .add(middleSL4(), "<+0.8");
+         .add(middleSL4(), "<+0.7");
 
 // SLIDE 5
 const TL5 = gsap.timeline({repeat: 0, repeatDelay: 2, paused: true});
