@@ -211,12 +211,28 @@ function risingResult(){
 
 // On écoute le click sur les croix
 closeElts.forEach(element => {
-    element.addEventListener('click', closeWindow);
+    element.addEventListener("click", animClose);
+    element.addEventListener("click", function(){setTimeout(closeWindow, 400)});
 });
+// Bump de fermeture
+function animClose(){
+    gsap.to(closeElts, {
+        keyframes: {
+            "0": {scale: 1},
+            "50%": {scale: 0.8},
+            "100%": {scale: 1}
+        },
+        duration: 0.4
+    });
+};
 // On ferme la fenètre active
 // Ne fonctionne pas sur la fenètre actuelle
 function closeWindow(){
+    // window.close();
+
+    window.open('', '_self', '');
     window.close();
+
 };
 
 

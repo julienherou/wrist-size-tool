@@ -119,6 +119,7 @@ a{
     background: var(--color-white);
     color: var(--color-bg-black);
     user-select: none !important;
+    -webkit-tap-highlight-color: transparent;
 }
 .btn-nav.back{
     margin-right: 4rem;
@@ -150,7 +151,10 @@ a{
     top: 3rem;
     right: 2rem;
     cursor: pointer;
+    z-index: 1;
+    -webkit-tap-highlight-color: transparent;
 }
+
 .logo-top{
     position: absolute;
     top: 0;
@@ -343,6 +347,7 @@ p{
     align-items: center;
     cursor: pointer;
     line-height: 1;
+    -webkit-tap-highlight-color: transparent;
 }
 .unit.select{
     border: solid .1rem var(--color-white);
@@ -446,6 +451,7 @@ p{
 }
 .slide5 .contain-cta{
     margin-top: 5rem;
+    -webkit-tap-highlight-color: transparent;
 }
 .cta{
     width: 27rem;

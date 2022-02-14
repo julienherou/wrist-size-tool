@@ -72,10 +72,6 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
         $marketing_name = $properties['marketingName'];
         // var_dump($marketingName);
     }
-    if (isset($properties['displayHeight'])) {
-        $test = $properties['displayHeight'];
-        // var_dump($test);
-    }
 
 
 } // Fin du if
@@ -137,7 +133,6 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                     <img src="img/close-black.png" alt="Close">
                 </div>
                 <div class="logo-top">
-                    <!-- <img src="img/logo.png" alt="Logo Tissot"> -->
                     <img src="img/tissot-logo-b.svg" alt="Logo Tissot">
                 </div>
                 <div class="main-elt">
@@ -159,13 +154,13 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
         </div>
 
 
-        <!-- SLIDE 2 - 1ere mesure -->
+        <!-- SLIDE 2 - First measure -->
         <div class="slide slide2">
             <div class="inside-slide">
                 <div class="close">
                     <img src="img/close-white.png" alt="Close">
                 </div>
-                <!-- Zone de mesure 1 -->
+                <!-- Measure 1 area -->
                 <div class="measure measure1">
                     <div class="contain-top">
                         <span class="line"></span>
@@ -184,7 +179,6 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                             <img class="wrist-measure slide2-picto9" src="img/picto/picto-white-slide2-9.png" alt="Picture of wrist measure">
                             <img class="wrist-measure slide2-picto2" src="img/picto/picto-white-slide2-2.png" alt="Picture of wrist measure">
                             <img class="wrist-measure slide2-picto3" src="img/picto/picto-white-slide2-3.png" alt="Picture of wrist measure">
-                            <!-- <img class="wrist-measure slide2-picto6" src="img/picto/picto-white-slide2-6.png" alt="Picture of wrist measure"> -->
                             <img class="wrist-measure slide2-picto7" src="img/picto/picto-white-slide2-7.png" alt="Picture of wrist measure">
                             <img class="wrist-measure slide2-picto8" src="img/picto/picto-white-slide2-8.png" alt="Picture of wrist measure">
                         </div>
@@ -196,7 +190,7 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                         <img class="arrow" src="img/arrow-bot-green.svg" alt="Fleche du bas">
                     </div>
 
-                    <!-- Affichage de la mesure -->
+                    <!-- See measure -->
                     <div class="contain-info info1">
                         <div class="contain-size">
                             <div class="size">
@@ -322,9 +316,6 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                 </div>
             </div>
         </div>
-
-
-
 
 
     </div> <!-- End of Container -->
