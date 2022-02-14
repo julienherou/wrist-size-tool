@@ -25,7 +25,6 @@
     --color-black: #1c1c1c;
     --color-bg-black: #545454;
     --color-bg-white: #f8f8f8;
-    /* --color-red: #e32119; */
     --color-red: #df1e18;
     --color-green: #1c8500;
     --color-red-cta: #c04e49;
@@ -46,7 +45,7 @@ a{
     color: inherit;
 }
 
-/* Div de calcul dpi */
+/* Div calcul dpi */
 #dpi-div{
     width: 1in;
     height: 1in;
@@ -58,7 +57,7 @@ a{
 .container{
     position: relative;
     width: 100%;
-    max-width: 80rem;
+    max-width: 120rem;
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
     margin: 0 auto;
@@ -72,18 +71,7 @@ a{
 }
 .slide.active{
     display: block;
-    /* animation: inframe 0.1s ease-in-out 5s; */
 }
-
-/* animation d'apparition des slides */
-/* @keyframes inframe {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-} */
 
 .inside-slide{
     position: relative;
@@ -91,7 +79,7 @@ a{
     height: 100%;
 }
 
-/* Bloc nav du bas */
+/* Bloc nav bot */
 .contain-bot{
     position: absolute;
     bottom: 0;
@@ -119,6 +107,7 @@ a{
     background: var(--color-white);
     color: var(--color-bg-black);
     user-select: none !important;
+    -webkit-tap-highlight-color: transparent;
 }
 .btn-nav.back{
     margin-right: 4rem;
@@ -150,7 +139,10 @@ a{
     top: 3rem;
     right: 2rem;
     cursor: pointer;
+    z-index: 1;
+    -webkit-tap-highlight-color: transparent;
 }
+
 .logo-top{
     position: absolute;
     top: 0;
@@ -193,7 +185,7 @@ p{
     background: linear-gradient(60deg, rgba(155,36,27,1) 0%, rgba(223,30,24,1) 40%);
     color: var(--color-white);
 }
-/* Permet de positionner les instructions */
+/* Set position instructions */
 .slide1 .main-elt{
     height: 45rem;
     justify-content: flex-start;
@@ -204,8 +196,7 @@ p{
     color: var(--color-black);
 }
 
-
-/* Position des pictos de mesure */
+/* Set position pictos */
 .slide1 .picto-meas{
     position: absolute;
     top: 75%;
@@ -227,16 +218,13 @@ p{
 }
 
 
-
-
-
 /* SLIDE 2 / SLIDE 4 */
 
 .slide2 .inside-slide,
 .slide4 .inside-slide{
     padding-top: 1rem;
 }
-/* Zone de mesure */
+/* Measure area */
 .measure{
     width: 100%;
     min-height: 28rem;
@@ -261,7 +249,7 @@ p{
     height: 0.5rem;
     background: var(--color-red);
 }
-/* Zone d'animation */
+/* Animation */
 .contain-motion{
     position: relative;
     display: flex;
@@ -303,8 +291,7 @@ p{
 }
 
 
-
-/* Affichage de la mesure temps réel */
+/* Display the measure */
 .size{
     display: flex;
     flex-direction: column;
@@ -326,7 +313,7 @@ p{
 .symb-unit2{
     font-family: "Gotham Book", sans-serif;
 }
-/* Changement d'unité */
+/* Change unit */
 .contain-unit{
     width: 10rem;
     display: flex;
@@ -343,6 +330,7 @@ p{
     align-items: center;
     cursor: pointer;
     line-height: 1;
+    -webkit-tap-highlight-color: transparent;
 }
 .unit.select{
     border: solid .1rem var(--color-white);
@@ -350,7 +338,7 @@ p{
 }
 
 
-/* Ligne pointillé */
+/* Dashed line */
 .contain-line{
     width: 100%;
     display: flex;
@@ -387,17 +375,13 @@ p{
     100% { opacity: 0; }
 }
 
-
-/* Zone d'affichage mesure et unit */
+/* Display measure and unit */
 .contain-info{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
-
-
 
 
 /* ------------------------------------- */
@@ -426,7 +410,6 @@ p{
     width: 42rem;
 }
 
-
 /* SLIDE 5 */
 .slide5 .main-elt{
     transform: translate(-50%, -50%);
@@ -445,11 +428,12 @@ p{
     margin-top: 1.5rem;
 }
 .slide5 .contain-cta{
-    margin-top: 6rem;
+    margin-top: 5rem;
+    -webkit-tap-highlight-color: transparent;
 }
 .cta{
-    width: 28rem;
-    height: 6rem;
+    width: 27rem;
+    height: 6.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -465,34 +449,12 @@ p{
 }
 .link-again{
     border: .1rem solid var(--color-white);
+    line-height: 1.2;
 }
-
-
 
 
 /* ------------------------------------- */
-/* DESKTOP */
-.desktop{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: none;
-    z-index: 2;
-    background: var(--color-bg-black);
-}
-.desktop .close{
-    z-index: 3;
-}
-
-
-
-/* On désactive l'outil sur desktop */
-@media only screen and (min-width: 1224px){
-    .desktop{
-        display: block;
-    }
-}
-/* Pour les écrans en dessous de 470px de large */
+/* For screen under 470px width */
 @media only screen and (max-width: 470px){
     .double{
         padding: 1rem 1rem 3rem 1rem;

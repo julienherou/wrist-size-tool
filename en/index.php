@@ -8,14 +8,11 @@ error_reporting(E_ALL);       // for testing to help seeing problems
 ini_set('display_errors', 1); // for testing to help seeing problems
 $startTime = microtime(true); // timer to see how long it takes to get device data
 
-
 /* (1) Edit the DeviceAtlasCloud "Client.php" file and set your licence key: */
 //     const LICENCE_KEY = 'YOUR-DA-LICENCE-KEY';
 
-
 /* (2) Include DeviceAtlasCloud: */
 require_once dirname(__FILE__).'/../Api/Client.php';
-
 
 /* (3) Get data: */
 $errors = null;
@@ -41,7 +38,6 @@ $timeSpent = round((microtime(true) - $startTime) * 1000);
 // use the device data...
 // in this example the data will be printed on the page:
 
-
 // DEVICE ATLAS
 $propertiesKey = DeviceAtlasCloudClient::KEY_PROPERTIES;
 $uaComment = '';
@@ -53,7 +49,6 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
     $source = isset($properties[DeviceAtlasCloudClient::KEY_SOURCE])?
         $properties[DeviceAtlasCloudClient::KEY_SOURCE]: 'None';
 
-
     $properties = $properties[$propertiesKey];
     // var_dump($properties);
     $diagonal_screen_size = '';
@@ -62,27 +57,14 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
 
     if (isset($properties['diagonalScreenSize'])) {
         $diagonal_screen_size = $properties['diagonalScreenSize'];
-        // var_dump($diagonal_screen_size);
     }
     if (isset($properties['displayPpi'])) {
         $display_ppi = $properties['displayPpi'];
-        // var_dump($display_ppi);
-    }
-    if (isset($properties['marketingName'])) {
-        $marketing_name = $properties['marketingName'];
-        // var_dump($marketingName);
-    }
-    if (isset($properties['displayHeight'])) {
-        $test = $properties['displayHeight'];
-        // var_dump($test);
     }
 
-
-} // Fin du if
+}
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -90,9 +72,7 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
-    <meta name="author" content="Julien Herou">
-    <title>Tissot</title>
-
+    <title>Tissot Size Tool</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -106,27 +86,7 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
     <!-- Variables Device Atlas -->
     <input type="hidden" id="diagonal-inch" name="diagonal-inch"  value= <?php echo $diagonal_screen_size ?> />
     <input type="hidden" id="display-ppi" name="display-ppi"  value= <?php echo $display_ppi ?> />
-    <input type="hidden" id="marketing-name" name="marketing-name"  value= <?php echo $marketing_name ?> />
 
-    <!-- DESKTOP -->
-    <div class="desktop">
-        <div class="inside-slide">
-            <div class="close">
-                <img src="img/close-white.png" alt="Close">
-            </div>
-            <div class="logo-top">
-                <img src="img/logo.png" alt="Logo Tissot">
-            </div>
-            <div class="main-elt">
-                <p>Pour utiliser l'outil de mesure<br>
-                    récharger cette page sur Mobile
-                </p>
-                <div class="contain-cta">
-                    <a href="#"><div class="cta link-website">Retourner sur le site</div></a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="container">
 
@@ -137,7 +97,6 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                     <img src="img/close-black.png" alt="Close">
                 </div>
                 <div class="logo-top">
-                    <!-- <img src="img/logo.png" alt="Logo Tissot"> -->
                     <img src="img/tissot-logo-b.svg" alt="Logo Tissot">
                 </div>
                 <div class="main-elt">
@@ -159,13 +118,13 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
         </div>
 
 
-        <!-- SLIDE 2 - 1ere mesure -->
+        <!-- SLIDE 2 - First measure -->
         <div class="slide slide2">
             <div class="inside-slide">
                 <div class="close">
                     <img src="img/close-white.png" alt="Close">
                 </div>
-                <!-- Zone de mesure 1 -->
+                <!-- Measure 1 area -->
                 <div class="measure measure1">
                     <div class="contain-top">
                         <span class="line"></span>
@@ -184,7 +143,6 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                             <img class="wrist-measure slide2-picto9" src="img/picto/picto-white-slide2-9.png" alt="Picture of wrist measure">
                             <img class="wrist-measure slide2-picto2" src="img/picto/picto-white-slide2-2.png" alt="Picture of wrist measure">
                             <img class="wrist-measure slide2-picto3" src="img/picto/picto-white-slide2-3.png" alt="Picture of wrist measure">
-                            <!-- <img class="wrist-measure slide2-picto6" src="img/picto/picto-white-slide2-6.png" alt="Picture of wrist measure"> -->
                             <img class="wrist-measure slide2-picto7" src="img/picto/picto-white-slide2-7.png" alt="Picture of wrist measure">
                             <img class="wrist-measure slide2-picto8" src="img/picto/picto-white-slide2-8.png" alt="Picture of wrist measure">
                         </div>
@@ -196,7 +154,7 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                         <img class="arrow" src="img/arrow-bot-green.svg" alt="Fleche du bas">
                     </div>
 
-                    <!-- Affichage de la mesure -->
+                    <!-- See measure -->
                     <div class="contain-info info1">
                         <div class="contain-size">
                             <div class="size">
@@ -244,18 +202,17 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
             </div>
         </div>
 
-        <!-- SLIDE 4 - 2eme mesure -->
+        <!-- SLIDE 4 - Second measure -->
         <div class="slide slide4">
             <div class="inside-slide">
                 <div class="close">
                     <img src="img/close-white.png" alt="Close">
                 </div>
-                <!-- Zone de mesure 2 -->
+                <!-- Measure 2 area -->
                 <div class="measure measure2">
                     <div class="contain-top">
                         <span class="line"></span>
                     </div>
-
 
                     <div class="contain-motion">
                         <p class="instruction">
@@ -322,9 +279,6 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
                 </div>
             </div>
         </div>
-
-
-
 
 
     </div> <!-- End of Container -->
