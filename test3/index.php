@@ -53,21 +53,12 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
     // var_dump($properties);
     $diagonal_screen_size = '';
     $display_ppi = '';
-    $marketing_name = '';
 
     if (isset($properties['diagonalScreenSize'])) {
         $diagonal_screen_size = $properties['diagonalScreenSize'];
     }
     if (isset($properties['displayPpi'])) {
         $display_ppi = $properties['displayPpi'];
-    }
-    if (isset($properties['marketingName'])) {
-        if($properties['marketingName'] === 'iPhone'){
-            header("Refresh:0");
-        } else {
-            $marketing_name = $properties['marketingName'];
-        }
-        // var_dump($marketingName);
     }
 
 }

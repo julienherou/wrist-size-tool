@@ -1,0 +1,558 @@
+/* FONT */
+/* font-family: 'Heebo', sans-serif; */
+@font-face {
+    font-family: "Gotham Book";
+    src: url("../font/Gotham-Book.otf");
+}
+@font-face {
+    font-family: "Gotham Bold";
+    src: url("../font/Gotham-Bold.otf");
+}
+@font-face {
+    font-family: "Gotham Light";
+    src: url("../font/Gotham-Light.otf");
+}
+
+
+/* BASE */
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+}
+:root{
+    --color-white: #FFF;
+    --color-black: #1c1c1c;
+    --color-bg-black: #545454;
+    --color-bg-white: #f8f8f8;
+    /* --color-red: #e32119; */
+    --color-red: #df1e18;
+    --color-green: #1c8500;
+    --color-red-cta: #c04e49;
+    --color-grey: #717171;
+    scroll-behavior: smooth;
+    font-size: 62.5%;
+}
+body{
+    margin: 0;
+    font-size: 1.6rem;
+    font-family: 'Heebo', sans-serif;
+    color: var(--color-white);
+    background: var(--color-bg-black);
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Div de calcul dpi */
+#dpi-div{
+    width: 1in;
+    height: 1in;
+    position: absolute;
+    top: -100%;
+    left: -100%;
+}
+
+.container{
+    position: relative;
+    width: 100%;
+    max-width: 80rem;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    margin: 0 auto;
+    overflow: hidden;
+}
+.slide{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+.slide.active{
+    display: block;
+    /* animation: inframe 0.1s ease-in-out 5s; */
+}
+
+/* animation d'apparition des slides */
+/* @keyframes inframe {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+} */
+
+.inside-slide{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Bloc nav du bas */
+.contain-bot{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.contain-btn{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 3rem;
+}
+
+/* BUTTON NAV */
+.btn-nav{
+    cursor: pointer;
+    width: 18rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    letter-spacing: 0.2rem;
+    font-weight: 400;
+    background: var(--color-white);
+    color: var(--color-bg-black);
+    user-select: none !important;
+    -webkit-tap-highlight-color: transparent;
+}
+.btn-nav.back{
+    margin-right: 4rem;
+    border: .1rem solid var(--color-white);
+    background: transparent;
+    color: var(--color-white);
+    font-weight: 300;
+}
+.btn-nav img{
+    height: 1.3rem;
+    padding: 0;
+}
+.btn-nav.back img{
+    margin-right: 1rem;
+}
+.btn-nav.next img{
+    margin-left: 1rem;
+}
+.btn-nav span{
+    transform: translateY(0.1rem);
+    line-height: 0;
+}
+
+.red{
+    color: var(--color-red);
+}
+.close{
+    position: absolute;
+    top: 3rem;
+    right: 2rem;
+    cursor: pointer;
+    z-index: 1;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.logo-top{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding-top: 5rem;
+    display: flex;
+    justify-content: center;
+}
+.logo-top img{
+    width: 18rem;
+}
+.main-elt{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+}
+p{
+    margin: 0;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+/* ------------------------------------- */
+
+/* SLIDE 1 */
+.slide1 .inside-slide{
+    opacity: 0;
+}
+.slide1{
+    background: var(--color-bg-white);
+}
+.slide1 .btn-nav{
+    background: linear-gradient(60deg, rgba(155,36,27,1) 0%, rgba(223,30,24,1) 40%);
+    color: var(--color-white);
+}
+/* Permet de positionner les instructions */
+.slide1 .main-elt{
+    height: 45rem;
+    justify-content: flex-start;
+    padding: 0;
+    padding-top: 13rem;
+}
+.slide1 .main-elt p{
+    color: var(--color-black);
+}
+
+
+/* Position des pictos de mesure */
+.slide1 .picto-meas{
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 19rem;
+    height: 19rem;
+    border-radius: 50%;
+    background: #efefef;
+    overflow: hidden;
+}
+.slide1 .wrist-measure{
+    position: absolute;
+    width: 43rem;
+    bottom: -23rem;
+}
+
+
+
+
+
+/* SLIDE 2 / SLIDE 4 */
+
+.slide2 .inside-slide,
+.slide4 .inside-slide{
+    padding-top: 1rem;
+}
+/* Zone de mesure */
+.measure{
+    width: 100%;
+    min-height: 28rem;
+    max-height: calc(100% - 10rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.measure1{
+    height: 520px;
+}
+.measure2{
+    height: 500px;
+}
+.contain-top{
+    width: 100%;
+    padding: 0 1rem 1rem;
+}
+.line{
+    display: block;
+    width: 100%;
+    height: 0.5rem;
+    background: var(--color-red);
+}
+/* Zone d'animation */
+.contain-motion{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+}
+.instruction{
+    font-size: 1.8rem;
+    margin: 3rem 0 0 0;
+    text-align: center;
+}
+.slide2 .picto-meas,
+.slide4 .picto-meas{
+    position: absolute;
+    top: 22rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 19rem;
+    height: 19rem;
+    border-radius: 50%;
+    background-color: var(--color-bg-black);
+    overflow: hidden;
+    z-index: -1;
+}
+.slide4 .picto-meas{
+    top: 18rem;
+}
+.slide2 .wrist-measure,
+.slide4 .wrist-measure{
+    position: absolute;
+    width: 43rem;
+    bottom: -37.5rem;
+}
+
+
+
+/* Affichage de la mesure temps réel */
+.size{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background: var(--color-bg-black);
+}
+.size p{
+    margin: 0;
+}
+.number{
+    font-family: "Gotham Bold", sans-serif;
+    font-weight: 900;
+    font-size: 4rem;
+    line-height: 3.5rem;
+}
+.symb-unit1,
+.symb-unit2{
+    font-family: "Gotham Book", sans-serif;
+}
+/* Changement d'unité */
+.contain-unit{
+    width: 10rem;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.8rem;
+}
+.unit{
+    font-size: 1.6rem;
+    font-family: "Gotham Book", sans-serif;
+    width: 5rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    line-height: 1;
+    -webkit-tap-highlight-color: transparent;
+}
+.unit.select{
+    border: solid .1rem var(--color-white);
+    background: #353535;
+}
+
+
+/* Ligne pointillé */
+.contain-line{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    cursor: grab;
+}
+.arrow{
+    display: block;
+    height: 1rem;
+}
+.line-dash{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 0.3rem;
+    border-bottom: dashed .5rem var(--color-white);
+    margin: 1rem 0;
+}
+.line-dash::after{
+    content: "";
+    position: absolute;
+    border-bottom: dashed .5rem var(--color-green);
+    width: 100%;
+    height: 100%;
+    animation: 5s fadeline infinite;
+}
+@keyframes fadeline {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    50% { opacity: 0; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+
+/* Zone d'affichage mesure et unit */
+.contain-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+/* ------------------------------------- */
+
+/* SLIDE 3 */
+.slide3 .main-elt{
+    width: 100%;
+    height: 100%;
+}
+.slide3-title{
+    padding-bottom: 10rem;
+}
+.slide3 .picto-meas{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrist-rotate{
+    position: absolute;
+    width: 42rem;
+}
+
+
+/* SLIDE 5 */
+.slide5 .main-elt{
+    transform: translate(-50%, -50%);
+}
+.slide5 .main-elt p{
+    margin: 0;
+    font-size: 4rem;
+}
+.result{
+    font-family: "Gotham Bold", sans-serif;
+    font-weight: 900;
+    font-size: 8rem;
+    line-height: 7.5rem;
+}
+.slide5 .contain-unit{
+    margin-top: 1.5rem;
+}
+.slide5 .contain-cta{
+    margin-top: 5rem;
+    -webkit-tap-highlight-color: transparent;
+}
+.cta{
+    width: 27rem;
+    height: 6.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 1.5rem;
+    line-height: 1;
+}
+.link-website{
+    border: .1rem solid var(--color-red);
+    color: var(--color-red);
+}
+.link-again{
+    border: .1rem solid var(--color-white);
+    line-height: 1.2;
+}
+
+
+
+
+/* ------------------------------------- */
+/* Loader */
+.loader{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: var(--color-bg-white);
+}
+.hidden{
+    display: none;
+}
+
+/* @media only screen and (min-width: 1224px){
+    .loader{
+        display: block;
+    }
+} */
+
+
+
+
+/* Pour les écrans en dessous de 470px de large */
+@media only screen and (max-width: 470px){
+    .double{
+        padding: 1rem 1rem 3rem 1rem;
+    }
+    .double .btn-nav{
+        width: 14rem;
+        height: 4.5rem;
+        font-size: 1.4rem;
+    }
+    .double .btn-nav.back{
+        margin-right: 3rem;
+    }
+
+}
+
+/* LOADER */
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    /* border: 8px solid #fff; */
+    border: 8px solid var(--color-red);
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    /* border-color: #fff transparent transparent transparent; */
+    border-color: var(--color-red) transparent transparent transparent;
+  }
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+
+

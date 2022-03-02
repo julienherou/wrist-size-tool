@@ -8,11 +8,14 @@ error_reporting(E_ALL);       // for testing to help seeing problems
 ini_set('display_errors', 1); // for testing to help seeing problems
 $startTime = microtime(true); // timer to see how long it takes to get device data
 
+
 /* (1) Edit the DeviceAtlasCloud "Client.php" file and set your licence key: */
 //     const LICENCE_KEY = 'YOUR-DA-LICENCE-KEY';
 
+
 /* (2) Include DeviceAtlasCloud: */
 require_once dirname(__FILE__).'/../Api/Client.php';
+
 
 /* (3) Get data: */
 $errors = null;
@@ -34,13 +37,14 @@ try {
 
 // time spent for getting device data
 $timeSpent = round((microtime(true) - $startTime) * 1000);
+// var_dump($timeSpent);
 
 // use the device data...
 // in this example the data will be printed on the page:
 
+
 // DEVICE ATLAS
 $propertiesKey = DeviceAtlasCloudClient::KEY_PROPERTIES;
-$uaComment = '';
 if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
 
     $ua = isset($properties[DeviceAtlasCloudClient::KEY_USERAGENT])?
@@ -57,9 +61,11 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
 
     if (isset($properties['diagonalScreenSize'])) {
         $diagonal_screen_size = $properties['diagonalScreenSize'];
+        // var_dump($diagonal_screen_size);
     }
     if (isset($properties['displayPpi'])) {
         $display_ppi = $properties['displayPpi'];
+        // var_dump($display_ppi);
     }
     if (isset($properties['marketingName'])) {
         if($properties['marketingName'] === 'iPhone'){
@@ -70,9 +76,12 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
         // var_dump($marketingName);
     }
 
-}
+
+} // Fin du if
 
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -80,7 +89,9 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>Tissot Size Tool</title>
+    <meta name="author" content="Julien Herou">
+    <title>Tissot</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -95,6 +106,19 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
     <input type="hidden" id="diagonal-inch" name="diagonal-inch"  value= <?php echo $diagonal_screen_size ?> />
     <input type="hidden" id="display-ppi" name="display-ppi"  value= <?php echo $display_ppi ?> />
 
+
+
+    <!-- Loader -->
+    <div class="loader">
+        <div class="inside-slide">
+            <div class="logo-top">
+                <img src="img/tissot-logo-b.svg" alt="Logo Tissot">
+            </div>
+            <div class="main-elt">
+                <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+            </div>
+        </div>
+    </div>
 
     <div class="container">
 
@@ -210,17 +234,18 @@ if (isset($properties[$propertiesKey]) && $properties[$propertiesKey]) {
             </div>
         </div>
 
-        <!-- SLIDE 4 - Second measure -->
+        <!-- SLIDE 4 - 2eme mesure -->
         <div class="slide slide4">
             <div class="inside-slide">
                 <div class="close">
                     <img src="img/close-white.png" alt="Close">
                 </div>
-                <!-- Measure 2 area -->
+                <!-- Zone de mesure 2 -->
                 <div class="measure measure2">
                     <div class="contain-top">
                         <span class="line"></span>
                     </div>
+
 
                     <div class="contain-motion">
                         <p class="instruction">
